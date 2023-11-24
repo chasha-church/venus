@@ -1,6 +1,6 @@
 # Chasha church project
 
-Front-end repository. React application(SPA).
+Front-end repository. A single page React application(SPA).
 
 
 ## Technology stack
