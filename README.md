@@ -12,7 +12,7 @@ Front-end repository. A single page React application(SPA).
 
 ## Scripts
 
-- `dev`/`start` - start dev server and open browser
+- `npm run dev`/`start` - start dev server and open browser
 - `build` - build for production
 - `preview` - locally preview production build
 - `test` - launch test runner
