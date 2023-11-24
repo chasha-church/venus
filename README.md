@@ -1,17 +1,14 @@
-# vite-template-redux
+# Chasha church project
 
-Uses [Vite](https://vitejs.dev/), [Vitest](https://vitest.dev/), and [React Testing Library](https://github.com/testing-library/react-testing-library) to create a modern [React](https://react.dev/) app compatible with [Create React App](https://create-react-app.dev/)
+Front-end repository. React application(SPA).
 
-```sh
-npx degit reduxjs/redux-templates/packages/vite-template-redux my-app
-```
 
-## Goals
+## Technology stack
 
-- Easy migration from Create React App or Vite
-- As beginner friendly as Create React App
-- Optimized performance compared to Create React App
-- Customizable without ejecting
+- Vite
+- React
+- Redux
+- Typescript
 
 ## Scripts
 
