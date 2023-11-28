@@ -1,9 +1,10 @@
 import "./App.css"
+import { Welcome } from "./components/Welcome"
 
 function App() {
   return (
     <div className="App">
-      <h1>Храм в честь иконы Божьей Матери "Неупиваемая Чаша".</h1>
+      <Welcome welcomeText={`Храм в честь иконы Божьей Матери "Неупиваемая Чаша".`} />
     </div>
   )
 }
