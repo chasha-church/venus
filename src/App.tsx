@@ -1,12 +1,17 @@
-import "./App.css"
-import { Welcome } from "./components/Welcome"
+import {ThemeProvider} from "styled-components"
+import { GlobalStyles } from './styles/Global'
+import {Home} from "./components/Home/Home"
+import {theme} from "./styles/Theme";
 
 function App() {
-  return (
-    <div className="App">
-      <Welcome welcomeText={`Храм в честь иконы Божьей Матери "Неупиваемая Чаша".`} />
-    </div>
-  )
+    return (
+        <ThemeProvider theme={theme}>
+            <GlobalStyles />
+            <div className="App">
+                <Home someText={'Hello!'}/>
+            </div>
+        </ThemeProvider>
+    )
 }
 
 export default App
