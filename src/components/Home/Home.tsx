@@ -1,35 +1,65 @@
 import React from 'react'
-import { Carousel } from 'antd';
+import {Button, Carousel, ConfigProvider} from 'antd';
 
-import styles from './Home.module.css'
+import tmpImage from '../../assets/images/measuring_progress-750x375.jpg';
+import styled from "styled-components";
+import {MainLable} from "./MainLable";
 
 type HomeProps = {}
 
-const contentStyle: React.CSSProperties = {
-    height: '160px',
-    color: '#fff',
-    lineHeight: '160px',
-    textAlign: 'center',
-    background: '#364d79',
-};
+const ScheduleButton = styled(Button)`
+  width: fit-content;
+  height: 4.5vh;
+  
+  color: white;
+  border-radius: 15px;
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  left: 1.4%;
+  bottom: 4%;
+
+  font-family: 'Oswald', serif;
+  font-weight: 1000;
+  font-size: 1.5vh;
+  text-align: center;
+`
+
+const CarouselWrapper = styled.div`
+  position: relative;
+  margin: 0;
+  padding: 0;
+`;
+
+const HomeImage = styled.img`
+  max-height: 100vh;
+  object-fit: cover;
+`;
+
 
 export const Home: React.FC<HomeProps> = () => {
     return (
-        <div className={styles.wrapper}>
+        <CarouselWrapper>
+            <MainLable/>
             <Carousel autoplay>
-                <div>
-                    <h3 style={contentStyle}>1</h3>
-                </div>
-                <div>
-                    <h3 style={contentStyle}>2</h3>
-                </div>
-                <div>
-                    <h3 style={contentStyle}>3</h3>
-                </div>
-                <div>
-                    <h3 style={contentStyle}>4</h3>
-                </div>
+                <HomeImage src={tmpImage}/>
+                <HomeImage src={tmpImage}/>
+                <HomeImage src={tmpImage}/>
+                <HomeImage src={tmpImage}/>
             </Carousel>
-        </div>
+            <ConfigProvider
+                theme={{
+                    token: {
+                        colorPrimary: '#F0A202',
+                    },
+                }}
+            >
+                <ScheduleButton type="primary">Расписание богослужений</ScheduleButton>
+            </ConfigProvider>
+
+        </CarouselWrapper>
     )
 }
