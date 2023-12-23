@@ -43,7 +43,7 @@ const HomeImage = styled.img`
 export const Home: React.FC<HomeProps> = () => {
     return (
         <CarouselWrapper>
-            <MainLable/>
+            <MainLable></MainLable>
             <Carousel autoplay>
                 <HomeImage src={tmpImage}/>
                 <HomeImage src={tmpImage}/>

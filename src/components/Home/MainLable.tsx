@@ -8,22 +8,27 @@ type MainLable = {}
 const FlexContainer = styled.div`
     display: flex;
     height: fit-content;
+    
+    position: absolute;
+    top: 10%;
+    z-index: 1;
 `
 
-const MainText = styled.div`
+const MainTextWrapper = styled.div`
+    display: flex;
+    justify-content: center;
+    
     flex: 4;
+    padding: 15px 0 15px 30px;
 
-    padding-left: 30px;
-
-    font-size: 4vh;
-    font-family: 'Oswald', serif;
+    font-size: 2em;
     color: black;
 
-    background: rgb(9, 189, 212);
+
+    background: white;
 `;
 
 const DecorationEdge = styled.div`
-    
     flex: 6;
     width: 10px;
     display: block;
@@ -33,25 +38,24 @@ const DecorationEdge = styled.div`
 
     z-index: -1;
     transform: skew(-30deg);
-    background: rgb(9, 189, 212);
+    background: white;
 `;
 
 const ChashaMerge = styled.img`
     position: absolute;
-    left: 44%;
-    top: 0;
+    left: 40%;
+    top: -30%;
     z-index: 1;
 `;
 
 export const MainLable: React.FC<MainLable> = () => {
     return (
-        <div>
-            <FlexContainer>
-                <MainText>Храм в честь иконы Божьей Матери “Неупиваемая Чаша”
-                    <ChashaMerge src={chashaMergeImage}/>
-                </MainText>
-                <DecorationEdge></DecorationEdge>
-            </FlexContainer>
-        </div>
+        <FlexContainer>
+            <MainTextWrapper>
+                Храм в честь иконы Божьей Матери “Неупиваемая Чаша”
+                <ChashaMerge src={chashaMergeImage}/>
+            </MainTextWrapper>
+            <DecorationEdge></DecorationEdge>
+        </FlexContainer>
     )
 }
