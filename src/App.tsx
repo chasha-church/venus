@@ -1,13 +1,20 @@
-import "./App.css"
-import { Welcome } from "./components/Welcome"
+import React from 'react';
 
-function App() {
+import './App.css';
+import { Welcome } from './components/Welcome';
+import { Menu } from './components/Menu/Menu';
+import { Sidebar } from './components/Sidebar/Sidebar';
+
+const App: React.FC = () => {
   return (
     <div className="App">
-      <Welcome welcomeText={`Храм в честь иконы Божьей Матери "Неупиваемая Чаша".`} />
-      <span>Привет</span>
+      <div className="content_wrapper">
+        <Sidebar />
+        <Welcome welcomeText={`Храм в честь иконы Божьей Матери "Неупиваемая Чаша".`} />
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
+
