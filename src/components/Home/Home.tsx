@@ -30,7 +30,7 @@ const ScheduleButton = styled(Button)`
 
 const CarouselWrapper = styled.div`
   position: relative;
-  margin: 0;
+  margin: 1px 0 0 0;
   padding: 0;
 `;
 
