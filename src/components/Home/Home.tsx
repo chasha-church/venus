@@ -30,7 +30,7 @@ const ScheduleButton = styled(Button)`
 
 const CarouselWrapper = styled.div`
   position: relative;
-  margin: 0;
+  margin: 1px 0 0 0;
   padding: 0;
 `;
 
@@ -43,7 +43,7 @@ const HomeImage = styled.img`
 export const Home: React.FC<HomeProps> = () => {
     return (
         <CarouselWrapper>
-            <MainLable></MainLable>
+            {/*<MainLable></MainLable>*/}
             <Carousel autoplay>
                 <HomeImage src={tmpImage}/>
                 <HomeImage src={tmpImage}/>
@@ -57,7 +57,7 @@ export const Home: React.FC<HomeProps> = () => {
                     },
                 }}
             >
-                <ScheduleButton type="primary">Расписание богослужений</ScheduleButton>
+                <ScheduleButton type="primary">Button</ScheduleButton>
             </ConfigProvider>
 
         </CarouselWrapper>
