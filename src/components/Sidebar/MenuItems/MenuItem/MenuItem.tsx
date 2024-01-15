@@ -9,7 +9,7 @@ type MenuItemProps = {
     icon: string;
     name: string;
     expanded: boolean;
-    submenu: SubmenuType;
+    submenu: SubmenuType | null;
     submenuExpanded: SubmenuExpandedType;
     isActive: boolean;
 }

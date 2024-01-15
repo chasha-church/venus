@@ -18,7 +18,7 @@ export type MenuItemType = {
 }
 export type SubmenuExpandedType = boolean | null;
 
-export type SubmenuType = Array<SubmenuItemType> | null;
+export type SubmenuType = Array<SubmenuItemType>;
 export type SubmenuItemType = {
     id: number;
     name: string;
