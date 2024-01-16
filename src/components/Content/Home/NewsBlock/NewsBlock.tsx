@@ -2,11 +2,11 @@ import React from 'react'
 
 import styled from "styled-components";
 import {NewsCard} from "./NewsCard/NewsCard";
-import tmpImage from '../../../assets/images/measuring_progress-750x375.jpg';
-import tmpImage1 from '../../../assets/images/in_progress.jpg';
-import tmpImage2 from '../../../assets/images/in_progress_v.jpg';
-import newsDecorLeft from '../../../assets/images/news_decor_left.svg';
-import newsDecorRight from '../../../assets/images/news_decor_right.svg';
+import tmpImage from '../../../../assets/images/measuring_progress-750x375.jpg';
+import tmpImage1 from '../../../../assets/images/in_progress.jpg';
+import tmpImage2 from '../../../../assets/images/in_progress_v.jpg';
+import newsDecorLeft from '../../../../assets/images/news_decor_left.svg';
+import newsDecorRight from '../../../../assets/images/news_decor_right.svg';
 import SVG from "react-inlinesvg";
 
 type NewsBlockProps = {}

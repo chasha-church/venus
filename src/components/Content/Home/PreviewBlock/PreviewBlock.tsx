@@ -1,13 +1,12 @@
 import React from 'react'
 import {Button, Carousel, ConfigProvider} from 'antd';
 
-import tmpImage from '../../assets/images/measuring_progress-750x375.jpg';
-import tmpImage2 from '../../assets/images/in_progress_v.jpg';
+import tmpImage from '../../../../assets/images/measuring_progress-750x375.jpg';
+import tmpImage2 from '../../../../assets/images/in_progress_v.jpg';
 import styled from "styled-components";
-import {MainLable} from "./MainLable";
-import {NewsBlock} from "./NewsBlock/NewsBlock";
+import { MainLable } from './MainLable/MainLable';
 
-type HomeProps = {}
+type PreviewBlockProps = {}
 
 const ScheduleButton = styled(Button)`
     width: fit-content;
@@ -42,9 +41,8 @@ const HomeImage = styled.img`
 `;
 
 
-export const Home: React.FC<HomeProps> = () => {
+export const PreviewBlock: React.FC<PreviewBlockProps> = () => {
     return (
-        <>
             <CarouselWrapper>
                 <MainLable></MainLable>
                 <Carousel autoplay>
@@ -64,7 +62,5 @@ export const Home: React.FC<HomeProps> = () => {
                 </ConfigProvider>
 
             </CarouselWrapper>
-            <NewsBlock/>
-        </>
     )
 }

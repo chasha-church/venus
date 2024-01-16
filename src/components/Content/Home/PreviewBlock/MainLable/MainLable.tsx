@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from "styled-components";
-import chashaMergeImage from '../../assets/images/chasha.svg';
+import chashaMergeImage from '../../../../../assets/images/chasha.svg';
 
 
 type MainLable = {}

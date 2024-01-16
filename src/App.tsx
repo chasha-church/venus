@@ -1,7 +1,7 @@
 import styled, {ThemeProvider} from "styled-components"
 import { GlobalStyles } from './styles/Global'
-import {Home} from "./components/Home/Home"
 import {theme} from "./styles/Theme";
+import {Home} from "./components/Content/Home/Home";
 
 function App() {
     return (
