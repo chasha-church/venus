@@ -10,12 +10,23 @@ type MenuItemSubmenuProps = {
     expanded: boolean;
 }
 
+type ReturnTypeCreateSubmenu = Array<ReactNode> | null;
+
 export const MenuItemSubmenu: React.FC<MenuItemSubmenuProps> = ({ id, submenu, submenuExpanded, expanded }) => {
 
-    const createSubmenu = (): Array<ReactNode> => {
-        return submenu.map(submenuItem => {
-            return <SubmenuItem id={id} key={submenuItem.id} name={submenuItem.name} submenuExpanded={submenuExpanded} expanded={expanded} />
-        })
+    const createSubmenu = (): ReturnTypeCreateSubmenu => {
+        if (submenu) {
+            return submenu.map(submenuItem =>
+                <SubmenuItem
+                    id={id}
+                    key={submenuItem.id}
+                    name={submenuItem.name}
+                    submenuExpanded={submenuExpanded}
+                    expanded={expanded}
+                />
+            )
+        }
+        else return null;
     }
 
     return (

@@ -22,7 +22,7 @@ export const MenuItems: React.FC<MenuItemsProps> = ({ expanded }) => {
                             submenu={menuItem.submenu}
                             submenuExpanded={menuItem.submenuExpanded}
                             expanded={expanded}
-                            isActive={menuItem.id === activeItemId ? true : false}
+                            isActive={menuItem.id === activeItemId}
                         />
         )
     }
