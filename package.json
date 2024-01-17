@@ -9,7 +9,6 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "test": "vitest",
-    "format": "prettier --write .",
     "lint": "eslint .",
     "type-check": "tsc"
   },
@@ -32,11 +31,8 @@
     "autoprefixer": "^10.4.16",
     "eslint": "^8.0.0",
     "eslint-config-react-app": "^7.0.1",
-    "eslint-plugin-prettier": "^4.2.1",
     "jsdom": "^21.1.0",
     "postcss": "^8.4.33",
-    "prettier": "^2.7.1",
-    "prettier-config-nick": "^1.0.2",
     "styled-components": "^6.1.6",
     "tailwindcss": "^3.4.0",
     "typescript": "^5.0.2",
@@ -49,12 +45,9 @@
       "react-app/jest"
     ],
     "plugins": [
-      "prettier"
     ],
     "rules": {
-      "prettier/prettier": "error",
       "react/jsx-no-target-blank": "off"
     }
-  },
-  "prettier": "prettier-config-nick"
+  }
 }

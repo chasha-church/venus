@@ -14,8 +14,7 @@ export const MenuItems: React.FC<MenuItemsProps> = ({ expanded }) => {
 
     const createMenuItems = (): Array<ReactNode> => {
         return menuItems.map(
-            menuItem => {
-                return <MenuItem
+            menuItem => <MenuItem
                             key={menuItem.id}
                             id={menuItem.id}
                             name={menuItem.name}
@@ -25,7 +24,6 @@ export const MenuItems: React.FC<MenuItemsProps> = ({ expanded }) => {
                             expanded={expanded}
                             isActive={menuItem.id === activeItemId ? true : false}
                         />
-            }
         )
     }
 
@@ -34,4 +32,5 @@ export const MenuItems: React.FC<MenuItemsProps> = ({ expanded }) => {
             {createMenuItems()}
         </ul>
     );
+    
 }

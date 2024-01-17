@@ -14,8 +14,6 @@ type MenuItemProps = {
     isActive: boolean;
 }
 
-
-
 export const MenuItem: React.FC<MenuItemProps> = ({ id, icon, name, expanded, submenu, submenuExpanded, isActive }) => {
 
     const MenuItemStyles = `
