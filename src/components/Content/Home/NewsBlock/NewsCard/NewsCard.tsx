@@ -4,7 +4,7 @@ import {Button, ConfigProvider} from 'antd';
 import styled from "styled-components";
 
 type NewsBlockProps = {
-    image: any
+    image: string;
 }
 
 const CardImage = styled.img`
@@ -53,7 +53,6 @@ export const NewsCard: React.FC<NewsBlockProps> = ({image}) => {
             >
                 <DetailsButton type="primary">Подробнее</DetailsButton>
             </ConfigProvider>
-
         </InnerCardContainer>
     );
 }

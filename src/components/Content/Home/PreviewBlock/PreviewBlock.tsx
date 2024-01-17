@@ -60,7 +60,6 @@ export const PreviewBlock: React.FC<PreviewBlockProps> = () => {
                 >
                     <ScheduleButton type="primary">Расписание богослужений</ScheduleButton>
                 </ConfigProvider>
-
             </CarouselWrapper>
     )
 }
