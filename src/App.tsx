@@ -1,14 +1,14 @@
 import styled, {ThemeProvider} from "styled-components"
 import { GlobalStyles } from './styles/Global'
-import {Home} from "./components/Home/Home"
 import {theme} from "./styles/Theme";
+import { Content } from "./components/Content/Content";
 
 function App() {
     return (
         <ThemeProvider theme={theme}>
             <GlobalStyles />
             <div className="App">
-                <Home />
+                <Content />
             </div>
         </ThemeProvider>
     )

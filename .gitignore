@@ -31,5 +31,3 @@ build
 
 # WebStorm
 .idea
-# Local Netlify folder
-.netlify

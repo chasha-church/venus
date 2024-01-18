@@ -22,6 +22,7 @@
     "netlify": "^13.1.12",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-inlinesvg": "^4.1.0",
     "react-redux": "^8.0.1",
     "styled-components": "^6.1.1"
   },
