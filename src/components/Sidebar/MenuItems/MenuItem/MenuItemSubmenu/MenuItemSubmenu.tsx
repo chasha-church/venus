@@ -1,7 +1,6 @@
-import React, { ReactNode } from 'react'
+import React from 'react'
 import { SubmenuItem } from './SubmenuItem/SubmenuItem';
 import { SubmenuExpandedType, SubmenuType } from '../../../../../redux/slices/sidebarSlice';
-import { useAppSelector } from '../../../../../redux/hooks/hooks';
 
 type MenuItemSubmenuProps = {
     id: number;
@@ -10,28 +9,18 @@ type MenuItemSubmenuProps = {
     expanded: boolean;
 }
 
-type ReturnTypeCreateSubmenu = Array<ReactNode> | null;
-
 export const MenuItemSubmenu: React.FC<MenuItemSubmenuProps> = ({ id, submenu, submenuExpanded, expanded }) => {
-
-    const createSubmenu = (): ReturnTypeCreateSubmenu => {
-        if (submenu) {
-            return submenu.map(submenuItem =>
-                <SubmenuItem
-                    id={id}
-                    key={submenuItem.id}
-                    name={submenuItem.name}
-                    submenuExpanded={submenuExpanded}
-                    expanded={expanded}
-                />
-            )
-        }
-        else return null;
-    }
+    const submenuItems = submenu?.map(submenuItem =>
+        <SubmenuItem
+            id={id}
+            key={submenuItem.id}
+            name={submenuItem.name}
+            submenuExpanded={submenuExpanded}
+            expanded={expanded}
+        />
+    );
 
     return (
-        <ul className={`transition-all overflow-hidden ${expanded ? "h-auto" : "w-0 h-0"}`}>
-            {createSubmenu()}
-        </ul>
+        <ul className={`transition-all overflow-hidden ${expanded ? "h-auto" : "w-0 h-0"}`}>{submenuItems}</ul>
     );
 }
