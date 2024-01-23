@@ -1,8 +1,7 @@
 import React from 'react'
-import {Button, Carousel, ConfigProvider} from 'antd';
+import { Button, Carousel, ConfigProvider } from 'antd';
 
-import tmpImage from '../../../../assets/images/measuring_progress-750x375.jpg';
-import tmpImage2 from '../../../../assets/images/in_progress_v.jpg';
+import tmpImage from '../../../../assets/images/church.png';
 import styled from "styled-components";
 import { MainLable } from './MainLable/MainLable';
 
@@ -43,23 +42,24 @@ const HomeImage = styled.img`
 
 export const PreviewBlock: React.FC<PreviewBlockProps> = () => {
     return (
-            <CarouselWrapper>
-                <MainLable></MainLable>
-                <Carousel autoplay>
-                    <HomeImage src={tmpImage}/>
-                    <HomeImage src={tmpImage}/>
-                    <HomeImage src={tmpImage}/>
-                    <HomeImage src={tmpImage2}/>
-                </Carousel>
-                <ConfigProvider
-                    theme={{
-                        token: {
-                            colorPrimary: '#F0A202',
-                        },
-                    }}
-                >
-                    <ScheduleButton type="primary">Расписание богослужений</ScheduleButton>
-                </ConfigProvider>
-            </CarouselWrapper>
+        <CarouselWrapper>
+            <MainLable />
+            <Carousel autoplay>
+                <HomeImage src={tmpImage} />
+                <HomeImage src={tmpImage} />
+                <HomeImage src={tmpImage} />
+                <HomeImage src={tmpImage} />
+            </Carousel>
+            {/* Color of the button is not displayed properly */}
+            <ConfigProvider
+                theme={{
+                    token: {
+                        colorPrimary: '#F0A202',
+                    },
+                }}
+            >
+                <ScheduleButton type="primary">Расписание богослужений</ScheduleButton>
+            </ConfigProvider>
+        </CarouselWrapper>
     )
 }

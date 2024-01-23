@@ -12,7 +12,9 @@ import { Content } from "./components/Content/Content";
 const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
-      <GlobalStyles />
+      {/* Are you sure that it should work like that?
+      Maybe this component should wrap all the content to use global styles to them? */}
+      <GlobalStyles></GlobalStyles>
       <div className="App">
         <Sidebar />
         <Content />

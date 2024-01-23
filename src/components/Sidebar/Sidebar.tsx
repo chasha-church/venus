@@ -18,7 +18,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ }) => {
     }
 
     return (
-        <aside className={`fixed top-0 l-0 transition-all`}>
+        <aside className={`fixed top-0 l-0 transition-all z-10`}>
             <nav className={`h-screen inline-flex flex-col bg-white border-r shadow-sm`}>
                 <SidebarHeader expanded={sidebarExpanded} setExpanded={setExpanded} />
                 <MenuItems expanded={sidebarExpanded} />

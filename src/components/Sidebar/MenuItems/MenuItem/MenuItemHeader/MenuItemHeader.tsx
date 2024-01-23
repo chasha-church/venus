@@ -17,7 +17,7 @@ type MenuItemHeaderProps = {
 
 export const MenuItemHeader: React.FC<MenuItemHeaderProps> = ({ id, icon, name, expanded, submenuExpanded, submenu, isActive = false }) => {
     const MenuItemHeaderStyles = `
-        relative w-full px-2 py-3
+        relative px-2 py-3
         font-medium cursor-pointer transition-colors group
     `;
 
