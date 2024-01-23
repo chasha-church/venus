@@ -2,17 +2,23 @@ import React from 'react';
 
 import './App.css';
 
+import { ThemeProvider } from "styled-components"
+import { GlobalStyles } from './styles/Global'
+import { theme } from "./styles/Theme";
+
 import { Sidebar } from './components/Sidebar/Sidebar';
-import { Content } from './components/Content/Content';
+import { Content } from "./components/Content/Content";
 
 const App: React.FC = () => {
   return (
-    <div className="App">
-      <Sidebar />
-      <Content />
-    </div>
-  );
-};
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
+      <div className="App">
+        <Sidebar />
+        <Content />
+      </div>
+    </ThemeProvider>
+  )
+}
 
-export default App;
-
+export default App
