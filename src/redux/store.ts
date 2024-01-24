@@ -1,16 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-
-interface StateType {};
-const initialState = {};
-
-const counterReducer = (state : StateType = initialState) => {
-  return state;
-};
-
+import { sidebarReducer } from "./slices/sidebarSlice";
 
 export const store = configureStore({
   reducer: {
-    //exapmle
-    counter: counterReducer,
+    sidebar: sidebarReducer,
   },
 })
+
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;

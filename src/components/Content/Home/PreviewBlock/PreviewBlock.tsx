@@ -1,8 +1,7 @@
 import React from 'react'
-import {Button, Carousel, ConfigProvider} from 'antd';
+import { Button, Carousel, ConfigProvider } from 'antd';
 
-import tmpImage from '../../../../assets/images/measuring_progress-750x375.jpg';
-import tmpImage2 from '../../../../assets/images/in_progress_v.jpg';
+import tmpImage from '../../../../assets/images/church.png';
 import styled from "styled-components";
 import { MainLable } from './MainLable/MainLable';
 
@@ -12,8 +11,10 @@ const ScheduleButton = styled(Button)`
     width: fit-content;
     height: 4.5vh;
 
+    padding: 20px 15px;
+
     color: white;
-    border-radius: 15px;
+    border-radius: 10px;
 
     display: inline-flex;
     justify-content: center;
@@ -23,9 +24,8 @@ const ScheduleButton = styled(Button)`
     left: 1.4%;
     bottom: 4%;
 
-    font-family: 'Oswald', serif;
-    font-weight: 1000;
-    font-size: 1.5vh;
+    font-weight: 700;
+    font-size: 1em;
     text-align: center;
 `
 
@@ -43,23 +43,23 @@ const HomeImage = styled.img`
 
 export const PreviewBlock: React.FC<PreviewBlockProps> = () => {
     return (
-            <CarouselWrapper>
-                <MainLable></MainLable>
-                <Carousel autoplay>
-                    <HomeImage src={tmpImage}/>
-                    <HomeImage src={tmpImage}/>
-                    <HomeImage src={tmpImage}/>
-                    <HomeImage src={tmpImage2}/>
-                </Carousel>
-                <ConfigProvider
-                    theme={{
-                        token: {
-                            colorPrimary: '#F0A202',
-                        },
-                    }}
-                >
-                    <ScheduleButton type="primary">Расписание богослужений</ScheduleButton>
-                </ConfigProvider>
-            </CarouselWrapper>
+        <CarouselWrapper>
+            <MainLable />
+            <Carousel autoplay>
+                <HomeImage src={tmpImage} />
+                <HomeImage src={tmpImage} />
+                <HomeImage src={tmpImage} />
+                <HomeImage src={tmpImage} />
+            </Carousel>
+            <ConfigProvider
+                theme={{
+                    token: {
+                        colorPrimary: '#F0A202',
+                    },
+                }}
+            >
+                <ScheduleButton type="primary">Расписание богослужений</ScheduleButton>
+            </ConfigProvider>
+        </CarouselWrapper>
     )
 }

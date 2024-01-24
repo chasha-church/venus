@@ -19,9 +19,11 @@ const MainTextWrapper = styled.div`
     justify-content: center;
     
     flex: 4;
-    padding: 15px 0 15px 30px;
+    padding: 25px 0 30px 15px;
 
     font-size: 2em;
+    font-weight: 600;
+    line-height: 1.4;
     color: black;
 
 
@@ -44,7 +46,7 @@ const DecorationEdge = styled.div`
 const ChashaMerge = styled.img`
     position: absolute;
     left: 40%;
-    top: -30%;
+    top: 5%;
     z-index: 1;
 `;
 

@@ -1,0 +1,12 @@
+/* Add the @tailwind directives for each of Tailwind’s layers to your ./src/index.css file. */
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
