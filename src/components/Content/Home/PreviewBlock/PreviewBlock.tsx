@@ -51,7 +51,6 @@ export const PreviewBlock: React.FC<PreviewBlockProps> = () => {
                 <HomeImage src={tmpImage} />
                 <HomeImage src={tmpImage} />
             </Carousel>
-            {/* Color of the button is not displayed properly */}
             <ConfigProvider
                 theme={{
                     token: {
