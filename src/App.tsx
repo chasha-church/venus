@@ -1,8 +1,6 @@
 import React from 'react';
 
-import './App.css';
-
-import { ThemeProvider } from "styled-components"
+import styled, { ThemeProvider } from "styled-components"
 import { GlobalStyles } from './styles/Global'
 import { theme } from "./styles/Theme";
 
@@ -14,7 +12,7 @@ const App: React.FC = () => {
     <ThemeProvider theme={theme}>
       {/* Are you sure that it should work like that?
       Maybe this component should wrap all the content to use global styles to them? */}
-      <GlobalStyles></GlobalStyles>
+      <GlobalStyles />
       <div className="App">
         <Sidebar />
         <Content />
