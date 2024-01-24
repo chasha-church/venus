@@ -11,8 +11,10 @@ const ScheduleButton = styled(Button)`
     width: fit-content;
     height: 4.5vh;
 
+    padding: 20px 15px;
+
     color: white;
-    border-radius: 15px;
+    border-radius: 10px;
 
     display: inline-flex;
     justify-content: center;
@@ -22,9 +24,8 @@ const ScheduleButton = styled(Button)`
     left: 1.4%;
     bottom: 4%;
 
-    font-family: 'Oswald', serif;
-    font-weight: 1000;
-    font-size: 1.5vh;
+    font-weight: 700;
+    font-size: 1em;
     text-align: center;
 `
 

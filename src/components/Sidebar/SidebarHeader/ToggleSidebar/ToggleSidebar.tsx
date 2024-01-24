@@ -11,7 +11,7 @@ type ToggleSidebarProps = {
 export const ToggleSidebar: React.FC<ToggleSidebarProps> = ({ expanded, setExpanded }) => {
 
     return (
-        <button onClick={setExpanded} className="absolute -right-4 rounded-lg">
+        <button onClick={setExpanded} className="absolute -right-4 rounded-lg bg-transparent">
             <img src={expanded ? SidebarHideIcon : SidebarShowIcon} className="w-8" alt="Toggle-icon" />
         </button>
     );
