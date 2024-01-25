@@ -32,7 +32,7 @@ const initialState: SidebarState = {
         {
             id: 0,
             name: "Храм",
-            icon: "../src/assets/images/ChurchIcon.png",
+            icon: "./images/ChurchIcon.png",
             submenuExpanded: false,
             submenu: [
                 {
@@ -52,14 +52,14 @@ const initialState: SidebarState = {
         {
             id: 1,
             name: "Богослужения",
-            icon: "../src/assets/images/ScheduleIcon.png",
+            icon: "./images/ScheduleIcon.png",
             submenuExpanded: false,
             submenu: null,
         },
         {
             id: 2,
             name: "Деятельность",
-            icon: "../src/assets/images/СollaborationIcon.png",
+            icon: "./images/СollaborationIcon.png",
             submenuExpanded: false,
             submenu: [
                 {
@@ -83,14 +83,14 @@ const initialState: SidebarState = {
         {
             id: 3,
             name: "Контакты",
-            icon: "../src/assets/images/ContactsIcon.png",
+            icon: "./images/ContactsIcon.png",
             submenuExpanded: false,
             submenu: null,
         },
         {
             id: 4,
             name: "Пожертвовать",
-            icon: "../src/assets/images/DonateIcon.png",
+            icon: "./images/DonateIcon.png",
             submenuExpanded: false,
             submenu: null,
         },
