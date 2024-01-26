@@ -1,5 +1,5 @@
 import React from 'react'
-import {Button, ConfigProvider} from 'antd';
+import { Button, ConfigProvider } from 'antd';
 
 import styled from "styled-components";
 
@@ -38,20 +38,20 @@ const DetailsButton = styled(Button)`
     margin: 0 0 15px 0;
 `;
 
-export const NewsCard: React.FC<NewsBlockProps> = ({image}) => {
+export const NewsCard: React.FC<NewsBlockProps> = ({ image }) => {
     return (
         <InnerCardContainer >
-            <CardImage src={image}/>
+            <CardImage src={image} />
             <CardDate>14.08.2023</CardDate>
             <CardTitle>Открытый турнир памяти Героя Республики Беларусь Никиты Куконенко, приуроченном ко Дню защитников Отечества</CardTitle>
             <ConfigProvider
                 theme={{
                     token: {
-                        colorPrimary: '#F0A202',
+                        colorPrimary: "#F0A202",
                     },
                 }}
             >
-                <DetailsButton type="primary">Подробнее</DetailsButton>
+                <DetailsButton>Подробнее</DetailsButton>
             </ConfigProvider>
         </InnerCardContainer>
     );

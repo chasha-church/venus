@@ -38,8 +38,10 @@ interface SVGProps {
 }
 
 const StyledSVG = styled(SVG)<SVGProps>`
+    display: inline;
 
     margin: 0 30px;
+
     width: 93px;
     height: 25px;
 

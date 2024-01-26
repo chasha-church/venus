@@ -2,7 +2,7 @@ import React from 'react'
 import { useAppDispatch } from '../../../../../redux/hooks/hooks';
 import { SubmenuExpandedType, setSubmenuExpanded } from '../../../../../redux/slices/sidebarSlice';
 
-const SubmenuToggleIcon = '../src/assets/images/SubmenuToggleIcon.svg'
+import SubmenuToggleIcon from '../../../../../../src/assets/images/SubmenuToggleIcon.svg';
 
 type SubmenuToggleButtonProps = {
     id: number;

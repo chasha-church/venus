@@ -1,7 +1,10 @@
 import React from 'react'
 import { Button, Carousel, ConfigProvider } from 'antd';
 
-import tmpImage from '../../../../assets/images/church.png';
+const Church = './images/Church.png';
+const ChurchInside = "./images/Church_inside.jpg";
+const Church_2 = "./images/Church_2.jpg";
+
 import styled from "styled-components";
 import { MainLable } from './MainLable/MainLable';
 
@@ -27,6 +30,9 @@ const ScheduleButton = styled(Button)`
     font-weight: 700;
     font-size: 1em;
     text-align: center;
+
+    /* background: #F0A202;
+    border: none; */
 `
 
 const CarouselWrapper = styled.div`
@@ -46,19 +52,18 @@ export const PreviewBlock: React.FC<PreviewBlockProps> = () => {
         <CarouselWrapper>
             <MainLable />
             <Carousel autoplay>
-                <HomeImage src={tmpImage} />
-                <HomeImage src={tmpImage} />
-                <HomeImage src={tmpImage} />
-                <HomeImage src={tmpImage} />
+                <HomeImage src={Church} />
+                <HomeImage src={ChurchInside} />
+                <HomeImage src={Church_2} />
             </Carousel>
             <ConfigProvider
                 theme={{
                     token: {
-                        colorPrimary: '#F0A202',
+                        colorPrimary: "#F0A202",
                     },
                 }}
             >
-                <ScheduleButton type="primary">Расписание богослужений</ScheduleButton>
+                <ScheduleButton>Расписание богослужений</ScheduleButton>
             </ConfigProvider>
         </CarouselWrapper>
     )
