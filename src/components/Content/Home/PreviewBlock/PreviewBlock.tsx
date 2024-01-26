@@ -31,8 +31,8 @@ const ScheduleButton = styled(Button)`
     font-size: 1em;
     text-align: center;
 
-    background: #F0A202;
-    border: none;
+    /* background: #F0A202;
+    border: none; */
 `
 
 const CarouselWrapper = styled.div`

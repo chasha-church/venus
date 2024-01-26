@@ -36,7 +36,6 @@ const CardTitle = styled.div`
 
 const DetailsButton = styled(Button)`
     margin: 0 0 15px 0;
-    background: #F0A202;
 `;
 
 export const NewsCard: React.FC<NewsBlockProps> = ({ image }) => {

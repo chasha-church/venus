@@ -7,6 +7,9 @@ import { SidebarHeader } from './SidebarHeader/SidebarHeader';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks/hooks';
 import { selectSidebarExpanded, setSidebarExpanded } from '../../redux/slices/sidebarSlice';
 
+import "./Sidebar.css";
+
+
 type SidebarProps = {};
 
 export const Sidebar: React.FC<SidebarProps> = ({ }) => {
