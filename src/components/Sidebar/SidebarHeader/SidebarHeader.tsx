@@ -1,7 +1,7 @@
-import React, { Dispatch, SetStateAction } from 'react'
-
-import ChaliceIcon from '../../../assets/images/ChaliceIcon.png'
+import React from 'react'
 import { ToggleSidebar } from './ToggleSidebar/ToggleSidebar';
+
+const ChaliceIcon = './images/ChaliceIcon.png'
 
 type SidebarHeaderProps = {
     expanded: boolean;
