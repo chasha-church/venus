@@ -1,7 +1,8 @@
 import React from 'react'
-import {Button, ConfigProvider} from 'antd';
+import { Button } from 'antd';
 
 import styled from "styled-components";
+import { ButtonPrimary } from '../../../../common/ButtonPrimary/ButtonPrimary';
 
 type NewsBlockProps = {
     image: string;
@@ -36,23 +37,16 @@ const CardTitle = styled.div`
 
 const DetailsButton = styled(Button)`
     margin: 0 0 15px 0;
+    background: #F0A202;
 `;
 
-export const NewsCard: React.FC<NewsBlockProps> = ({image}) => {
+export const NewsCard: React.FC<NewsBlockProps> = ({ image }) => {
     return (
         <InnerCardContainer >
-            <CardImage src={image}/>
+            <CardImage src={image} />
             <CardDate>14.08.2023</CardDate>
             <CardTitle>Открытый турнир памяти Героя Республики Беларусь Никиты Куконенко, приуроченном ко Дню защитников Отечества</CardTitle>
-            <ConfigProvider
-                theme={{
-                    token: {
-                        colorPrimary: '#F0A202',
-                    },
-                }}
-            >
-                <DetailsButton type="primary">Подробнее</DetailsButton>
-            </ConfigProvider>
+            <ButtonPrimary value={"Подробнее"} />
         </InnerCardContainer>
     );
 }

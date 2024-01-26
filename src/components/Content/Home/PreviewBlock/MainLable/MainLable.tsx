@@ -2,7 +2,6 @@ import React from 'react'
 import styled from "styled-components";
 import chashaMergeImage from '../../../../../assets/images/chasha.svg';
 
-
 type MainLable = {}
 
 const FlexContainer = styled.div`
@@ -26,7 +25,8 @@ const MainTextWrapper = styled.div`
     line-height: 1.4;
     color: black;
 
-
+    border: 2px solid #0075BA;
+    border-right: none;
     background: white;
 `;
 
@@ -40,6 +40,8 @@ const DecorationEdge = styled.div`
 
     z-index: -1;
     transform: skew(-30deg);
+
+    border: 2px solid #0075BA;
     background: white;
 `;
 
@@ -57,7 +59,7 @@ export const MainLable: React.FC<MainLable> = () => {
                 Храм в честь иконы Божьей Матери “Неупиваемая Чаша”
                 <ChashaMerge src={chashaMergeImage}/>
             </MainTextWrapper>
-            <DecorationEdge></DecorationEdge>
+            <DecorationEdge />
         </FlexContainer>
     )
 }
