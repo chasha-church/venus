@@ -1,6 +1,6 @@
 import React from 'react'
 import { useAppDispatch } from '../../../../../redux/hooks/hooks';
-import { SubmenuExpandedType, setSubmenuExpanded } from '../../../../../redux/slices/sidebarSlice';
+import { SubmenuExpandedType, setSubmenuExpanded } from '../../../../../redux/features/sidebarSlice';
 
 import SubmenuToggleIcon from '../../../../../../src/assets/images/SubmenuToggleIcon.svg';
 

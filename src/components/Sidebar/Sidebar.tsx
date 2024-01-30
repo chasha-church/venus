@@ -5,7 +5,7 @@ import { SidebarFooter } from './SidebarFooter/SidebarFooter'
 import { SidebarHeader } from './SidebarHeader/SidebarHeader';
 
 import { useAppDispatch, useAppSelector } from '../../redux/hooks/hooks';
-import { selectSidebarExpanded, setSidebarExpanded } from '../../redux/slices/sidebarSlice';
+import { selectSidebarExpanded, setSidebarExpanded } from '../../redux/features/sidebarSlice';
 
 
 type SidebarProps = {};

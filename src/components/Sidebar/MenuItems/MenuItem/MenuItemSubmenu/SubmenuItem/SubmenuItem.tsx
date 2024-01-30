@@ -1,5 +1,5 @@
 import React from 'react'
-import { SubmenuExpandedType, setActiveItem } from '../../../../../../redux/slices/sidebarSlice';
+import { SubmenuExpandedType, setActiveItem } from '../../../../../../redux/features/sidebarSlice';
 import { useAppDispatch } from '../../../../../../redux/hooks/hooks';
 
 
