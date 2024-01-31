@@ -49,6 +49,7 @@ const StyledSVG = styled(SVG) <SVGProps>`
         fill: ${({ color }) => color};
     }
 `;
+
 type NewsBlockProps = {};
 
 export const NewsBlock: FunctionComponent<NewsBlockProps> = ({ }) => {
@@ -64,12 +65,7 @@ export const NewsBlock: FunctionComponent<NewsBlockProps> = ({ }) => {
         dispatch(fetchNews({ pageSize, page }));
     }, []);
 
-    const newsMap = news.map(news =>
-        <div key={news.id} style={{margin: "20px", fontSize: "20px", padding: "10px", border: "2px solid grey"}}>
-            <b>{news.caption}</b>
-            <img src="" alt={news.image} />
-        </div>
-    )
+    const newsCards = news.map(news => <NewsCard key={news.news_content_id} newsData={news} />)
 
     return (
         <div>
@@ -79,13 +75,8 @@ export const NewsBlock: FunctionComponent<NewsBlockProps> = ({ }) => {
                 <StyledSVG color={color} src={newsDecorRight} />
             </NewsLable>
             <NewsCardContainer>
-                <NewsCard image={tmpImage} />
-                <NewsCard image={tmpImage1} />
-                <NewsCard image={tmpImage2} />
+                {newsCards}
             </NewsCardContainer>
-            <div style={{display: "flex", justifyContent: "center"}}>
-                {newsMap}
-            </div>
         </div>
     );
 }

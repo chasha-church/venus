@@ -2,13 +2,14 @@ import React from 'react'
 import { Button, ConfigProvider } from 'antd';
 
 import styled from "styled-components";
+import { NewsItemType } from '../../../../../redux/features/newsSlice';
 
 type NewsBlockProps = {
-    image: string;
+    newsData: NewsItemType;
 }
 
 const CardImage = styled.img`
-    object-fit: cover;
+    object-fit: cover; // property not working here
 `;
 
 const InnerCardContainer = styled.div`
@@ -16,9 +17,8 @@ const InnerCardContainer = styled.div`
     
     display: flex;
     flex-direction: column;
+    justify-content: space-between; 
     align-items: center;
-    justify-content: space-between;
-    
     margin: 5vh 80px;
     
     box-shadow: 0 0 0.5em 0.3em rgba(0, 0, 0, 0.25) ;
@@ -27,23 +27,28 @@ const InnerCardContainer = styled.div`
 const CardDate = styled.div`
     align-self: end;
     padding: 0 5px 0 0;
-    margin: 5px 0 0 0;
+    margin: 10px 0 0 0;
+    font-style: italic;
+    font-weight: 500;
 `;
 
 const CardTitle = styled.div`
-    margin: 5px 10px;
+    margin: 25px 10px;
+    text-align: center;
 `;
 
 const DetailsButton = styled(Button)`
     margin: 0 0 15px 0;
 `;
 
-export const NewsCard: React.FC<NewsBlockProps> = ({ image }) => {
+export const NewsCard: React.FC<NewsBlockProps> = ({ newsData }) => {
+    const parseData = (data: string): string => data.slice(0, 10).split("-").reverse().join(".");
+
     return (
         <InnerCardContainer >
-            <CardImage src={image} />
-            <CardDate>14.08.2023</CardDate>
-            <CardTitle>Открытый турнир памяти Героя Республики Беларусь Никиты Куконенко, приуроченном ко Дню защитников Отечества</CardTitle>
+            <CardImage src={newsData.main_asset_url} />
+            <CardDate>{parseData(newsData.created_date)}</CardDate>
+            <CardTitle>{newsData.title}</CardTitle>
             <ConfigProvider
                 theme={{
                     token: {
