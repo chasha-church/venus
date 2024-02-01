@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import type { PayloadAction } from '@reduxjs/toolkit'
 import { RootState } from '../store';
 import { newsAPI } from '../../api/newsAPI';
 
@@ -13,7 +12,7 @@ export type NewsItemType = {
     "news_content_id": number,
     "title": string,
     "text": string,
-    "view_data": string | null,
+    "view_data": null, // this property goes null from backend
     "main_asset_url": string,
     "assets_url": string[],
     "created_date": string,
@@ -31,11 +30,7 @@ const initialState: NewsState = {
 export const newsSlice = createSlice({
     name: 'news',
     initialState,
-    reducers: {
-        // setSidebarExpanded: (state, action: PayloadAction<boolean>) => {
-        //     state.sidebarExpanded = !action.payload;
-        // },
-    },
+    reducers: {},
     extraReducers: (builder) => {
         builder.addCase(fetchNews.fulfilled, (state, action) => {
             state.news = action.payload;
@@ -48,7 +43,6 @@ export const newsSlice = createSlice({
 export const { } = newsSlice.actions
 
 // Asynchronous actions
-
 type FetchNewsPayload = {
     pageSize: number;
     page: number;
@@ -58,6 +52,7 @@ export const fetchNews = createAsyncThunk(
     "news/fetchNews",
     async ({ pageSize, page }: FetchNewsPayload, thunkAPI) => {
         const response = await newsAPI.getNews(pageSize, page);
+        debugger;
         return response.data.results;
     }
 );

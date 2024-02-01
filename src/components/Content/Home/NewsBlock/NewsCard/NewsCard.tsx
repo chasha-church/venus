@@ -9,7 +9,8 @@ type NewsBlockProps = {
 }
 
 const CardImage = styled.img`
-    object-fit: cover; // property not working here
+    // TODO: fix not working property
+    object-fit: cover;
 `;
 
 const InnerCardContainer = styled.div`
@@ -42,12 +43,13 @@ const DetailsButton = styled(Button)`
 `;
 
 export const NewsCard: React.FC<NewsBlockProps> = ({ newsData }) => {
-    const parseData = (data: string): string => data.slice(0, 10).split("-").reverse().join(".");
+
+    const parseDate = (date: string): string => date.slice(0, 10).split("-").reverse().join(".");
 
     return (
         <InnerCardContainer >
             <CardImage src={newsData.main_asset_url} />
-            <CardDate>{parseData(newsData.created_date)}</CardDate>
+            <CardDate>{parseDate(newsData.created_date)}</CardDate>
             <CardTitle>{newsData.title}</CardTitle>
             <ConfigProvider
                 theme={{
