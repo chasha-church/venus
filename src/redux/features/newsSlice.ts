@@ -52,7 +52,6 @@ export const fetchNews = createAsyncThunk(
     "news/fetchNews",
     async ({ pageSize, page }: FetchNewsPayload, thunkAPI) => {
         const response = await newsAPI.getNews(pageSize, page);
-        debugger;
         return response.data.results;
     }
 );
