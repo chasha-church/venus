@@ -3,7 +3,7 @@ import { ActiveItemStripe } from './ActiveItemStripe/ActiveItemStripe';
 import { SubmenuToggleButton } from '../SubmenuToggleButton/SubmenuToggleButton';
 import { HoverCaption } from './HoverCaption/HoverCaption';
 import { useAppDispatch } from '../../../../../redux/hooks/hooks';
-import { SubmenuExpandedType, SubmenuType, setActiveItem } from '../../../../../redux/slices/sidebarSlice';
+import { SubmenuExpandedType, SubmenuType, setActiveItem } from '../../../../../redux/features/sidebarSlice';
 
 type MenuItemHeaderProps = {
     id: number;

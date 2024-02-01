@@ -1,6 +1,6 @@
 import React from 'react'
 import { SubmenuItem } from './SubmenuItem/SubmenuItem';
-import { SubmenuExpandedType, SubmenuType } from '../../../../../redux/slices/sidebarSlice';
+import { SubmenuExpandedType, SubmenuType } from '../../../../../redux/features/sidebarSlice';
 
 type MenuItemSubmenuProps = {
     id: number;

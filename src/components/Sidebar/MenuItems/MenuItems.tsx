@@ -1,7 +1,7 @@
 import React from 'react'
 import { MenuItem } from './MenuItem/MenuItem';
 import { useAppSelector } from '../../../redux/hooks/hooks';
-import { selectActiveItemId, selectMenuItems } from '../../../redux/slices/sidebarSlice';
+import { selectActiveItemId, selectMenuItems } from '../../../redux/features/sidebarSlice';
 
 type MenuItemsProps = {
     expanded: boolean;
