@@ -11,7 +11,6 @@ export const SvgContainer: FunctionComponent<SvgContainerProps> = ({path, color}
     return (
             <SvgLoader path={path}>
                 <SvgProxy selector="rect" fill={color} />
-                <SvgProxy selector="ellipse" fill={color} />
             </SvgLoader>
     );
 }

@@ -6,7 +6,7 @@ import headingShapeLeft from '../../../../assets/images/HeadingShapeLeft.svg';
 import headingShapeRight from '../../../../assets/images/HeadingShapeRight.svg';
 import { useAppDispatch, useAppSelector } from '../../../../redux/hooks/hooks';
 import { fetchNews, selectCurrentNews, selectNewsPageSize, selectNextNewsPage } from '../../../../redux/features/newsSlice';
-import {SvgContainer} from "../../../common/SvgContainer/SvgContainer";
+import {SvgContainer} from "./SvgContainer/SvgContainer";
 
 const NewsHeader = styled.div`
     display: flex;
