@@ -94,6 +94,62 @@ const initialState: SidebarState = {
             submenuExpanded: false,
             submenu: null,
         },
+        {
+            id: 5,
+            name: "Пожертвовать",
+            icon: "./images/DonateIcon.png",
+            submenuExpanded: false,
+            submenu: null,
+        },
+        {
+            id: 6,
+            name: "Пожертвовать",
+            icon: "./images/DonateIcon.png",
+            submenuExpanded: false,
+            submenu: null,
+        },
+        {
+            id: 7,
+            name: "Пожертвовать",
+            icon: "./images/DonateIcon.png",
+            submenuExpanded: false,
+            submenu: null,
+        },
+        {
+            id: 8,
+            name: "Пожертвовать",
+            icon: "./images/DonateIcon.png",
+            submenuExpanded: false,
+            submenu: null,
+        },
+        {
+            id: 9,
+            name: "Пожертвовать",
+            icon: "./images/DonateIcon.png",
+            submenuExpanded: false,
+            submenu: null,
+        },
+        {
+            id: 10,
+            name: "Пожертвовать",
+            icon: "./images/DonateIcon.png",
+            submenuExpanded: false,
+            submenu: null,
+        },
+        {
+            id: 11,
+            name: "Пожертвовать",
+            icon: "./images/DonateIcon.png",
+            submenuExpanded: false,
+            submenu: null,
+        },
+        {
+            id: 13,
+            name: "Пожертвовать",
+            icon: "./images/DonateIcon.png",
+            submenuExpanded: false,
+            submenu: null,
+        },
         
     ]
 };

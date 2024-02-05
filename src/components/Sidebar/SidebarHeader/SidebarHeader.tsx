@@ -1,5 +1,4 @@
 import React from 'react'
-import { ToggleSidebar } from './ToggleSidebar/ToggleSidebar';
 
 const ChaliceIcon = './images/ChaliceIcon.png'
 
@@ -17,7 +16,6 @@ export const SidebarHeader: React.FC<SidebarHeaderProps> = ({ expanded, setExpan
                 className={`overflow-hidden font-bold text-gray-600 transition-all ${expanded ? "ml-2" : "w-0 ml-0"}`}>
                 Неупиваемая Чаша
             </span>
-            <ToggleSidebar expanded={expanded} setExpanded={setExpanded} />
         </div>
     );
 }

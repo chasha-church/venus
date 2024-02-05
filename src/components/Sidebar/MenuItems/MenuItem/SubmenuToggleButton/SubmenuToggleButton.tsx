@@ -17,10 +17,10 @@ export const SubmenuToggleButton: React.FC<SubmenuToggleButtonProps> = ({ id, ex
     }
 
     return (
-        <button className={`absolute top-5 right-0 p-1 bg-transparent ${expanded ? "block" : "hidden"}`} onClick={openSubmenu}>
+        <button className={`absolute top-4 right-0 p-1 bg-transparent ${expanded ? "block" : "hidden"}`} onClick={openSubmenu}>
             <img
                 src={SubmenuToggleIcon}
-                alt="Submenu-toggle-icon"
+                alt="Submenu-toggle"
                 className={`
                     w-5 transition-all duration-300 
                     ${submenuExpanded ? "rotate-180" : "rotate-0"}
