@@ -28,10 +28,10 @@ export const MenuItemHeader: React.FC<MenuItemHeaderProps> = ({ id, icon, name, 
     return (
         <div className={MenuItemHeaderStyles} onClick={setActiveMenuItem}>
             <ActiveItemStripe isActive={isActive} />
-                <div className={`flex ${!expanded && "justify-center"} items-center pl-3`}>
-                    <img src={icon} className="w-9" alt="Menu-icon" />
+                <div className={`flex ${!expanded && "justify-center"} items-center pl-4`}>
+                    <img src={icon} className="w-9" alt="Menu item" />
                     <span className={`
-                        text-base font-semibold ml-4 overflow-hidden transition-all flex items-center   
+                        text-base font-semibold ml-4 overflow-hidden transition-all 
                         ${expanded ? "h-full w-44" : "h-0 w-0"}
                     `}>{name}</span>
                 </div>

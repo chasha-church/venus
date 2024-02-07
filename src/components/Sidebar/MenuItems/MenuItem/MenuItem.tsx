@@ -17,11 +17,8 @@ type MenuItemProps = {
 export const MenuItem: React.FC<MenuItemProps> = ({ id, icon, name, expanded, submenu, submenuExpanded, isActive }) => {
 
     const MenuItemStyles = `
-        relative
-        ${isActive
-            ? "bg-sidebar-blue-transparrent text-black"
-            : "hover:bg-sidebar-blue-transparrent hover:text-black text-gray-600"
-        }
+        relative hover:bg-sidebar-blue-transparrent hover:text-black text-gray-600
+        ${isActive && "bg-sidebar-blue-transparrent text-black"}
     `;
 
     return (
