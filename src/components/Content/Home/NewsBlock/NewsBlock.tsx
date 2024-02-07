@@ -2,13 +2,19 @@ import { FunctionComponent, useEffect } from "react";
 
 import styled from "styled-components";
 import { NewsCard } from "./NewsCard/NewsCard";
-import newsDecorLeft from '../../../../assets/images/news_decor_left.svg';
-import newsDecorRight from '../../../../assets/images/news_decor_right.svg';
-import SVG from "react-inlinesvg";
+import headingShapeLeft from '../../../../assets/images/HeadingShapeLeft.svg';
+import headingShapeRight from '../../../../assets/images/HeadingShapeRight.svg';
 import { useAppDispatch, useAppSelector } from '../../../../redux/hooks/hooks';
 import { fetchNews, selectCurrentNews, selectNewsPageSize, selectNextNewsPage } from '../../../../redux/features/newsSlice';
+import {SvgContainer} from "./SvgContainer/SvgContainer";
 
-const NewsLable = styled.div`
+const NewsHeader = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 50px;
+    align-items: center;
+    
     margin: 70px 0 30px 0;
     font-size: 48px;
     text-align: center;
@@ -21,36 +27,10 @@ const NewsCardContainer = styled.div`
     margin: 0 85px;
 `;
 
-const NewsDecorSVG = styled.svg`
-    color: black;
-`;
-
-const NewsHeaderDecor = styled(newsDecorLeft)`
-    height: 40px;
-    fill: black;
-`;
-
-interface SVGProps {
-    color: string;
-}
-
-const StyledSVG = styled(SVG) <SVGProps>`
-    display: inline;
-
-    margin: 0 30px;
-
-    width: 93px;
-    height: 25px;
-
-    & path {
-        fill: ${({ color }) => color};
-    }
-`;
-
 type NewsBlockProps = {};
 
 export const NewsBlock: FunctionComponent<NewsBlockProps> = ({ }) => {
-    const color = "red"; // Doesn't apply
+    const headingShapeColor = "#D9D9D9";
 
     const news = useAppSelector(selectCurrentNews);
     const pageSize = useAppSelector(selectNewsPageSize);
@@ -66,11 +46,11 @@ export const NewsBlock: FunctionComponent<NewsBlockProps> = ({ }) => {
 
     return (
         <div>
-            <NewsLable>
-                <StyledSVG color={color} src={newsDecorLeft} />
-                Новости
-                <StyledSVG color={color} src={newsDecorRight} />
-            </NewsLable>
+            <NewsHeader>
+                <SvgContainer path={headingShapeLeft} color={headingShapeColor}/>
+                <span>Новости</span>
+                <SvgContainer path={headingShapeRight} color={headingShapeColor}/>
+            </NewsHeader>
             <NewsCardContainer>
                 {newsCards}
             </NewsCardContainer>
