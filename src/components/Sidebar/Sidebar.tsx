@@ -23,7 +23,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ }) => {
         <aside className={`fixed top-0 l-0 z-10 flex flex-col justify-between h-screen bg-white border-r`}>
             <ToggleSidebar expanded={sidebarExpanded} setExpanded={setExpanded} />
             <nav className={`
-                overflow-y-scroll
+                overflow-y-scroll overflow-x-hidden
                 scrollbar scrollbar-w-1.5 scrollbar-thumb-rounded scrollbar-thumb-scrollThumb scrollbar-track-transparent
             `}>
                 <SidebarHeader expanded={sidebarExpanded} setExpanded={setExpanded} />
