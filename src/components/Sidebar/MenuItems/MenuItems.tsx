@@ -26,7 +26,7 @@ export const MenuItems: React.FC<MenuItemsProps> = ({ expanded }) => {
     );
 
     return (
-        <ul className="flex-1 mt-5 mb-3">{menuItemsMap}</ul>
+        <ul className="flex-col mt-7">{menuItemsMap}</ul>
     );
 
 }

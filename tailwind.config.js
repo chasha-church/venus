@@ -8,11 +8,14 @@ export default {
   theme: {
     extend: {
       colors: {
-        "sidebar-blue": "#0075BA",
+        "sidebar-blue": "rgba(0, 117, 186, 1)",
         "sidebar-blue-transparrent": "#C4ECFF",
+        "scrollThumb": "rgba(0, 117, 186, 0.8)",
       }
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwind-scrollbar')({ nocompatible: true }),
+  ],
 }
 

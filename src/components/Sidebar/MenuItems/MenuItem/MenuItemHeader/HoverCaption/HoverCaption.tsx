@@ -13,5 +13,5 @@ const tailwindStyles = `
 `;
 
 export const HoverCaption: React.FC<HoverCaptionProps> = ({ caption, expanded }) => {
-    return (!expanded && <div className={tailwindStyles}>{caption}</div>)
+    return !expanded && <div className={tailwindStyles}>{caption}</div>
 }

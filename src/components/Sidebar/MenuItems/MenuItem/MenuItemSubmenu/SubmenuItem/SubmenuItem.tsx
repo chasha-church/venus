@@ -20,7 +20,7 @@ export const SubmenuItem: React.FC<SubmenuItemProps> = ({ id, name, expanded, su
 
     return (
         <li onClick={setActiveMenuItem} className={`
-            ml-14 pl-5 pr-2 cursor-pointer text-sm overflow-hidden transition-all max-w-48
+            cursor-pointer text-sm overflow-hidden transition-all max-w-48
             ${submenuExpanded ? "h-auto pt-2 pb-3" : "h-0 py-0"}
         `}>{name}</li>
     )

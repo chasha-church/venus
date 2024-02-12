@@ -21,6 +21,6 @@ export const MenuItemSubmenu: React.FC<MenuItemSubmenuProps> = ({ id, submenu, s
     );
 
     return (
-        <ul className={`transition-all overflow-hidden ${expanded ? "h-auto" : "w-0 h-0"}`}>{submenuItems}</ul>
+        <ul className={`pl-16 pr-4 ${!expanded && "w-0 h-0"} `}>{submenuItems}</ul>
     );
 }

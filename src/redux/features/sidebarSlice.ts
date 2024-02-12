@@ -94,7 +94,6 @@ const initialState: SidebarState = {
             submenuExpanded: false,
             submenu: null,
         },
-        
     ]
 };
 
