@@ -1,44 +1,38 @@
 import { FunctionComponent, useEffect } from "react";
 
 import styled from "styled-components";
-import { ScheduleItem } from "./ScheduleItem/ScheduleItem";
+import { DayItem } from "./DayItem/DayItem";
 
-// import { useAppDispatch, useAppSelector } from '../../../../redux/hooks/hooks';
-// import { fetchNews, selectCurrentNews, selectNewsPageSize, selectNextNewsPage } from '../../../../redux/features/newsSlice';
+import { fetchWeekSchedule, selectMaxPeopleToShow, selectWeekSchedule } from "../../../../../redux/features/scheduleSlice";
+import { useAppDispatch, useAppSelector } from "../../../../../redux/hooks/hooks";
+import { Preloader, PreloaderImage, PreloaderText } from "../../../../common/Preloader/Preloader";
 
 const StyledContainer = styled.div`
     margin-top: 70px;
-
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* align-items: center; */
 `
 
 type ScheduleProps = {};
 
 export const Schedule: FunctionComponent<ScheduleProps> = ({ }) => {
 
-    // const news = useAppSelector(selectCurrentNews);
-    // const pageSize = useAppSelector(selectNewsPageSize);
-    // const page = useAppSelector(selectNextNewsPage);
+    const weekSchedule = useAppSelector(selectWeekSchedule);
+    const maxPeopleToShow = useAppSelector(selectMaxPeopleToShow);
 
-    // const dispatch = useAppDispatch();
+    const dispatch = useAppDispatch();
 
-    // useEffect(() => {
-    //     dispatch(fetchNews({ pageSize, page }));
-    // }, []);
+    useEffect(() => {
+        dispatch(fetchWeekSchedule());
+    }, []);
 
-    // const newsCards = news.map(news => <NewsCard key={news.news_content_id} newsData={news} />)
+    /* TODO: Add key property that works as an id */
+    const dayItems = weekSchedule?.map(day => <DayItem dayInfo={day} maxPeopleToShow={maxPeopleToShow}/>)
+    
+    /* In case that data has not been fetched yet: */
+    if (!weekSchedule) return <Preloader />
 
     return (
         <StyledContainer>
-            <ScheduleItem />
-            <ScheduleItem />
-            <ScheduleItem />
-            <ScheduleItem />
-            <ScheduleItem />
-            <ScheduleItem />
-            <ScheduleItem />
+            {dayItems}
         </StyledContainer>
     );
 }

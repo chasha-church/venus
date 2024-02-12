@@ -1,14 +1,21 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { RootState } from '../store';
-import { newsAPI } from '../../api/newsAPI';
+import { scheduleAPI } from '../../api/scheduleAPI';
 
 type ScheduleState = {
+    weekSchedule: Array<WeekDay> | null;
+    maxPeopleToShow: number;
+}
+
+export type WeekDay = {
+    "holidays": Array<{ "name": string; "url": string; }>;
+    "people": Array<{ "name": string; "url": string; }>;
+    "events": Array<{ "title": string; "time": string; }> | null;
 }
 
 const initialState: ScheduleState = {
-    pageSize: 3,
-    newsPage: 0,
-    news: [],
+    weekSchedule: null,
+    maxPeopleToShow: 3,
 };
 
 export const scheduleSlice = createSlice({
@@ -16,9 +23,8 @@ export const scheduleSlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: (builder) => {
-        builder.addCase(fetchNews.fulfilled, (state, action) => {
-            state.news = action.payload;
-            state.newsPage += 1;
+        builder.addCase(fetchWeekSchedule.fulfilled, (state, action) => {
+            state.weekSchedule = action.payload;
         })
     }
 })
@@ -27,21 +33,22 @@ export const scheduleSlice = createSlice({
 export const { } = scheduleSlice.actions
 
 // Asynchronous actions
-type FetchNewsPayload = {
-    pageSize: number;
-    page: number;
-}
-
-export const fetchNews = createAsyncThunk(
-    "news/fetchNews",
-    async ({ pageSize, page }: FetchNewsPayload, thunkAPI) => {
-        const response = await newsAPI.getNews(pageSize, page);
-        return response.data.results;
+export const fetchWeekSchedule = createAsyncThunk(
+    "schedule/fetchWeekSchedule",
+    async (_, thunkAPI) => {
+        try {
+            const response = await scheduleAPI.getWeekSchedule(6);
+            return response.data.results;
+        }
+        catch (error) {
+            return null;
+        }
     }
 );
 
 // Selectors
-// export const selectCurrentNews = (state: RootState) => state.news.news;
+export const selectWeekSchedule = (state: RootState) => state.schedule.weekSchedule;
+export const selectMaxPeopleToShow = (state: RootState) => state.schedule.maxPeopleToShow;
 
 // Reducer
 export const scheduleReducer = scheduleSlice.reducer;
