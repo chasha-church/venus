@@ -1,6 +1,6 @@
 import { FunctionComponent } from "react";
-
 import styled from "styled-components";
+
 import { Heading } from "../../../common/Heading/Heading";
 import { Schedule } from "./Schedule/Schedule";
 

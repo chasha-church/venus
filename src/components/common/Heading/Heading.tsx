@@ -1,8 +1,10 @@
 import React from 'react'
 import styled from 'styled-components';
-import headingShapeLeft from '../../../assets/images/HeadingShapeLeft.svg';
-import headingShapeRight from '../../../assets/images/HeadingShapeRight.svg';
-import { SvgContainer } from '../../Content/Home/NewsBlock/SvgContainer/SvgContainer';
+// @ts-ignore
+import { SvgLoader, SvgProxy } from 'react-svgmt';
+
+import HeadingShapeLeft from '../../../assets/images/HeadingShapeLeft.svg';
+import HeadingShapeRight from '../../../assets/images/HeadingShapeRight.svg';
 
 const StyledHeading = styled.div`
     display: flex;
@@ -21,14 +23,24 @@ interface HeadingProps extends React.ComponentProps<'div'> {
 }
 
 export const Heading: React.FunctionComponent<HeadingProps> = ({ value = "", children, ...props }) => {
+
+    const shapeColor = "#D9D9D9";
     return (
         <StyledHeading {...props}>
             {
                 children
                 || <>
-                    <HeadingIcon />
+                    <HeadingIcon>
+                        <SvgLoader path={HeadingShapeLeft}>
+                            <SvgProxy selector="rect" fill={shapeColor} />
+                        </SvgLoader>
+                    </HeadingIcon>
                     <HeadingText>{value}</HeadingText>
-                    <HeadingIcon type={"right"} />
+                    <HeadingIcon>
+                        <SvgLoader path={HeadingShapeRight}>
+                            <SvgProxy selector="rect" fill={shapeColor} />
+                        </SvgLoader>
+                    </HeadingIcon>
                 </>
             }
         </StyledHeading>
@@ -45,29 +57,12 @@ export const HeadingText: React.FunctionComponent<React.ComponentProps<'span'>> 
     )
 }
 
-const StyledHeadingIcon = styled.img<HeadingIconProps>`
-   transform: ${props => props.type === "right" ? "scaleX(-1)" : "" };
-`;
+const StyledHeadingIcon = styled.div``;
 
-/* When the Compoennts that calls Heading does not pass a src attribute */
-StyledHeadingIcon.defaultProps = {
-    src: headingShapeLeft,
-};
-
-interface HeadingIconProps extends React.ComponentProps<'img'> {
-    type?: string;
-}
-
-export const HeadingIcon: React.FunctionComponent<HeadingIconProps> = ({ children, ...props }) => {
+export const HeadingIcon: React.FunctionComponent<React.ComponentProps<'div'>> = ({ children, ...props }) => {
     return (
         <StyledHeadingIcon {...props}>
             {children}
         </StyledHeadingIcon>
     )
 }
-
-{/* <SvgContainer path={headingShapeLeft} color={shapeColor} />
-            <span>{value}</span>
-            <SvgContainer path={headingShapeRight} color={shapeColor} /> */}
-
-// const shapeColor = "#D9D9D9";

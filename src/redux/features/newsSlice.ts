@@ -5,9 +5,10 @@ import { newsAPI } from '../../api/newsAPI';
 type NewsState = {
     pageSize: number;
     newsPage: number;
-    news: Array<NewsItemType>;
+    news: Array<NewsItemType> | null;
 }
 
+/* TODO: Remove unused properties */
 export type NewsItemType = {
     "news_content_id": number,
     "title": string,
@@ -24,7 +25,7 @@ export type NewsItemType = {
 const initialState: NewsState = {
     pageSize: 3,
     newsPage: 0,
-    news: [],
+    news: null,
 };
 
 export const newsSlice = createSlice({

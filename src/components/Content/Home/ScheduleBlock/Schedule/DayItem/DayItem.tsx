@@ -2,6 +2,7 @@ import { FunctionComponent } from "react";
 
 import styled from "styled-components";
 import { WeekDay } from "../../../../../../redux/features/scheduleSlice";
+import { getMonthName } from "../../../../../../utils/getMonthName";
 
 
 const StyledContainer = styled.div`
@@ -20,7 +21,7 @@ const StyledHeader = styled.div`
     display: flex;
     align-items: baseline;
 `
-/* TODO: Is it good to use nested selectors inside a styled-component? */
+
 const StyledDay = styled.div`
 
     & span {
@@ -71,36 +72,43 @@ const StyledInfoItem = styled.li`
 type DayItemProps = {
     dayInfo: WeekDay;
     maxPeopleToShow: number;
+    children?: React.ReactNode;
 };
 
-export const DayItem: FunctionComponent<DayItemProps> = ({ dayInfo, maxPeopleToShow }) => {
+export const DayItem: FunctionComponent<DayItemProps> = ({ dayInfo, maxPeopleToShow, children }) => {
+
+    const [day, month] = dayInfo.date.split("-").reverse().slice(0, 2);
+
+    const displayMonth = (month: number): string => {
+        return getMonthName(month);
+    }
 
     return (
         <StyledContainer>
 
-            {/* TODO: Single Responsibility SOLID(DayInfo, DayEvents components) */}
             <StyledHeader>
                 <StyledDay>
-                    <span><b>23</b> августа</span>
-                    <p>(среда)</p>
+                    <span><b>{day}</b> {displayMonth(Number(month))}</span>
+                    <p>({dayInfo.day_of_week})</p>
                 </StyledDay>
                 <StyledDash>—</StyledDash>
                 <StyledDayInfo>
-                    {dayInfo.holidays.map(holiday => <StyledHoliday>{holiday.name}. </StyledHoliday>)}
-                    {dayInfo.people.slice(0, maxPeopleToShow).map(person => `${person.name}. `)}
+                    {dayInfo.holidays.map(holiday => <StyledHoliday key={holiday.name}>{holiday.name}. </StyledHoliday>)}
+                    {dayInfo.people.slice(0, maxPeopleToShow).map(person => <span key={person.name}>{person.name}.</span>)}
                 </StyledDayInfo>
             </StyledHeader>
 
-            {/* TODO: Composition for additional optional inforamation */}
             <StyledInfoItems>
                 {dayInfo.events?.map(event =>
-                    <StyledInfoItem>
+                    <StyledInfoItem key={`${event.time}-${event.title}`}>
                         <time>{event.time}</time> – <span>{event.title}</span>
                     </StyledInfoItem>
                 )}
                 {/* When no events */}
                 {!dayInfo.events && <StyledInfoItem>Богослужений нет</StyledInfoItem>}
             </StyledInfoItems>
+
+            {children}
 
         </StyledContainer>
     );

@@ -5,7 +5,7 @@ import { DayItem } from "./DayItem/DayItem";
 
 import { fetchWeekSchedule, selectMaxPeopleToShow, selectWeekSchedule } from "../../../../../redux/features/scheduleSlice";
 import { useAppDispatch, useAppSelector } from "../../../../../redux/hooks/hooks";
-import { Preloader, PreloaderImage, PreloaderText } from "../../../../common/Preloader/Preloader";
+import { Preloader } from "../../../../common/Preloader/Preloader";
 
 const StyledContainer = styled.div`
     margin-top: 70px;
@@ -24,9 +24,11 @@ export const Schedule: FunctionComponent<ScheduleProps> = ({ }) => {
         dispatch(fetchWeekSchedule());
     }, []);
 
-    /* TODO: Add key property that works as an id */
-    const dayItems = weekSchedule?.map(day => <DayItem dayInfo={day} maxPeopleToShow={maxPeopleToShow}/>)
-    
+    const dayItems = weekSchedule?.map(day =>
+        <DayItem key={day.id} dayInfo={day} maxPeopleToShow={maxPeopleToShow} />
+    )
+
+
     /* In case that data has not been fetched yet: */
     if (!weekSchedule) return <Preloader />
 

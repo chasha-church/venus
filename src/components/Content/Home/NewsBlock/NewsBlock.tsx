@@ -2,23 +2,11 @@ import { FunctionComponent, useEffect } from "react";
 
 import styled from "styled-components";
 import { NewsCard } from "./NewsCard/NewsCard";
-import headingShapeLeft from '../../../../assets/images/HeadingShapeLeft.svg';
-import headingShapeRight from '../../../../assets/images/HeadingShapeRight.svg';
 import { useAppDispatch, useAppSelector } from '../../../../redux/hooks/hooks';
 import { fetchNews, selectCurrentNews, selectNewsPageSize, selectNextNewsPage } from '../../../../redux/features/newsSlice';
-import {SvgContainer} from "./SvgContainer/SvgContainer";
+import { Preloader } from "../../../common/Preloader/Preloader";
+import { Heading } from "../../../common/Heading/Heading";
 
-const NewsHeader = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 50px;
-    align-items: center;
-    
-    margin: 70px 0 30px 0;
-    font-size: 48px;
-    text-align: center;
-`;
 
 const NewsCardContainer = styled.div`
     display: flex;
@@ -30,7 +18,6 @@ const NewsCardContainer = styled.div`
 type NewsBlockProps = {};
 
 export const NewsBlock: FunctionComponent<NewsBlockProps> = ({ }) => {
-    const headingShapeColor = "#D9D9D9";
 
     const news = useAppSelector(selectCurrentNews);
     const pageSize = useAppSelector(selectNewsPageSize);
@@ -42,15 +29,15 @@ export const NewsBlock: FunctionComponent<NewsBlockProps> = ({ }) => {
         dispatch(fetchNews({ pageSize, page }));
     }, []);
 
-    const newsCards = news.map(news => <NewsCard key={news.news_content_id} newsData={news} />)
+    const newsCards = news?.map(news => <NewsCard key={news.news_content_id} newsData={news} />)
 
+    /* In case that data has not been fetched yet: */
+    if (!news) return <Preloader />
+    console.log("Render"); 
+    
     return (
         <div>
-            <NewsHeader>
-                <SvgContainer path={headingShapeLeft} color={headingShapeColor}/>
-                <span>Новости</span>
-                <SvgContainer path={headingShapeRight} color={headingShapeColor}/>
-            </NewsHeader>
+            <Heading value="Новости" />
             <NewsCardContainer>
                 {newsCards}
             </NewsCardContainer>
