@@ -83,18 +83,24 @@ export const DayItem: FunctionComponent<DayItemProps> = ({ dayInfo, maxPeopleToS
         return getMonthName(month);
     }
 
+    const displayFirstLetterCapitalized = (str: string): string => {
+        return str[0].toUpperCase() + str.slice(1);
+    }
+
     return (
         <StyledContainer>
 
             <StyledHeader>
                 <StyledDay>
-                    <span><b>{day}</b> {displayMonth(Number(month))}</span>
+                    <span><b>{Number(day)}</b> {displayMonth(Number(month))}</span>
                     <p>({dayInfo.day_of_week})</p>
                 </StyledDay>
                 <StyledDash>—</StyledDash>
                 <StyledDayInfo>
                     {dayInfo.holidays.map(holiday => <StyledHoliday key={holiday.name}>{holiday.name}. </StyledHoliday>)}
-                    {dayInfo.people.slice(0, maxPeopleToShow).map(person => <span key={person.name}>{person.name}.</span>)}
+                    {dayInfo.people.slice(0, maxPeopleToShow).map(person =>
+                        <span key={person.name}>{displayFirstLetterCapitalized(person.name)}. </span>
+                    )}
                 </StyledDayInfo>
             </StyledHeader>
 

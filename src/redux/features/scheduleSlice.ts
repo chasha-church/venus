@@ -1,4 +1,5 @@
-import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { createAppAsyncThunk } from './../hooks/hooks';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { RootState } from '../store';
 import { scheduleAPI } from '../../api/scheduleAPI';
 import { DateHelper } from '../../utils/DateHelper';
@@ -6,6 +7,7 @@ import { DateHelper } from '../../utils/DateHelper';
 type ScheduleState = {
     weekSchedule: Array<WeekDay> | null;
     maxPeopleToShow: number;
+    currentWeek: number;
 }
 
 export type WeekDay = {
@@ -27,6 +29,7 @@ const createDayId = (dayIndex: number): string => {
 const initialState: ScheduleState = {
     weekSchedule: null,
     maxPeopleToShow: 3,
+    currentWeek: DateHelper.getWeekNumber(),
 };
 
 export const scheduleSlice = createSlice({
@@ -45,14 +48,14 @@ export const scheduleSlice = createSlice({
 })
 
 // Actions
-export const { } = scheduleSlice.actions
+export const {} = scheduleSlice.actions
 
 // Asynchronous actions
-export const fetchWeekSchedule = createAsyncThunk(
+export const fetchWeekSchedule = createAppAsyncThunk(
     "schedule/fetchWeekSchedule",
-    async (_, thunkAPI) => {
+    async (weekNumber: number, thunkAPI) => {
         try {
-            const response = await scheduleAPI.getWeekSchedule(DateHelper.getWeekNumber());
+            const response = await scheduleAPI.getWeekSchedule(weekNumber);
             return response.data.results;
         }
         catch (error) {
@@ -64,6 +67,7 @@ export const fetchWeekSchedule = createAsyncThunk(
 // Selectors
 export const selectWeekSchedule = (state: RootState) => state.schedule.weekSchedule;
 export const selectMaxPeopleToShow = (state: RootState) => state.schedule.maxPeopleToShow;
+export const selectCurrentWeek = (state: RootState) => state.schedule.currentWeek;
 
 // Reducer
 export const scheduleReducer = scheduleSlice.reducer;
