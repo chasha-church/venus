@@ -4,6 +4,8 @@ import { Button, ConfigProvider } from 'antd';
 import styled from "styled-components";
 import { NewsItemType } from '../../../../../redux/features/newsSlice';
 
+import MockImage from "../../../../../assets/images/Church.png";
+
 type NewsBlockProps = {
     newsData: NewsItemType;
 }
@@ -11,6 +13,7 @@ type NewsBlockProps = {
 const CardImage = styled.img`
     // TODO: fix not working property
     object-fit: cover;
+    min-height: 170px;
 `;
 
 const InnerCardContainer = styled.div`
@@ -43,12 +46,11 @@ const DetailsButton = styled(Button)`
 `;
 
 export const NewsCard: React.FC<NewsBlockProps> = ({ newsData }) => {
-
     const parseDate = (date: string): string => date.slice(0, 10).split("-").reverse().join(".");
 
     return (
         <InnerCardContainer >
-            <CardImage src={newsData.main_asset_url} />
+            <CardImage src={newsData.main_asset_url || MockImage} />
             <CardDate>{parseDate(newsData.created_date)}</CardDate>
             <CardTitle>{newsData.title}</CardTitle>
             <ConfigProvider

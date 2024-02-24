@@ -33,7 +33,6 @@ export const NewsBlock: FunctionComponent<NewsBlockProps> = ({ }) => {
 
     /* In case that data has not been fetched yet: */
     if (!news) return <Preloader />
-    console.log("Render"); 
     
     return (
         <div>
