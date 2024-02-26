@@ -1,15 +1,17 @@
-import { FunctionComponent, useEffect, useState } from "react";
+import { FunctionComponent } from "react";
 
 import styled from "styled-components";
 import { DayItem } from "./DayItem/DayItem";
 
-import { 
+import {
     fetchWeekSchedule, selectCurrentWeek, selectMaxPeopleToShow, selectWeekSchedule,
-    selectWeekScheduleFetchError, selectWeekScheduleIsPending, WeekDay
+    selectWeekScheduleFetchError, selectWeekScheduleIsPending, WeekDay, WeekSchedule
 } from "../../../../../redux/features/scheduleSlice";
+
 import { useAppDispatch, useAppSelector } from "../../../../../redux/hooks/hooks";
 import { Preloader } from "../../../../common/Preloader/Preloader";
-import { useAPIFetch } from "../../../../../redux/hooks/useFetch";
+import { useAPIFetch } from "../../../../../redux/hooks/useAPIFetch";
+import { ErrorFallback } from "../../../../common/ErrorFallback/ErrorFallback";
 
 const StyledContainer = styled.div`
     margin-top: 70px;
@@ -17,19 +19,26 @@ const StyledContainer = styled.div`
 
 type ScheduleProps = {};
 
-export const Schedule: FunctionComponent<ScheduleProps> = ({ }) => {
 
+export const Schedule: FunctionComponent<ScheduleProps> = ({ }) => {
 
     const maxPeopleToShow = useAppSelector(selectMaxPeopleToShow);
     const currentWeek = useAppSelector(selectCurrentWeek);
-    // const isPending = useAppSelector(selectWeekScheduleIsPending);
-    // const fetchError = useAppSelector(selectWeekScheduleFetchError);
+    const dispatch = useAppDispatch();
 
-    let weekSchedule = useAppSelector(selectWeekSchedule);
-    const {data, isPending, error} = useAPIFetch(fetchWeekSchedule, [currentWeek]);
-    weekSchedule = weekSchedule ?? data;
+    const { data: weekSchedule, isPending, error: fetchError } =
+        useAPIFetch
+            <
+                ReturnType<typeof selectWeekSchedule>,
+                ReturnType<typeof selectWeekScheduleIsPending>,
+                ReturnType<typeof selectWeekScheduleFetchError>
+            >(
+                () => { dispatch(fetchWeekSchedule(currentWeek)) },
+                [currentWeek],
+                { data: selectWeekSchedule, isPending: selectWeekScheduleIsPending, error: selectWeekScheduleFetchError }
+            );
 
-    const dayItems = weekSchedule?.map(day =>
+    const dayItems = weekSchedule?.map((day: WeekDay) =>
         <DayItem key={day.id} dayInfo={day} maxPeopleToShow={maxPeopleToShow} />
     )
 
@@ -37,7 +46,7 @@ export const Schedule: FunctionComponent<ScheduleProps> = ({ }) => {
     if (isPending) return <Preloader />
 
     /* In case that error happened while fetching: */
-    if (error) return <div>{error}</div>
+    if (fetchError) return <ErrorFallback error={fetchError} />
 
     return (
         <StyledContainer>
