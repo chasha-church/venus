@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 import { Heading } from "../../../common/Heading/Heading";
 import { Schedule } from "./Schedule/Schedule";
-import { ErrorBoundary } from "react-error-boundary";
 
 const StyledParagraph = styled.p`
     text-align: center;
