@@ -3,9 +3,10 @@ import { FunctionComponent } from "react";
 import styled from "styled-components";
 import { WeekDay } from "../../../../../../redux/features/scheduleSlice";
 import { getMonthName } from "../../../../../../utils/getMonthName";
+import { DateHelper } from "../../../../../../utils/DateHelper";
 
 
-const StyledContainer = styled.div`
+const StyledContainer = styled.div<{ $isToday: boolean; }>`
     max-width: 900px;
 
     margin: 0 auto;
@@ -15,6 +16,8 @@ const StyledContainer = styled.div`
     font-size: 18px;
 
     box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.25);
+
+    border: ${props => props.$isToday ? "2px solid #0085FF" : "none"};
 `
 
 const StyledHeader = styled.div`
@@ -79,6 +82,8 @@ export const DayItem: FunctionComponent<DayItemProps> = ({ dayInfo, maxPeopleToS
 
     const [day, month] = dayInfo.date.split("-").reverse().slice(0, 2);
 
+    const currentDay = DateHelper.getCurrentDay();
+
     const displayMonth = (month: number): string => {
         return getMonthName(month);
     }
@@ -88,7 +93,7 @@ export const DayItem: FunctionComponent<DayItemProps> = ({ dayInfo, maxPeopleToS
     }
 
     return (
-        <StyledContainer>
+        <StyledContainer $isToday={Number(day) === currentDay}>
 
             <StyledHeader>
                 <StyledDay>

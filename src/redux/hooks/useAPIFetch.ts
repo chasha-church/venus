@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 
 
 /* This hook manages fetching the data and returning it(with errors and pending status). The logic happens in Redux store */
+
 export const useAPIFetch = <X, Y, Z>(
     effectCallback: () => void,
     effectDeps: any[],

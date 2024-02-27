@@ -1,13 +1,12 @@
 export const DateHelper = {
+    date: new Date(),
     getWeekNumber() {
         return Math.floor(this.getDaysFromYearStart() / 7) + 1;
     },
     getDaysFromYearStart() {
-        const date = new Date();
-
-        const currentYear = date.getFullYear();
-        const currentMonth = date.getMonth();
-        const currentDay = date.getDate();
+        const currentYear = this.date.getFullYear();
+        const currentMonth = this.date.getMonth();
+        const currentDay = this.getCurrentDay();
 
         /* Constructor: new Date(year, month, day) */
         const startDate = new Date(currentYear, 0, 1); // January 1st
@@ -17,4 +16,7 @@ export const DateHelper = {
 
         return Math.floor(dateDif / (24 * 60 * 60 * 1000));
     },
+    getCurrentDay() {
+        return this.date.getDate();
+    }
 }

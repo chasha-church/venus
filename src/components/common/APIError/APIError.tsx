@@ -22,7 +22,7 @@ type ErrorFallbackProps = {
     error?: string;
 }
 
-export const ErrorFallback = ({ error = "" }) => {
+export const APIError = ({ error = "" }) => {
 
     return (
         <StyledError>

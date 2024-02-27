@@ -2,9 +2,9 @@ import React from 'react'
 import { Button, ConfigProvider } from 'antd';
 
 import styled from "styled-components";
-import { NewsItemType } from '../../../../../redux/features/newsSlice';
+import { NewsItemType } from '../../../../../../redux/features/newsSlice';
 
-import MockImage from "../../../../../assets/images/Church.png";
+import MockImage from "../../../../../../assets/images/Church.png";
 
 type NewsBlockProps = {
     newsData: NewsItemType;
