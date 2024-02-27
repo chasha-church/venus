@@ -17,17 +17,19 @@ const StyledError = styled.div`
         margin: 30px 0;
         font-size: 24px;
     }
-`
-type ErrorFallbackProps = {
+`;
+
+interface ErrorFallbackProps extends React.ComponentProps<'div'> {
     error?: string;
 }
 
-export const APIError = ({ error = "" }) => {
+export const APIError: React.FunctionComponent<ErrorFallbackProps> = ({ error = "", children }) => {
 
     return (
         <StyledError>
             <h1>К сожалению, произошла ошибка:</h1>
             <pre color="red">{error}</pre>
+            {children}
         </StyledError>
     );
 }
