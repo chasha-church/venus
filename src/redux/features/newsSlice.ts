@@ -12,7 +12,6 @@ type NewsState = {
 }
 
 /* TODO: Remove unused properties */
-/* TODO: Remove unused properties */
 export type NewsItemType = {
     "news_content_id": number,
     "title": string,
