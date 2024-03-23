@@ -56,7 +56,7 @@ export const MainLable: React.FC<MainLable> = () => {
     return (
         <FlexContainer>
             <MainTextWrapper>
-                Храм в честь иконы Божьей Матери “Неупиваемая Чаша”
+                <h1>Храм в честь иконы Божьей Матери “Неупиваемая Чаша”</h1>
                 <ChashaMerge src={chashaMergeImage}/>
             </MainTextWrapper>
             <DecorationEdge />

@@ -7,6 +7,7 @@ const Church_2 = "./images/Church_2.jpg";
 
 import styled from "styled-components";
 import { MainLable } from './MainLable/MainLable';
+import { PRIMARY_COLOR } from '../../../../constants/colors';
 
 type PreviewBlockProps = {}
 
@@ -16,7 +17,9 @@ const ScheduleButton = styled(Button)`
 
     padding: 20px 15px;
 
-    color: white;
+    background-color: white;
+    border-color: #0075BA;
+    color: #0075BA;
     border-radius: 10px;
 
     display: inline-flex;
@@ -39,7 +42,7 @@ const CarouselWrapper = styled.div`
 `;
 
 const HomeImage = styled.img`
-    max-height: 100vh;
+    height: 100vh;
     object-fit: cover;
 `;
 
@@ -56,11 +59,11 @@ export const PreviewBlock: React.FC<PreviewBlockProps> = () => {
             <ConfigProvider
                 theme={{
                     token: {
-                        colorPrimary: "#F0A202",
+                        colorPrimary: PRIMARY_COLOR,
                     },
                 }}
             >
-                <ScheduleButton>Расписание богослужений</ScheduleButton>
+                <ScheduleButton href='#schedule'>Расписание богослужений</ScheduleButton>
             </ConfigProvider>
         </CarouselWrapper>
     )
