@@ -47,9 +47,11 @@ export const Heading: React.FunctionComponent<HeadingProps> = ({ value = "", chi
     )
 }
 
-const StyledHeadingText = styled.span``;
+const StyledHeadingText = styled.h2``;
 
-export const HeadingText: React.FunctionComponent<React.ComponentProps<'span'>> = ({ children, ...props }) => {
+export const HeadingText: React.FunctionComponent<React.ComponentProps<'h2'>> = (
+    { children, ...props }
+) => {
     return (
         <StyledHeadingText {...props}>
             {children}
@@ -59,7 +61,9 @@ export const HeadingText: React.FunctionComponent<React.ComponentProps<'span'>> 
 
 const StyledHeadingIcon = styled.div``;
 
-export const HeadingIcon: React.FunctionComponent<React.ComponentProps<'div'>> = ({ children, ...props }) => {
+export const HeadingIcon: React.FunctionComponent<React.ComponentProps<'div'>> = (
+    { children, ...props }
+) => {
     return (
         <StyledHeadingIcon {...props}>
             {children}

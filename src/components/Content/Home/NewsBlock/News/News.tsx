@@ -1,7 +1,14 @@
-import { FunctionComponent, useEffect } from "react";
+import { FunctionComponent } from "react";
 import styled from "styled-components";
 import { useAppDispatch, useAppSelector } from "../../../../../redux/hooks/hooks";
-import { fetchNews, selectCurrentNews, selectNewsFetchError, selectNewsIsPending, selectNewsPageSize, selectNextNewsPage } from "../../../../../redux/features/newsSlice";
+import { 
+    fetchNews,
+    selectCurrentNews,
+    selectNewsFetchError,
+    selectNewsIsPending,
+    selectNewsPageSize,
+    selectNextNewsPage
+} from "../../../../../redux/features/newsSlice";
 import { NewsCard } from "./NewsCard/NewsCard";
 import { Preloader } from "../../../../common/Preloader/Preloader";
 import { APIError } from "../../../../common/APIError/APIError";
@@ -9,9 +16,9 @@ import { useAPIFetch } from "../../../../../redux/hooks/useAPIFetch";
 
 const NewsCardContainer = styled.div`
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
-    margin: 0 85px;
+    margin: 0;
 `;
 
 export const News: FunctionComponent = ({ }) => {
@@ -24,7 +31,11 @@ export const News: FunctionComponent = ({ }) => {
     const { data: news, isPending, error: fetchError } = useAPIFetch(
         () => { dispatch(fetchNews({ pageSize, page })) },
         [pageSize, page],
-        { data: selectCurrentNews, isPending: selectNewsIsPending, error: selectNewsFetchError }
+        { 
+            data: selectCurrentNews,
+            isPending: selectNewsIsPending,
+            error: selectNewsFetchError
+        }
     );
 
     /* In case that data has not been fetched yet: */
@@ -33,7 +44,9 @@ export const News: FunctionComponent = ({ }) => {
     /* In case that error happened while fetching: */
     if (fetchError) return <APIError error={fetchError} />
 
-    const newsCards = news?.map(news => <NewsCard key={news.news_content_id} newsData={news} />)
+    const newsCards = news?.map(
+        news => <NewsCard key={news.news_content_id} newsData={news} />
+    )
 
     return (
         <NewsCardContainer>

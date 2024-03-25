@@ -7,7 +7,7 @@ type NewsBlockProps = {};
 export const NewsBlock: FunctionComponent<NewsBlockProps> = ({ }) => {
     return (
         <div>
-            <Heading value="Новости" />
+            <Heading value="Новости" id="news" />
             <News />
         </div>
     );

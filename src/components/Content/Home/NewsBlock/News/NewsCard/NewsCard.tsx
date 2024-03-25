@@ -5,20 +5,23 @@ import styled from "styled-components";
 import { NewsItemType } from '../../../../../../redux/features/newsSlice';
 
 import MockImage from "../../../../../../assets/images/Church.png";
+import { PRIMARY_COLOR } from '../../../../../../constants/colors';
 
 type NewsBlockProps = {
     newsData: NewsItemType;
 }
 
 const CardImage = styled.img`
-    // TODO: fix not working property
     object-fit: cover;
-    min-height: 170px;
+    height: 50%;
+    width: 100%;
 `;
 
 const InnerCardContainer = styled.div`
     flex: 190px;
     
+    min-width: 250px;
+    max-width: 40%;
     display: flex;
     flex-direction: column;
     justify-content: space-between; 
@@ -56,7 +59,7 @@ export const NewsCard: React.FC<NewsBlockProps> = ({ newsData }) => {
             <ConfigProvider
                 theme={{
                     token: {
-                        colorPrimary: "#F0A202",
+                        colorPrimary: PRIMARY_COLOR,
                     },
                 }}
             >
