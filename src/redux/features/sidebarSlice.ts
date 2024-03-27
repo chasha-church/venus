@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { RootState } from '../store';
-import { ReactNode } from 'react';
 
 interface SidebarState {
     sidebarExpanded: boolean;
