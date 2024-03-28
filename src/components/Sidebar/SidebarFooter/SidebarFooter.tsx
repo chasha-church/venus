@@ -1,14 +1,36 @@
-import React from 'react'
+import { SiderContext } from 'antd/es/layout/Sider';
+import React, { useContext } from 'react'
+import styled from 'styled-components';
 
-type SidebarFooterProps = {
-    expanded: boolean;
-}
+const StyledFooter = styled.div<{ $sidebarExpanded: boolean }>`
+    /* overflow: hidden; */
+    display: ${props => props.$sidebarExpanded ? "block" : "none"};
+    border-top: 1px solid #e5e7eb;
 
-export const SidebarFooter: React.FC<SidebarFooterProps> = ({ expanded }) => {
+    padding: 1em;
 
+    span:first-child::before {
+        content: "",
+        position: absolute;
+    }
+
+    span:first-child {
+        display: block;
+        text-align: center;
+
+        font-weight: 600;
+    }
+`;
+
+interface SidebarFooterProps extends React.ComponentProps<"div"> {
+    sidebarExpanded: boolean,
+};
+
+export const SidebarFooter: React.FC<SidebarFooterProps> = ({ sidebarExpanded, children }) => {
     return (
-        <div className={`overflow-hidden border-t px-4 py-6  ${expanded ? "block" : "hidden"}`}>
-            <span className="font-semibold text-gray-600">Неупиваемая Чаша, 2024</span>
-        </div>
+        <StyledFooter $sidebarExpanded={sidebarExpanded}>
+            <span>Неупиваемая Чаша, 2024</span>
+            {children}
+        </StyledFooter>
     );
-}
+};
