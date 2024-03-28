@@ -12,7 +12,6 @@ export type MenuType = Array<MenuItemType>
 export type MenuItemType = {
     id: number;
     name: string;
-    icon: string;
     submenuExpanded: SubmenuExpandedType;
     submenu: SubmenuType;
 }
@@ -25,14 +24,21 @@ export type SubmenuItemType = {
     name: string;
 }
 
+export enum SideBarIds {
+    Church = 0,
+    Schedule,
+    Collaboration,
+    Contacts,
+    Donate
+}
+
 const initialState: SidebarState = {
     sidebarExpanded: false,
     activeItemId: null,
     menuItems: [
         {
-            id: 0,
+            id: SideBarIds.Church,
             name: "Храм",
-            icon: "./images/ChurchIcon.png",
             submenuExpanded: false,
             submenu: [
                 {
@@ -50,16 +56,14 @@ const initialState: SidebarState = {
             ],
         },
         {
-            id: 1,
+            id: SideBarIds.Schedule,
             name: "Богослужения",
-            icon: "./images/ScheduleIcon.png",
             submenuExpanded: false,
             submenu: null,
         },
         {
-            id: 2,
+            id: SideBarIds.Collaboration,
             name: "Деятельность",
-            icon: "./images/СollaborationIcon.png",
             submenuExpanded: false,
             submenu: [
                 {
@@ -81,16 +85,14 @@ const initialState: SidebarState = {
             ],
         },
         {
-            id: 3,
+            id: SideBarIds.Contacts,
             name: "Контакты",
-            icon: "./images/ContactsIcon.png",
             submenuExpanded: false,
             submenu: null,
         },
         {
-            id: 4,
+            id: SideBarIds.Donate,
             name: "Пожертвовать",
-            icon: "./images/DonateIcon.png",
             submenuExpanded: false,
             submenu: null,
         },

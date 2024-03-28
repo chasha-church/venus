@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-
-import ImagePreloader from "../../../assets/images/Preloader.svg";
+import { PreloaderIcon } from "../Icons/PreloaderIcon";
 
 const StyledPreloader = styled.div`
     width: fit-content;
@@ -15,24 +14,11 @@ export const Preloader: React.FunctionComponent<React.ComponentProps<'div'>> = (
             {
                 children
                 || <>
-                    <PreloaderImage />
+                    <PreloaderIcon />
                     <PreloaderText />
                 </>
             }
         </StyledPreloader>
-    );
-}
-
-const StyledPreloaderImage = styled.img``
-
-/* When the Compoennts that calls Preloader does not pass a src attribute */
-StyledPreloaderImage.defaultProps = {
-    src: ImagePreloader,
-};
-
-export const PreloaderImage: React.FunctionComponent<React.ComponentProps<'img'>> = ({ ...props }) => {
-    return (
-        <StyledPreloaderImage {...props} />
     );
 }
 

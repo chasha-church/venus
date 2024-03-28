@@ -2,6 +2,7 @@ import React from 'react'
 import { MenuItem } from './MenuItem/MenuItem';
 import { useAppSelector } from '../../../redux/hooks/hooks';
 import { selectActiveItemId, selectMenuItems } from '../../../redux/features/sidebarSlice';
+import { IconMatcher } from '../../../utils/IconMatcher';
 
 type MenuItemsProps = {
     expanded: boolean;
@@ -17,7 +18,7 @@ export const MenuItems: React.FC<MenuItemsProps> = ({ expanded }) => {
             key={menuItem.id}
             id={menuItem.id}
             name={menuItem.name}
-            icon={menuItem.icon}
+            icon={IconMatcher.getIcon(menuItem.id)}
             submenu={menuItem.submenu}
             submenuExpanded={menuItem.submenuExpanded}
             expanded={expanded}
@@ -26,7 +27,7 @@ export const MenuItems: React.FC<MenuItemsProps> = ({ expanded }) => {
     );
 
     return (
-        <ul className="flex-col mt-7">{menuItemsMap}</ul>
+        <ul className="flex-col">{menuItemsMap}</ul>
     );
 
 }
