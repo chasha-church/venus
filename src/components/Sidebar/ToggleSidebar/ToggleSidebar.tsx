@@ -1,7 +1,6 @@
 import React from 'react'
-
-import SidebarHideIcon from '../../../assets/images/SidebarHideIcon.svg'
-import SidebarShowIcon from '../../../assets/images/SidebarShowIcon.svg'
+import { SidebarHideIcon } from '../../common/Icons/SidebarHideIcon';
+import { SidebarShowIcon } from '../../common/Icons/SidebarShowIcon';
 
 type ToggleSidebarProps = {
     expanded: boolean;
@@ -12,7 +11,11 @@ export const ToggleSidebar: React.FC<ToggleSidebarProps> = ({ expanded, setExpan
 
     return (
         <button onClick={setExpanded} className="absolute z-10 -right-3 top-8 rounded-lg bg-transparent">
-            <img src={expanded ? SidebarHideIcon : SidebarShowIcon} className="w-8" alt="Toggle-icon" />
+            {
+                expanded
+                    ? <SidebarHideIcon />
+                    : <SidebarShowIcon />
+            }
         </button>
     )
 }

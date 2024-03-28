@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from "styled-components";
-import chashaMergeImage from '../../../../../assets/images/chasha.svg';
+import { ChashaIcon } from '../../../../common/Icons/ChashaIcon';
 
 type MainLable = {}
 
@@ -45,7 +45,7 @@ const DecorationEdge = styled.div`
     background: white;
 `;
 
-const ChashaMerge = styled.img`
+const ChashaMerge = styled.div`
     position: absolute;
     left: 40%;
     top: 5%;
@@ -57,7 +57,9 @@ export const MainLable: React.FC<MainLable> = () => {
         <FlexContainer>
             <MainTextWrapper>
                 <h1>Храм в честь иконы Божьей Матери “Неупиваемая Чаша”</h1>
-                <ChashaMerge src={chashaMergeImage}/>
+                <ChashaMerge>
+                    <ChashaIcon width={168} height={232}/>
+                </ChashaMerge>
             </MainTextWrapper>
             <DecorationEdge />
         </FlexContainer>
