@@ -1,23 +1,15 @@
-import React from 'react'
-import { SHAPE_COLOR } from '../../../constants/colors';
-
 // @ts-ignore
 import { SvgLoader, SvgProxy } from 'react-svgmt';
 
 import HeadingShapeRight from '../../../assets/images/HeadingShapeRight.svg';
+import { ComponentProps } from 'react';
 
-type HeadingShapeRightIconProps = {
-    width?: number,
-    height?: number,
-    color?: string
-}
-
-export const HeadingShapeRightIcon: React.FC<HeadingShapeRightIconProps> = 
-    ({ width = 96, height = 26, color = SHAPE_COLOR }
+export const HeadingShapeRightIcon: React.FC<ComponentProps<'svg'>> = (
+    { width = 96, height = 26 }
 ) => {
     return (
         <SvgLoader width={width} height={height} path={HeadingShapeRight}>
-            <SvgProxy selector="rect" fill={color} />
+            <SvgProxy selector="rect" />
         </SvgLoader>
     );
 }

@@ -1,14 +1,9 @@
-import React from 'react'
 // @ts-ignore
 import { SvgLoader, SvgProxy } from 'react-svgmt';
 import SidebarShow from '../../../assets/images/SidebarShowIcon.svg';
+import { ComponentProps } from 'react';
 
-type SidebarShowIconProps = {
-    width?: number,
-    height?: number,
-}
-
-export const SidebarShowIcon: React.FC<SidebarShowIconProps> = (
+export const SidebarShowIcon: React.FC<ComponentProps<'svg'>> = (
     { width = 30, height = 30 }
 ) => {
     return (

@@ -1,14 +1,9 @@
-import React from 'react'
+import { ComponentProps } from 'react'
 // @ts-ignore
 import { SvgLoader, SvgProxy } from 'react-svgmt';
 import Preloader from "../../../assets/images/Preloader.svg";
 
-type PreloaderIconProps = {
-    width?: number,
-    height?: number,
-}
-
-export const PreloaderIcon: React.FC<PreloaderIconProps> = (
+export const PreloaderIcon: React.FC<ComponentProps<'svg'>> = (
     { width = 200, height = 200 }
 ) => {
     return (

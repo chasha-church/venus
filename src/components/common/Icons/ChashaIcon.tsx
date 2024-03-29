@@ -1,14 +1,9 @@
-import React from 'react'
 // @ts-ignore
 import { SvgLoader, SvgProxy } from 'react-svgmt';
 import Chasha from '../../../assets/images/ChashaIcon.svg';
+import { ComponentProps } from 'react';
 
-type ChashaIconProps = {
-    width?: number,
-    height?: number,
-}
-
-export const ChashaIcon: React.FC<ChashaIconProps> = (
+export const ChashaIcon: React.FC<ComponentProps<'svg'>> = (
     { width = 36, height = 36 }
 ) => {
     return (

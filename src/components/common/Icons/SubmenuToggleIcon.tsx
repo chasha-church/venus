@@ -1,14 +1,9 @@
-import React from 'react'
+import { ComponentProps } from 'react'
 // @ts-ignore
 import { SvgLoader, SvgProxy } from 'react-svgmt';
 import SubmenuToggle from '../../../assets/images/SubmenuToggleIcon.svg';
 
-type SubmenuToggleIconProps = {
-    width?: number,
-    height?: number,
-}
-
-export const SubmenuToggleIcon: React.FC<SubmenuToggleIconProps> = (
+export const SubmenuToggleIcon: React.FC<ComponentProps<'svg'>> = (
     { width = 20, height = 20 }
 ) => {
     return (
