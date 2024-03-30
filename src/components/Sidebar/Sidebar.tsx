@@ -1,6 +1,5 @@
 import React, { createContext } from 'react'
 
-import { MenuItems } from './MenuItems/MenuItems'
 import { SidebarFooter } from './SidebarFooter/SidebarFooter'
 import { SidebarHeader } from './SidebarHeader/SidebarHeader';
 
@@ -8,6 +7,7 @@ import { useAppDispatch, useAppSelector } from '../../redux/hooks/hooks';
 import { selectSidebarExpanded, setSidebarExpanded } from '../../redux/features/sidebarSlice';
 import { ToggleSidebar } from './ToggleSidebar/ToggleSidebar';
 import styled from 'styled-components';
+import { SidebarMenu } from './SidebarMenu/SidebarMenu';
 
 const StyledSidebar = styled.aside`
     position: fixed;
@@ -19,7 +19,7 @@ const StyledSidebar = styled.aside`
     height: 100vh;
     height: 100svh;
 
-    padding: 1em;
+    /* padding: 1em; */
 
     background-color: lightgreen;
     background-color: #fff;
@@ -27,14 +27,29 @@ const StyledSidebar = styled.aside`
 
     border-right: 1px solid #e5e7eb;
 
-    /* display: flex;
+    display: flex;
     flex-direction: column;
-    justify-content: space-between; */
+    justify-content: space-between;
+`
+const StyledSidebarLayout = styled.div`
+    padding: 1em;
+
+    /* display: grid; */
+    /* grid-template-areas: "logo title" "image name"; */
+
+    /* grid-template-columns: auto 1fr; */
+    /* grid-template-rows: auto 1fr; */
 `
 
 type SidebarProps = {};
 
 // export const SidebarContext = createContext({ sidebarExpanded: false, setExpanded: () => { } });
+
+/* 
+    ---
+    1 + 1 + 1 + hours of ticket work
+    --- 
+*/
 
 export const Sidebar: React.FC<SidebarProps> = ({ }) => {
 
@@ -48,16 +63,11 @@ export const Sidebar: React.FC<SidebarProps> = ({ }) => {
         <StyledSidebar>
             {/* <SidebarContext.Provider value={{ sidebarExpanded, setExpanded }}> */}
             <ToggleSidebar sidebarExpanded={sidebarExpanded} setExpanded={setExpanded} />
-            {/* <aside className={`fixed top-0 l-0 z-10 flex flex-col justify-between h-screen bg-white border-r`}> */}
-            {/* <nav className={`
-                overflow-y-scroll overflow-x-hidden
-                scrollbar scrollbar-w-1.5 scrollbar-thumb-rounded scrollbar-thumb-scrollThumb scrollbar-track-transparent
-            `}>
-                    
-                    <MenuItems expanded={sidebarExpanded} />
-                </nav> */}
-            {/* </aside> */}
-            <SidebarHeader sidebarExpanded={sidebarExpanded} />
+
+            <StyledSidebarLayout>
+                <SidebarHeader sidebarExpanded={sidebarExpanded} />
+                <SidebarMenu sidebarExpanded={sidebarExpanded} />
+            </StyledSidebarLayout>
 
             <SidebarFooter sidebarExpanded={sidebarExpanded} />
             {/* </SidebarContext.Provider> */}

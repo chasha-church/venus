@@ -3,11 +3,11 @@ import { MenuItem } from './MenuItem/MenuItem';
 import { useAppSelector } from '../../../redux/hooks/hooks';
 import { selectActiveItemId, selectMenuItems } from '../../../redux/features/sidebarSlice';
 
-type MenuItemsProps = {
+type SidebarMenuProps = {
     expanded: boolean;
 }
 
-export const MenuItems: React.FC<MenuItemsProps> = ({ expanded }) => {
+export const SidebarMenu: React.FC<SidebarMenuProps> = ({ expanded }) => {
 
     const menuItems = useAppSelector(selectMenuItems);
     const activeItemId = useAppSelector(selectActiveItemId);

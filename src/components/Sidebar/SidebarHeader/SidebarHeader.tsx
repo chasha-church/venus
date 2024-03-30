@@ -3,27 +3,37 @@ import styled from 'styled-components';
 
 const StyledHeader = styled.div`
 `;
-{/* <div className={`flex items-center pl-4 pt-4 ${sidebarExpanded ? "pr-8" : "pr-4"}`}> */}
-// className={`overflow-hidden font-bold text-gray-600 transition-all ${sidebarExpanded ? "ml-2" : "w-0 ml-0"}`}
+
 const StyledHeaderContent = styled.div<{ $sidebarExpanded: boolean }>`
+    width: 100%;
+    
     display: flex;
     justify-items: center;
     align-items: center;
 
-    transition: all 0.5s ease-in-out;
-
     img {
         cursor: pointer;
-        width: 3em;
+        width: 3rem;
+    }
+
+    & > div.title {
+        /* These properties make the width of title text animate while collapsing! 
+        Great solution with grid */
+        display: grid;
+        grid-template-columns: ${props => props.$sidebarExpanded ? "1fr" : "0fr"};
+        transition: grid-template-columns 500ms;
     }
 
     span {
-        font-weight: bold;
-
         overflow: hidden;
 
-        margin-left: ${ props => props.$sidebarExpanded ? "0.25em" : "0" };
-        width: ${ props => props.$sidebarExpanded ? "auto" : "0" };
+        font-weight: bold;
+        text-wrap: nowrap;
+
+        transition: margin 500ms;
+
+        margin-left: ${props => props.$sidebarExpanded ? "0.25em" : "0"};
+        margin-right: ${props => props.$sidebarExpanded ? "0.5em" : "0"};
     }
 `
 
@@ -36,13 +46,13 @@ interface SidebarHeaderProps extends React.ComponentProps<"div"> {
 
 
 export const SidebarHeader: React.FC<SidebarHeaderProps> = ({ sidebarExpanded, children }) => {
-    debugger;
-
     return (
         <StyledHeader>
             <StyledHeaderContent $sidebarExpanded={sidebarExpanded}>
                 <img src={ChaliceIcon} alt="Logo" />
-                <span>Неупиваемая Чаша</span>
+                <div className="title">
+                    <span>Неупиваемая Чаша</span>
+                </div>
             </StyledHeaderContent>
             {children}
         </StyledHeader>

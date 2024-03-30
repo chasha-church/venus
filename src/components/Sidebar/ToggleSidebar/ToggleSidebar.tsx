@@ -27,7 +27,7 @@ export const ToggleSidebar: React.FC<ToggleSidebarProps> = ({ sidebarExpanded, s
     return (
         <StyledBtn onClick={setExpanded}>
             <SvgLoader 
-                width={"35px"} 
+                width={"30px"} 
                 path={SidebarShowIcon} 
                 style={{ 
                     transition: "all .3s ease", 

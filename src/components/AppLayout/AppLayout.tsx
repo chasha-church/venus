@@ -12,5 +12,4 @@ export const AppLayout: React.FC<ComponentProps<'div'>> = ({ children }) => {
         {children}
     </StyledLayout>
   )
-
 }
