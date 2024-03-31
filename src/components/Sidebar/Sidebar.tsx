@@ -47,7 +47,7 @@ type SidebarProps = {};
 
 /* 
     ---
-    1 + 1 + 1 + hours of ticket work
+    1 + 1 + 1 + 1 + 1 + 1 hours of ticket work
     --- 
 */
 

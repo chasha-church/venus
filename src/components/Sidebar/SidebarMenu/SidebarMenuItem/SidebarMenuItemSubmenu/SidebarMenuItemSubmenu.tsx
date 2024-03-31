@@ -1,18 +1,14 @@
 import React from 'react'
 
-import { SubmenuExpandedType, SubmenuType } from '../../../../../redux/features/sidebarSlice';
-
 type MenuItemSubmenuProps = {
-    // id: number;
-    // submenu: SubmenuType;
-    // submenuExpanded: SubmenuExpandedType;
-    // expanded: boolean;
+    children: React.ReactNode;
 }
 
-export const SidebarMenuItemSubmenu: React.FC<MenuItemSubmenuProps> = () => {
+export const SidebarMenuItemSubmenu: React.FC<MenuItemSubmenuProps> = ({ children }) => {
 
     return (
-        <>1
+        <>
+            {children}
         </>
     );
 }

@@ -1,31 +1,47 @@
 import React from 'react'
 import { useAppDispatch } from '../../../../../redux/hooks/hooks';
-import { SubmenuExpandedType, setSubmenuExpanded } from '../../../../../redux/features/sidebarSlice';
+import { SubmenuExpandedType, SubmenuType, setSubmenuExpanded } from '../../../../../redux/features/sidebarSlice';
 
 import SubmenuToggleIcon from '../../../../../../src/assets/images/SubmenuToggleIcon.svg';
+import styled from 'styled-components';
+
+const StyledButton = styled.button<{ $sidebarExpanded: boolean; }>`
+    margin-left: 1em;
+    display: ${props => props.$sidebarExpanded ? "block" : "none"};
+`;
+
+const StyledIcon = styled.img<{ $submenuExpanded: SubmenuExpandedType; }>`
+    width: 1.25em;
+    transition: all 300ms;
+    transform: ${props => props.$submenuExpanded ? "rotate(180deg)" : "rotate(0deg)"};
+`
 
 type SubmenuToggleButtonProps = {
     id: number;
-    expanded: boolean;
+    sidebarExpanded: boolean;
+    submenu: SubmenuType;
     submenuExpanded: SubmenuExpandedType;
 }
 
-export const SubmenuToggleButton: React.FC<SubmenuToggleButtonProps> = ({ id, expanded, submenuExpanded }) => {
+export const SubmenuToggleButton: React.FC<SubmenuToggleButtonProps> = ({ id, sidebarExpanded, submenu, submenuExpanded }) => {
     const dispatch = useAppDispatch();
     const openSubmenu = () => {
         dispatch(setSubmenuExpanded(id))
     }
 
+    /* Don't show if there is no submenu */
+    if (!submenu) return;
+
     return (
-        <button className={`absolute top-4 right-0 p-1 bg-transparent ${expanded ? "block" : "hidden"}`} onClick={openSubmenu}>
-            <img
+        <StyledButton
+            $sidebarExpanded={sidebarExpanded}
+            onClick={openSubmenu}
+        >
+            <StyledIcon
                 src={SubmenuToggleIcon}
                 alt="Submenu-toggle"
-                className={`
-                    w-5 transition-all duration-300 
-                    ${submenuExpanded ? "rotate-180" : "rotate-0"}
-                `}
+                $submenuExpanded={submenuExpanded}
             />
-        </button>
+        </StyledButton>
     );
 }   

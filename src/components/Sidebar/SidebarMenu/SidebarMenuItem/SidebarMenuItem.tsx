@@ -3,31 +3,38 @@ import React from 'react'
 import { MenuItemType } from '../../../../redux/features/sidebarSlice';
 import styled from 'styled-components';
 import { SidebarMenuItemSubmenu } from './SidebarMenuItemSubmenu/SidebarMenuItemSubmenu';
+import { SubmenuToggleButton } from '../../MenuItems/MenuItem/SubmenuToggleButton/SubmenuToggleButton';
+import { SubmenuItem } from '../../MenuItems/MenuItem/MenuItemSubmenu/SubmenuItem/SubmenuItem';
 
 const StyledMenuItem = styled.li<{ $sidebarExpanded: boolean }>`
-    /* padding-left: 0.25em; */
-
+    margin: 0.75em 0;
     
     display: grid;
-    gap: ${props => props.$sidebarExpanded ? "1em 1em" : "1em 0em"};
+    gap: ${props => props.$sidebarExpanded ? "0.5em 1em" : "0.5em 0em"};
     grid-template-columns: auto 1fr;
     grid-template-rows: auto 1fr;
     grid-template-areas: "image name" ". submenu";
     align-items: center;
+
+    transition: gap 500ms;
 `;
+
 
 const StyledIcon = styled.div`
     grid-area: "image";
 
     img {
         width: 2.5em;
-        max-width: 100%;
-        margin: 0 auto;
     }
 `
 
-const StyledName = styled.div<{ $sidebarExpanded: boolean;}>`
+const StyledRight = styled.div`
     grid-area: "name";
+    display: flex;
+    justify-content: space-between;
+`
+
+const StyledName = styled.div<{ $sidebarExpanded: boolean; }>`
 
     display: grid;
     grid-template-columns: ${props => props.$sidebarExpanded ? "1fr" : "0fr"};
@@ -41,7 +48,7 @@ const StyledName = styled.div<{ $sidebarExpanded: boolean;}>`
     }
 `
 
-const StyledSubmenu = styled.ul`
+const StyledSubmenu = styled.div`
     grid-area: "submenu"; 
 `
 
@@ -62,23 +69,36 @@ export const SidebarMenuItem: React.FC<SidebarMenuItemProps> = ({ sidebarExpande
                 <img src={menuItem.icon} alt={menuItem.name} />
             </StyledIcon>
 
-            <StyledName $sidebarExpanded={sidebarExpanded} >
-                <span>{menuItem.name}</span>
-            </StyledName>
+            <StyledRight>
+                <StyledName $sidebarExpanded={sidebarExpanded} >
+                    <span>{menuItem.name}</span>
+                </StyledName>
+                <SubmenuToggleButton
+                    id={menuItem.id}
+                    submenu={menuItem.submenu}
+                    submenuExpanded={menuItem.submenuExpanded}
+                    sidebarExpanded={sidebarExpanded}
+                />
+            </StyledRight>
 
-            {/* Mock element for grid-areas to work: */} 
+            {/* Mock element for grid-areas to work: */}
             <div></div>
 
             <StyledSubmenu>
-                <SidebarMenuItemSubmenu />
+                <SidebarMenuItemSubmenu>
+                    {menuItem.submenu?.map(submenuItem =>
+                        <SubmenuItem
+                            key={submenuItem.id}
+                            id={menuItem.id}
+                            submenuExpanded={menuItem.submenuExpanded}
+                            name={submenuItem.name}
+                            sidebarExpanded={sidebarExpanded}
+                        />
+                    )}
+                </SidebarMenuItemSubmenu>
             </StyledSubmenu>
 
         </StyledMenuItem>
-        // <li className={MenuItemStyles}>
-        //     {/* <MenuItemHeader icon={icon} name={name} id={id} submenuExpanded={submenuExpanded} expanded={expanded} isActive={isActive} submenu={submenu} /> */}
-        //     {/* {submenu && <SubmenuToggleButton id={id} submenuExpanded={submenuExpanded} expanded={expanded} />} */}
-        //     {/* {submenu && <MenuItemSubmenu id={id} submenu={submenu} submenuExpanded={submenuExpanded} expanded={expanded} />} */}
-        // </li>
     );
 
 }
