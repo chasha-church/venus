@@ -1,27 +1,30 @@
 import { DefaultTheme } from 'styled-components'
 
-export const theme: DefaultTheme = {
+export const defaultTheme: DefaultTheme = {
     colors: {
-        primary: '#FAFAFA',
-        secondary: '#FFC80A',
-        tertiary: '#303030',
-        background: '#ffffff',
+        primary: '#0075BA',
+        secondary: '#80BADD',
+        tertiary: '#C0DDEE',
+        background: '#FFFFFF',
         text: '#000000',
-        primaryTextColor: '#594F43',
+        primaryTextColor: '#0085FF',
         secondaryTextColor: '#777777',
         inputPlaceholder: '#C7C7C7',
         darkGrayText: '#303030',
         darkText: '#1A1A1A',
-        black: '#000000',
-        white: '#ffffff',
-        dark: '',
-        medium: '',
-        light: '',
-        danger: '',
-        success: '#66A15A',
+        danger: '#F32013',
+        success: '#5CB85C',
     },
     fonts: {
-        anekMalayalam: 'Anek Malayalam',
+        fontFamily: 'Anek Malayalam',
+        fontSize: {
+            xs: '8px',
+            sm: '16px',
+            md: '24px',
+            lg: '32px',
+            xl: '40px',
+            xxl: '48px',
+        },
     },
     paddings: {
         container: '15px',
@@ -31,3 +34,31 @@ export const theme: DefaultTheme = {
         pageTop: '30px',
     },
 }
+
+export const darkTheme: DefaultTheme = {
+    colors: {
+        primary: '#E0EEF7',
+        text: '#FFFFFF',
+        secondary: '#C0DDEE',
+        tertiary: '#80BADD',
+        background: '#001E2F',
+        primaryTextColor: '#594F43',
+        secondaryTextColor: '#777777',
+        inputPlaceholder: '#F1F1F1',
+        darkGrayText: defaultTheme.colors.darkGrayText,
+        darkText: defaultTheme.colors.darkText,
+        danger: '#FF0000',
+        success: '#AEDCAE',
+    },
+    fonts: {
+        fontFamily: defaultTheme.fonts.fontFamily,
+        fontSize: defaultTheme.fonts.fontSize,
+    },
+    paddings: {
+        container: defaultTheme.paddings.container,
+        pageTop: defaultTheme.paddings.pageTop,
+    },
+    margins: {
+        pageTop: defaultTheme.margins.pageTop,
+    },
+};

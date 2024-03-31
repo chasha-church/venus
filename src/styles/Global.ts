@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle, css } from 'styled-components'
+import { createGlobalStyle, css } from 'styled-components'
 import fontsCss from './fonts.module.css'
 
 export const GlobalStyles = createGlobalStyle`
@@ -21,7 +21,7 @@ body {
   overflow-x: hidden;
   min-height: 100vh;
   text-rendering: optimizeSpeed;
-  font-family: ${({ theme }) => theme.fonts.anekMalayalam}, sans-serif;
+  font-family: ${({ theme }) => theme.fonts.fontFamily}, sans-serif;
   font-size: 1rem;
   color: ${({ theme }) => theme.colors.text};
   background-color: ${({ theme }) => theme.colors.background};

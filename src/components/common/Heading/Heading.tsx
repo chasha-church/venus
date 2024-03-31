@@ -14,7 +14,7 @@ const StyledHeading = styled.div`
     align-items: center;
     
     margin: 70px 0 30px 0;
-    font-size: 48px;
+    font-size: ${({ theme }) => theme.fonts.fontSize.xxl};
     text-align: center;
 `;
 

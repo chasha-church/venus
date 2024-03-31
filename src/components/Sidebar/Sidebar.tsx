@@ -7,9 +7,14 @@ import { SidebarHeader } from './SidebarHeader/SidebarHeader';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks/hooks';
 import { selectSidebarExpanded, setSidebarExpanded } from '../../redux/features/sidebarSlice';
 import { ToggleSidebar } from './ToggleSidebar/ToggleSidebar';
+import styled from 'styled-components';
 
 
 type SidebarProps = {};
+
+const StyledAside = styled.aside`
+    background: ${({ theme }) => theme.colors.background};
+`
 
 export const Sidebar: React.FC<SidebarProps> = ({ }) => {
 
@@ -20,7 +25,9 @@ export const Sidebar: React.FC<SidebarProps> = ({ }) => {
     }
 
     return (
-        <aside className={`fixed top-0 l-0 z-10 flex flex-col justify-between h-screen bg-white border-r`}>
+        <StyledAside
+            className={`fixed top-0 l-0 z-10 flex flex-col justify-between h-screen border-r`}
+        >
             <ToggleSidebar expanded={sidebarExpanded} setExpanded={setExpanded} />
             <nav className={`
                 overflow-y-scroll overflow-x-hidden
@@ -30,6 +37,6 @@ export const Sidebar: React.FC<SidebarProps> = ({ }) => {
                 <MenuItems expanded={sidebarExpanded} />
             </nav>
             <SidebarFooter expanded={sidebarExpanded} />
-        </aside>
+        </StyledAside>
     )
 }

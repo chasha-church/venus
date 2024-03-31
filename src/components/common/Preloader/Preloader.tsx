@@ -37,7 +37,7 @@ export const PreloaderImage: React.FunctionComponent<React.ComponentProps<'img'>
 }
 
 const StyledPreloaderText = styled.p`
-    font-size: 20px;
+    font-size: ${props => props.theme.fonts.fontSize.md};
 `
 
 export const PreloaderText: React.FunctionComponent<React.ComponentProps<'p'>> = ({ children, ...props }) => {
