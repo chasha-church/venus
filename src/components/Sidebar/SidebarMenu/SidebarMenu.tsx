@@ -9,7 +9,6 @@ const StyledMenu = styled.nav`
 `;
 
 const StyledMenuList = styled.ul`
-    margin-top: 2em;
 `
 
 type SidebarMenuProps = {

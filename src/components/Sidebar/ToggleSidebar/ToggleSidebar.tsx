@@ -11,9 +11,9 @@ import styled from 'styled-components'
 
 const StyledBtn = styled.button`
     position: absolute;
-    top: 0;
-    right: 0;
-    transform: translateX(50%) translateY(50%);
+    top: 50%;
+    right: 0%;
+    transform: translateX(50%) translateY(-50%);
     cursor: pointer;
 `
 

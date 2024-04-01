@@ -4,7 +4,8 @@ import styled from 'styled-components'
 
 type ContentProps = {}
 
-const StyledContent = styled.div`gi
+const StyledContent = styled.div`
+    /* margin-left: 5%; */
 `
 
 export const Content: React.FC<ContentProps> = () => {

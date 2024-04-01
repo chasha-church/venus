@@ -19,7 +19,6 @@ const StyledSidebar = styled.aside`
     height: 100vh;
     height: 100svh;
 
-    /* padding: 1em; */
 
     background-color: lightgreen;
     background-color: #fff;
@@ -30,15 +29,7 @@ const StyledSidebar = styled.aside`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-`
-const StyledSidebarLayout = styled.div`
-    padding: 1em;
 
-    /* display: grid; */
-    /* grid-template-areas: "logo title" "image name"; */
-
-    /* grid-template-columns: auto 1fr; */
-    /* grid-template-rows: auto 1fr; */
 `
 
 type SidebarProps = {};
@@ -62,13 +53,10 @@ export const Sidebar: React.FC<SidebarProps> = ({ }) => {
     return (
         <StyledSidebar>
             {/* <SidebarContext.Provider value={{ sidebarExpanded, setExpanded }}> */}
-            <ToggleSidebar sidebarExpanded={sidebarExpanded} setExpanded={setExpanded} />
-
-            <StyledSidebarLayout>
-                <SidebarHeader sidebarExpanded={sidebarExpanded} />
+            <div>
+                <SidebarHeader sidebarExpanded={sidebarExpanded} setExpanded={setExpanded} />
                 <SidebarMenu sidebarExpanded={sidebarExpanded} />
-            </StyledSidebarLayout>
-
+            </div>
             <SidebarFooter sidebarExpanded={sidebarExpanded} />
             {/* </SidebarContext.Provider> */}
         </StyledSidebar >

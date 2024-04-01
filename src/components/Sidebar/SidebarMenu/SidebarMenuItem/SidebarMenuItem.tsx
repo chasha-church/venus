@@ -6,32 +6,35 @@ import { SidebarMenuItemSubmenu } from './SidebarMenuItemSubmenu/SidebarMenuItem
 import { SubmenuToggleButton } from '../../MenuItems/MenuItem/SubmenuToggleButton/SubmenuToggleButton';
 import { SubmenuItem } from '../../MenuItems/MenuItem/MenuItemSubmenu/SubmenuItem/SubmenuItem';
 
-const StyledMenuItem = styled.li<{ $sidebarExpanded: boolean }>`
-    margin: 0.75em 0;
-    
-    display: grid;
-    gap: ${props => props.$sidebarExpanded ? "0.5em 1em" : "0.5em 0em"};
-    grid-template-columns: auto 1fr;
-    grid-template-rows: auto 1fr;
-    grid-template-areas: "image name" ". submenu";
-    align-items: center;
+const StyledMenuItem = styled.li`
+    padding: 1em;
+    background-color: #fff;
+    cursor: pointer;
 
-    transition: gap 500ms;
+    &:hover {
+        background-color: #C4ECFF;
+    }
 `;
 
+const StyledHeader = styled.div`
+    display: flex;
+    align-items: center;
+`
 
 const StyledIcon = styled.div`
-    grid-area: "image";
+    width: 3em;
+    text-align: center;
 
     img {
         width: 2.5em;
+        display: inline-block;
     }
 `
 
-const StyledRight = styled.div`
-    grid-area: "name";
+const StyledRight = styled.div<{ $sidebarExpanded: boolean }>`
     display: flex;
-    justify-content: space-between;
+    margin-left: ${props => props.$sidebarExpanded ? "0.5em" : "0"};
+    transition: margin 500ms;
 `
 
 const StyledName = styled.div<{ $sidebarExpanded: boolean; }>`
@@ -49,7 +52,10 @@ const StyledName = styled.div<{ $sidebarExpanded: boolean; }>`
 `
 
 const StyledSubmenu = styled.div`
-    grid-area: "submenu"; 
+    display: flex;
+    div {
+        width: 3em;
+    }
 `
 
 type SidebarMenuItemProps = {
@@ -58,33 +64,31 @@ type SidebarMenuItemProps = {
 } & MenuItemType;
 
 export const SidebarMenuItem: React.FC<SidebarMenuItemProps> = ({ sidebarExpanded, isActive, ...menuItem }) => {
-    const MenuItemStyles = `
-        relative hover:bg-sidebar-blue-transparrent hover:text-black text-gray-600
-        ${isActive && "bg-sidebar-blue-transparrent text-black"}
-    `;
+
     return (
-        <StyledMenuItem $sidebarExpanded={sidebarExpanded}>
+        <StyledMenuItem>
 
-            <StyledIcon>
-                <img src={menuItem.icon} alt={menuItem.name} />
-            </StyledIcon>
+            <StyledHeader>
+                <StyledIcon>
+                    <img src={menuItem.icon} alt={menuItem.name} />
+                </StyledIcon>
 
-            <StyledRight>
-                <StyledName $sidebarExpanded={sidebarExpanded} >
-                    <span>{menuItem.name}</span>
-                </StyledName>
-                <SubmenuToggleButton
-                    id={menuItem.id}
-                    submenu={menuItem.submenu}
-                    submenuExpanded={menuItem.submenuExpanded}
-                    sidebarExpanded={sidebarExpanded}
-                />
-            </StyledRight>
-
-            {/* Mock element for grid-areas to work: */}
-            <div></div>
+                <StyledRight $sidebarExpanded={sidebarExpanded}>
+                    <StyledName $sidebarExpanded={sidebarExpanded} >
+                        <span>{menuItem.name}</span>
+                    </StyledName>
+                    <SubmenuToggleButton
+                        id={menuItem.id}
+                        submenu={menuItem.submenu}
+                        submenuExpanded={menuItem.submenuExpanded}
+                        sidebarExpanded={sidebarExpanded}
+                    />
+                </StyledRight>
+            </StyledHeader>
 
             <StyledSubmenu>
+                {/* Mock element for padding: */}
+                <div></div>
                 <SidebarMenuItemSubmenu>
                     {menuItem.submenu?.map(submenuItem =>
                         <SubmenuItem

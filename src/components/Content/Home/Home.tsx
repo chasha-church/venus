@@ -9,7 +9,7 @@ type HomeProps = {}
 export const Home: React.FC<HomeProps> = () => {
     return (
         <>
-            {/* <PreviewBlock/> */}
+            <PreviewBlock/>
             <NewsBlock/>
             <ScheduleBlock />
         </>
