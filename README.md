@@ -20,4 +20,4 @@ Front-end repository. A single page React application(SPA).
 ## Inspiration
 
 - [Figma prototype](https://www.figma.com/file/oXC0tuASgnkAqcGYPL4JbO/Chasha-prototype?type=design&node-id=0-1&mode=design)
-- [Website](https://musical-meringue-ae05e3.netlify.app/)
+- [Website](https://chasha.netlify.app/)
