@@ -7,11 +7,12 @@ const StyledSubmenuItem = styled.li<{ $submenuExpanded: SubmenuExpandedType; $si
     cursor: pointer;
     text-wrap: nowrap;
 
-    padding: ${props => (props.$submenuExpanded && props.$sidebarExpanded) ? "1.5em 0 0" : "0em 0"};
+    padding: ${props => (props.$submenuExpanded && props.$sidebarExpanded) ? "0.75em 0" : "0"};
 
     display: grid;
     grid-template-rows: ${props => (props.$submenuExpanded && props.$sidebarExpanded) ? "1fr" : "0fr"};
     grid-template-columns: ${props => props.$sidebarExpanded ? "1fr" : "0fr"};
+    overflow: hidden;
 
     transition: all 500ms;
 

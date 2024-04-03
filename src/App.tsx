@@ -6,18 +6,13 @@ import { theme } from "./styles/Theme";
 
 import { Sidebar } from './components/Sidebar/Sidebar';
 import { Content } from "./components/Content/Content";
-import { AppLayout } from './components/AppLayout/AppLayout';
 
 const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-
-      <AppLayout>
-        <Sidebar />
-        <Content />
-      </AppLayout>
-      
+      <Sidebar />
+      <Content />
     </ThemeProvider>
   )
 

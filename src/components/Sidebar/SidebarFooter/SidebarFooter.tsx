@@ -3,6 +3,7 @@ import React, { useContext } from 'react'
 import styled from 'styled-components';
 
 const StyledFooter = styled.div<{ $sidebarExpanded: boolean }>`
+    margin-top: auto;
     border-top: ${props => props.$sidebarExpanded ? "1px solid #e5e7eb" : "none"};
     
     /* These properties make the width of footer text animate while collapsing! 
@@ -24,15 +25,14 @@ const StyledFooter = styled.div<{ $sidebarExpanded: boolean }>`
     }
 `;
 
-interface SidebarFooterProps extends React.ComponentProps<"div"> {
+type SidebarFooterProps = {
     sidebarExpanded: boolean,
 };
 
-export const SidebarFooter: React.FC<SidebarFooterProps> = ({ sidebarExpanded, children }) => {
+export const SidebarFooter: React.FC<SidebarFooterProps> = ({ sidebarExpanded }) => {
     return (
         <StyledFooter $sidebarExpanded={sidebarExpanded}>
             <span>Неупиваемая Чаша, 2024</span>
-            {children}
         </StyledFooter>
     );
 };

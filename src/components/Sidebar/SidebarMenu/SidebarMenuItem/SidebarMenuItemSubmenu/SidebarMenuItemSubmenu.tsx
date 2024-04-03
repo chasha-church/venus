@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components';
 
 const StyledSubmenu = styled.ul`
-    margin-left: 0.5em;
 `
 
 type MenuItemSubmenuProps = {
