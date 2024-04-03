@@ -5,7 +5,6 @@ import { SidebarHeader } from './SidebarHeader/SidebarHeader';
 
 import { useAppDispatch, useAppSelector } from '../../redux/hooks/hooks';
 import { selectSidebarExpanded, setSidebarExpanded } from '../../redux/features/sidebarSlice';
-import { ToggleSidebar } from './ToggleSidebar/ToggleSidebar';
 import styled from 'styled-components';
 import { SidebarMenu } from './SidebarMenu/SidebarMenu';
 
@@ -28,8 +27,6 @@ const StyledSidebar = styled.aside`
 
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-
 `
 
 type SidebarProps = {};
@@ -38,7 +35,7 @@ type SidebarProps = {};
 
 /* 
     ---
-    1 + 1 + 1 + 1 + 1 + 1 hours of ticket work
+    1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 2 hours of ticket work
     --- 
 */
 
@@ -53,10 +50,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ }) => {
     return (
         <StyledSidebar>
             {/* <SidebarContext.Provider value={{ sidebarExpanded, setExpanded }}> */}
-            <div>
-                <SidebarHeader sidebarExpanded={sidebarExpanded} setExpanded={setExpanded} />
-                <SidebarMenu sidebarExpanded={sidebarExpanded} />
-            </div>
+            <SidebarHeader sidebarExpanded={sidebarExpanded} setExpanded={setExpanded} />  
+            <SidebarMenu sidebarExpanded={sidebarExpanded} />
             <SidebarFooter sidebarExpanded={sidebarExpanded} />
             {/* </SidebarContext.Provider> */}
         </StyledSidebar >

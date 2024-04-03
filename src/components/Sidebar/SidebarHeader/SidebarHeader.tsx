@@ -1,27 +1,15 @@
 import React from 'react'
 import styled from 'styled-components';
 import { ToggleSidebar } from '../ToggleSidebar/ToggleSidebar';
+import { StyledSidebarGrid } from '../StyledSidebarGrid';
 
-const StyledHeader = styled.div`
-`;
 
-const StyledHeaderContent = styled.div<{ $sidebarExpanded: boolean }>`
+const StyledHeaderContent = styled.div`
     position: relative;
-    
-    display: flex;
-    align-items: center;
-
-    padding: 1em;
 `
 
-const StyledIcon = styled.div`
+const StyledIcon = styled.img`
     width: 3em;
-    text-align: center;
-
-    img {
-        cursor: pointer;
-        display: inline-block;
-    }
 `
 
 const StyledTitle = styled.div<{ $sidebarExpanded: boolean }>`
@@ -30,6 +18,7 @@ const StyledTitle = styled.div<{ $sidebarExpanded: boolean }>`
     display: grid;
     grid-template-columns: ${props => props.$sidebarExpanded ? "1fr" : "0fr"};
     transition: grid-template-columns 500ms;
+    overflow: hidden;
 
     span {
         cursor: pointer;
@@ -39,9 +28,7 @@ const StyledTitle = styled.div<{ $sidebarExpanded: boolean }>`
         text-wrap: nowrap;
 
         transition: margin 500ms;
-
-        margin-left: ${props => props.$sidebarExpanded ? "0.5em" : "0"};
-        margin-right: ${props => props.$sidebarExpanded ? "1em" : "0"};
+        margin-right: ${props => props.$sidebarExpanded ? "0.5em" : "0"};
     }
 `
 
@@ -56,16 +43,14 @@ interface SidebarHeaderProps extends React.ComponentProps<"div"> {
 
 export const SidebarHeader: React.FC<SidebarHeaderProps> = ({ sidebarExpanded, setExpanded }) => {
     return (
-        <StyledHeader>
-            <StyledHeaderContent $sidebarExpanded={sidebarExpanded}>
-                <StyledIcon>
-                    <img src={ChaliceIcon} alt="Logo" />
-                </StyledIcon>
+        <StyledHeaderContent>
+            <StyledSidebarGrid>
+                <StyledIcon src={ChaliceIcon} alt="Logo" />
                 <StyledTitle $sidebarExpanded={sidebarExpanded}>
                     <span>Неупиваемая Чаша</span>
                 </StyledTitle>
-                <ToggleSidebar sidebarExpanded={sidebarExpanded} setExpanded={setExpanded} />
-            </StyledHeaderContent>
-        </StyledHeader>
+            </StyledSidebarGrid>
+            <ToggleSidebar sidebarExpanded={sidebarExpanded} setExpanded={setExpanded} />
+        </StyledHeaderContent>
     );
 };

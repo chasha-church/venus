@@ -6,7 +6,11 @@ import SubmenuToggleIcon from '../../../../../../src/assets/images/SubmenuToggle
 import styled from 'styled-components';
 
 const StyledButton = styled.button<{ $sidebarExpanded: boolean; }>`
-    margin-left: 1em;
+    position: absolute;
+    right: 0.5em;
+    top: 50%;
+    transform: translateY(-50%);
+    
     display: ${props => props.$sidebarExpanded ? "block" : "none"};
 `;
 
