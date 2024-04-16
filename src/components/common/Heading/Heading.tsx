@@ -1,10 +1,8 @@
 import React from 'react'
 import styled from 'styled-components';
-// @ts-ignore
-import { SvgLoader, SvgProxy } from 'react-svgmt';
 
-import HeadingShapeLeft from '../../../assets/images/HeadingShapeLeft.svg';
-import HeadingShapeRight from '../../../assets/images/HeadingShapeRight.svg';
+import { HeadingShapeLeftIcon } from '../Icons/HeadingShapeLeftIcon';
+import { HeadingShapeRightIcon } from '../Icons/HeadingShapeRightIcon';
 
 const StyledHeading = styled.div`
     display: flex;
@@ -24,22 +22,17 @@ interface HeadingProps extends React.ComponentProps<'div'> {
 
 export const Heading: React.FunctionComponent<HeadingProps> = ({ value = "", children, ...props }) => {
 
-    const shapeColor = "#D9D9D9";
     return (
         <StyledHeading {...props}>
             {
                 children
                 || <>
                     <HeadingIcon>
-                        <SvgLoader path={HeadingShapeLeft}>
-                            <SvgProxy selector="rect" fill={shapeColor} />
-                        </SvgLoader>
+                        <HeadingShapeLeftIcon />
                     </HeadingIcon>
                     <HeadingText>{value}</HeadingText>
                     <HeadingIcon>
-                        <SvgLoader path={HeadingShapeRight}>
-                            <SvgProxy selector="rect" fill={shapeColor} />
-                        </SvgLoader>
+                        <HeadingShapeRightIcon />
                     </HeadingIcon>
                 </>
             }
