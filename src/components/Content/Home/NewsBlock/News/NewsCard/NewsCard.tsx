@@ -46,6 +46,7 @@ const CardTitle = styled.div`
 
 const DetailsButton = styled(Button)`
     margin: 0 0 15px 0;
+    background-color: ${({ theme }) => theme.colors.background};
 `;
 
 export const NewsCard: React.FC<NewsBlockProps> = ({ newsData }) => {

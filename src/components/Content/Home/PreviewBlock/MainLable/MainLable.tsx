@@ -20,14 +20,14 @@ const MainTextWrapper = styled.div`
     flex: 4;
     padding: 25px 0 30px 15px;
 
-    font-size: 2em;
+    font-size: ${({ theme }) => theme.fonts.fontSize.lg};
     font-weight: 600;
     line-height: 1.4;
     color: black;
 
-    border: 2px solid #0075BA;
+    border: 2px solid ${({ theme }) => theme.colors.primary};
     border-right: none;
-    background: white;
+    background: ${({ theme }) => theme.colors.background};
 `;
 
 const DecorationEdge = styled.div`
@@ -41,8 +41,8 @@ const DecorationEdge = styled.div`
     z-index: -1;
     transform: skew(-30deg);
 
-    border: 2px solid #0075BA;
-    background: white;
+    border: 2px solid ${({ theme }) => theme.colors.primary};
+    background: ${({ theme }) => theme.colors.background};
 `;
 
 const ChashaMerge = styled.img`
