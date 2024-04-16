@@ -18,20 +18,20 @@ export const defaultTheme: DefaultTheme = {
     fonts: {
         fontFamily: 'Anek Malayalam',
         fontSize: {
-            xs: '8px',
-            sm: '16px',
-            md: '24px',
-            lg: '32px',
-            xl: '40px',
-            xxl: '48px',
+            xs: '0.5rem',
+            sm: '1rem',
+            md: '1.5rem',
+            lg: '2rem',
+            xl: '2.5rem',
+            xxl: '3rem',
         },
     },
     paddings: {
-        container: '15px',
-        pageTop: '30px',
+        container: '1rem',
+        pageTop: '2rem',
     },
     margins: {
-        pageTop: '30px',
+        pageTop: '2rem',
     },
 }
 

@@ -22,10 +22,10 @@ body {
   min-height: 100vh;
   text-rendering: optimizeSpeed;
   font-family: ${({ theme }) => theme.fonts.fontFamily}, sans-serif;
-  font-size: 1rem;
+  font-size: ${({ theme }) => theme.fonts.fontSize.sm};
   color: ${({ theme }) => theme.colors.text};
   background-color: ${({ theme }) => theme.colors.background};
-  line-height: 1;
+  line-height: ${({ theme }) => theme.fonts.fontSize.sm};
 }
 h1,
 h2,
