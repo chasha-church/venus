@@ -20,7 +20,7 @@ export const ScheduleBlock: FunctionComponent<ScheduleBlockProps> = ({ }) => {
                 id="schedule"
             />
             <StyledParagraph>Храм открыт ежедневно с 8:00 до 21:00</StyledParagraph>
-            <Schedule />
+            <Schedule/>
         </section>
     );
 }

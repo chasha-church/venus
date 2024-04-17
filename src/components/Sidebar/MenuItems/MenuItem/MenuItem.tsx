@@ -6,8 +6,9 @@ import { SubmenuToggleButton } from './SubmenuToggleButton/SubmenuToggleButton';
 
 type MenuItemProps = {
     id: number;
-    icon: ReactNode;
     name: string;
+    icon: ReactNode;
+    url: string;
     expanded: boolean;
     submenu: SubmenuType | null;
     submenuExpanded: SubmenuExpandedType;
@@ -15,7 +16,7 @@ type MenuItemProps = {
 }
 
 export const MenuItem: React.FC<MenuItemProps> = (
-    { id, icon, name, expanded, submenu, submenuExpanded, isActive }
+    { id, icon, name, url, expanded, submenu, submenuExpanded, isActive }
 ) => {
 
     const MenuItemStyles = `
@@ -29,6 +30,7 @@ export const MenuItem: React.FC<MenuItemProps> = (
                 icon={icon}
                 name={name}
                 id={id}
+                url={url}
                 submenuExpanded={submenuExpanded}
                 expanded={expanded}
                 isActive={isActive}

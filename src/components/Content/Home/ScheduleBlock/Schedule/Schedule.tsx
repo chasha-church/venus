@@ -11,7 +11,7 @@ import {
 import { useAppDispatch, useAppSelector } from "../../../../../redux/hooks/hooks";
 import { Preloader } from "../../../../common/Preloader/Preloader";
 import { useAPIFetch } from "../../../../../redux/hooks/useAPIFetch";
-import { APIError } from "../../../../common/APIError/APIError";
+import { APIError } from "../../../../service/APIError/APIError";
 
 const StyledContainer = styled.div`
     margin-top: 70px;

@@ -19,6 +19,7 @@ export const MenuItems: React.FC<MenuItemsProps> = ({ expanded }) => {
             id={menuItem.id}
             name={menuItem.name}
             icon={IconMatcher.getIcon(menuItem.id)}
+            url={menuItem.url}
             submenu={menuItem.submenu}
             submenuExpanded={menuItem.submenuExpanded}
             expanded={expanded}

@@ -25,7 +25,7 @@ export const Preloader: React.FunctionComponent<React.ComponentProps<'div'>> = (
 
 const StyledPreloaderImage = styled.img``
 
-/* When the Compoennts that calls Preloader does not pass a src attribute */
+/* When the Components that calls Preloader does not pass a src attribute */
 StyledPreloaderImage.defaultProps = {
     src: ImagePreloader,
 };

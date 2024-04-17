@@ -1,15 +1,11 @@
 import React from 'react'
-import { Button, ConfigProvider } from 'antd';
 
 import styled from "styled-components";
-import { NewsItemType } from '../../../../../../redux/features/newsSlice';
-
+import { NewsListItemType } from '../../../../../../redux/features/newsSlice';
 import MockImage from "../../../../../../assets/images/Church.png";
 import { PRIMARY_COLOR } from '../../../../../../constants/colors';
-
-type NewsBlockProps = {
-    newsData: NewsItemType;
-}
+import {Link} from "react-router-dom";
+import {Button, ConfigProvider} from 'antd';
 
 const CardImage = styled.img`
     object-fit: cover;
@@ -48,6 +44,10 @@ const DetailsButton = styled(Button)`
     margin: 0 0 15px 0;
 `;
 
+type NewsBlockProps = {
+    newsData: NewsListItemType;
+}
+
 export const NewsCard: React.FC<NewsBlockProps> = ({ newsData }) => {
     const parseDate = (date: string): string => date.slice(0, 10).split("-").reverse().join(".");
 
@@ -63,7 +63,9 @@ export const NewsCard: React.FC<NewsBlockProps> = ({ newsData }) => {
                     },
                 }}
             >
-                <DetailsButton>Подробнее</DetailsButton>
+                <Link to={`/news/${newsData.news_content_id}`}>
+                    <DetailsButton>Подробнее</DetailsButton>
+                </Link>
             </ConfigProvider>
         </InnerCardContainer>
     );

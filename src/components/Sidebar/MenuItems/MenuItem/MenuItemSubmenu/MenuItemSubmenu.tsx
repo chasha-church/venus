@@ -15,6 +15,7 @@ export const MenuItemSubmenu: React.FC<MenuItemSubmenuProps> = ({ id, submenu, s
             id={id}
             key={submenuItem.id}
             name={submenuItem.name}
+            url={submenuItem.url}
             submenuExpanded={submenuExpanded}
             expanded={expanded}
         />

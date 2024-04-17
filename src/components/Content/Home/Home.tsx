@@ -11,7 +11,7 @@ export const Home: React.FC<HomeProps> = () => {
         <>
             <PreviewBlock/>
             <NewsBlock/>
-            <ScheduleBlock />
+            <ScheduleBlock/>
         </>
     )
 }

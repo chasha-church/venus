@@ -1,17 +1,17 @@
 import React from 'react'
-import { Home } from './Home/Home'
 import styled from 'styled-components'
+import {Outlet} from "react-router-dom";
 
 type ContentProps = {}
 
 const StyledContent = styled.div`
-    padding-left: 85px;
+    padding-left: 95px;
 `
 
 export const Content: React.FC<ContentProps> = () => {
     return (
         <StyledContent>
-            <Home />
+            <Outlet />
         </StyledContent>
     )
 }

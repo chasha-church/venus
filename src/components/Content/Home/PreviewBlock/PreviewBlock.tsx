@@ -1,13 +1,13 @@
 import React from 'react'
 import { Button, Carousel, ConfigProvider } from 'antd';
 
-const Church = './images/Church.png';
-const ChurchInside = "./images/Church_inside.jpg";
-const Church_2 = "./images/Church_2.jpg";
-
 import styled from "styled-components";
 import { MainLable } from './MainLable/MainLable';
 import { PRIMARY_COLOR } from '../../../../constants/colors';
+
+const Church = './images/Church.png';
+const ChurchInside = "./images/Church_inside.jpg";
+const Church_2 = "./images/Church_2.jpg";
 
 type PreviewBlockProps = {}
 

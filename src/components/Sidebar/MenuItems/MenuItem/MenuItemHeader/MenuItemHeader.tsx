@@ -7,6 +7,7 @@ import {
     SubmenuType,
     setActiveItem
 } from '../../../../../redux/features/sidebarSlice';
+import {HashLink} from 'react-router-hash-link';
 
 type IconProps = {
     width: number,
@@ -16,8 +17,9 @@ type IconProps = {
 
 type MenuItemHeaderProps = {
     id: number;
-    icon: ReactNode;
     name: string;
+    icon: ReactNode;
+    url: string;
     expanded: boolean;
     submenuExpanded: SubmenuExpandedType;
     submenu: SubmenuType;
@@ -25,8 +27,9 @@ type MenuItemHeaderProps = {
 }
 
 export const MenuItemHeader: React.FC<MenuItemHeaderProps> = (
-    { id, icon, name, expanded, submenuExpanded, submenu, isActive = false }
+    { id, name, icon, url, expanded, submenuExpanded, submenu, isActive = false }
 ) => {
+
     const MenuItemHeaderStyles = `
         relative py-3 font-medium cursor-pointer transition-colors group
     `;
@@ -37,8 +40,9 @@ export const MenuItemHeader: React.FC<MenuItemHeaderProps> = (
     }
 
     return (
-        <div className={MenuItemHeaderStyles} onClick={setActiveMenuItem}>
-            <ActiveItemStripe isActive={isActive} />
+        <HashLink to={url}>
+            <div className={MenuItemHeaderStyles} onClick={setActiveMenuItem}>
+                <ActiveItemStripe isActive={isActive}/>
                 <div className={`flex ${!expanded && "justify-center"} items-center pl-4`}>
                     {icon}
                     <span className={`
@@ -46,8 +50,9 @@ export const MenuItemHeader: React.FC<MenuItemHeaderProps> = (
                         ${expanded ? "h-full w-44" : "h-0 w-0"}
                     `}>{name}</span>
                 </div>
-            {/* TODO: Fix the caption so it is seen */}
-            <HoverCaption caption={name} expanded={expanded} />
-        </div>
+                {/* TODO: Fix the caption so it is seen */}
+                <HoverCaption caption={name} expanded={expanded}/>
+            </div>
+        </HashLink>
     );
 }

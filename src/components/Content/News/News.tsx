@@ -1,15 +1,26 @@
 import React from 'react'
+import {NewsList} from "./NewsList/NewsList";
+import {NewsItemDetails} from "./NewsDetails/NewsDetails";
+import styled from "styled-components";
 
-import styles from './News.module.css'
+type NewsProps = {}
 
-type NewsProps = {
-    someText: string;
-}
+const NewsWrapper = styled.div`
+    display: flex;
+    flex-direction: row;   
+    flex-wrap: wrap-reverse;
+    justify-content: space-between;
+    
+    @media (max-width: 600px) {
+        font-size: 10px;
+    }
+`
 
-export const News: React.FC<NewsProps> = ({ someText }) => {
+export const News: React.FC<NewsProps> = ({}) => {
     return (
-        <div className={styles.wrapper}>
-            <h1 className={styles.heading}>{someText}</h1>
-        </div>
-    )
+        <NewsWrapper>
+            <NewsList/>
+            <NewsItemDetails/>
+        </NewsWrapper>
+    );
 }
