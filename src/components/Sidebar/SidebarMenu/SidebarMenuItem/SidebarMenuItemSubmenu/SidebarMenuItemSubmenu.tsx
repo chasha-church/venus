@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components';
-import { MenuItemType, SubmenuExpandedType, SubmenuType } from '../../../../../redux/features/sidebarSlice';
+import { SubmenuExpandedType, SubmenuType } from '../../../../../redux/features/sidebarSlice';
 import { SubmenuItem } from '../../../MenuItems/MenuItem/MenuItemSubmenu/SubmenuItem/SubmenuItem';
 import { StyledSidebarGrid } from '../../../StyledSidebarGrid';
 import { SidebarContext } from '../../../Sidebar';

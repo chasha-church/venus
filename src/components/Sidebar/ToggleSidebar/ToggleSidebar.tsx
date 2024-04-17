@@ -3,9 +3,6 @@ import React, { useContext } from 'react'
 // @ts-ignore
 import { SvgLoader } from 'react-svgmt';
 
-/* TODO: remove unused icon */
-import SidebarHideIcon from '../../../assets/images/SidebarHideIcon.svg'
-
 import SidebarShowIcon from '../../../assets/images/SidebarShowIcon.svg'
 import styled from 'styled-components'
 import { SidebarContext } from '../Sidebar';

@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components';
+import { SidebarContext } from '../../../Sidebar';
 
 const StyledCaption = styled.div<{ $visible: boolean; }>`
     position: absolute;
@@ -28,10 +29,12 @@ const StyledCaption = styled.div<{ $visible: boolean; }>`
 type HoverCaptionProps = {
     caption: string;
     visible: boolean;
-    sidebarExpanded: boolean;
 }
 
-export const HoverCaption: React.FC<HoverCaptionProps> = ({ caption, visible, sidebarExpanded }) => {
+export const HoverCaption: React.FC<HoverCaptionProps> = ({ caption, visible }) => {
+
+    const { sidebarExpanded } = useContext(SidebarContext);
+
     return (
         !sidebarExpanded && <StyledCaption $visible={visible}>{caption}</StyledCaption>
     );

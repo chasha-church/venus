@@ -55,12 +55,12 @@ export const SidebarMenuItemHeader: React.FC<SidebarMenuItemHeaderProps> = ({ is
     const { sidebarExpanded } = useContext(SidebarContext);
 
     const dispatch = useAppDispatch();
-    const onSetActiveItem = () => {
+    const handleSetActiveItem = () => {
         dispatch(setActiveItem(id));
     }
 
     return (
-        <StyledHeader onClick={onSetActiveItem}>
+        <StyledHeader onClick={handleSetActiveItem}>
             <StyledActiveStripe $isActive={isActive} />
 
             <StyledSidebarGrid>
@@ -73,7 +73,6 @@ export const SidebarMenuItemHeader: React.FC<SidebarMenuItemHeaderProps> = ({ is
             <HoverCaption
                 caption={name}
                 visible={hoverCaptionVisible}
-                sidebarExpanded={sidebarExpanded}
             />
         </StyledHeader>
     );

@@ -26,16 +26,9 @@ const StyledSidebar = styled.aside`
     flex-direction: column;
 `
 
-type SidebarProps = {};
-
-
-/* 
-    ---
-    1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 2 + 1 + 1 hours of ticket work
-    --- 
-*/
-
 export const SidebarContext = createContext({ sidebarExpanded: false, setSidebarExpanded: () => { } });
+
+type SidebarProps = {};
 
 export const Sidebar: React.FC<SidebarProps> = ({ }) => {
 

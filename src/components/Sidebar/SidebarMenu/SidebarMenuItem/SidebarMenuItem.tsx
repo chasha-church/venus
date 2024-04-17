@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { useAppDispatch, useAppSelector } from '../../../../redux/hooks/hooks';
+import { useAppSelector } from '../../../../redux/hooks/hooks';
 
 import styled from 'styled-components';
 
@@ -26,6 +26,7 @@ export const SidebarMenuItem: React.FC<SidebarMenuItemProps> = ({ ...menuItem })
     const activeItemId = useAppSelector(selectActiveItemId);
     const isActive = menuItem.id === activeItemId;
 
+    // State for hover caption
     const [hoverCaptionVisible, toggleHoverCaptionVisibility] = useState<boolean>(false);
     const handleHover = () => {
         toggleHoverCaptionVisibility(!hoverCaptionVisible);
