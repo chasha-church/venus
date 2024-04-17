@@ -4,10 +4,10 @@ export const StyledSidebarGrid = styled.div`
     display: grid;    
     align-items: center;
 
-    grid-template-columns: 3em 1fr;
-    column-gap: 0.5em;
+    grid-template-columns: var(--sidebar-grid-left-col) 1fr;
+    column-gap: var(--sidebar-grid-gap);
 
-    padding: 1em;
+    padding: var(--sidebar-grid-padding);
 
     & :first-child {
         justify-self: center;    
@@ -15,4 +15,4 @@ export const StyledSidebarGrid = styled.div`
     & :last-child {
         justify-self: start;
     }
-`
+`;

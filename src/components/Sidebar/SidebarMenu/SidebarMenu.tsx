@@ -1,38 +1,29 @@
 import React from 'react'
 
 import { useAppSelector } from '../../../redux/hooks/hooks';
-import { selectActiveItemId, selectMenuItems } from '../../../redux/features/sidebarSlice';
+import { selectMenuItems } from '../../../redux/features/sidebarSlice';
 import { SidebarMenuItem } from './SidebarMenuItem/SidebarMenuItem';
 import styled from 'styled-components';
-
-const StyledMenu = styled.nav`
-`;
 
 const StyledMenuList = styled.ul`
 `
 
-type SidebarMenuProps = {
-    sidebarExpanded: boolean;
-}
+type SidebarMenuProps = { }
 
-export const SidebarMenu: React.FC<SidebarMenuProps> = ({ sidebarExpanded }) => {
+export const SidebarMenu: React.FC<SidebarMenuProps> = ({ }) => {
 
     const menuItems = useAppSelector(selectMenuItems);
-    const activeItemId = useAppSelector(selectActiveItemId);
 
     return (
-        <StyledMenu>
+        <nav>
             <StyledMenuList>
                 {menuItems.map(menuItem =>
                     <SidebarMenuItem
                         key={menuItem.id}
-                        sidebarExpanded={sidebarExpanded}
-                        isActive={menuItem.id === activeItemId}
                         {...menuItem}
                     />
                 )}
             </StyledMenuList>
-        </StyledMenu>
+        </nav>
     );
-
 }

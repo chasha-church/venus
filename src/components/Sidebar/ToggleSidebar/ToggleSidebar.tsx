@@ -8,6 +8,7 @@ import SidebarHideIcon from '../../../assets/images/SidebarHideIcon.svg'
 
 import SidebarShowIcon from '../../../assets/images/SidebarShowIcon.svg'
 import styled from 'styled-components'
+import { SidebarContext } from '../Sidebar';
 
 const StyledBtn = styled.button`
     position: absolute;
@@ -17,15 +18,14 @@ const StyledBtn = styled.button`
     cursor: pointer;
 `
 
-type ToggleSidebarProps = {
-    sidebarExpanded: boolean;
-    setExpanded: () => void;
-}
+type ToggleSidebarProps = {};
 
-export const ToggleSidebar: React.FC<ToggleSidebarProps> = ({ sidebarExpanded, setExpanded }) => {
+export const ToggleSidebar: React.FC<ToggleSidebarProps> = ({ }) => {
+
+    const { sidebarExpanded, setSidebarExpanded } = useContext(SidebarContext);
 
     return (
-        <StyledBtn onClick={setExpanded}>
+        <StyledBtn onClick={setSidebarExpanded}>
             <SvgLoader 
                 width={"30px"} 
                 path={SidebarShowIcon} 

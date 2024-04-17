@@ -1,15 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useAppDispatch } from '../../../../../redux/hooks/hooks';
 import { SubmenuExpandedType, SubmenuType, setSubmenuExpanded } from '../../../../../redux/features/sidebarSlice';
 
 import SubmenuToggleIcon from '../../../../../../src/assets/images/SubmenuToggleIcon.svg';
 import styled from 'styled-components';
+import { SidebarContext } from '../../../Sidebar';
 
 const StyledButton = styled.button<{ $sidebarExpanded: boolean; }>`
     position: absolute;
     right: 0.5em;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 1.5em;
     
     display: ${props => props.$sidebarExpanded ? "block" : "none"};
 `;
@@ -22,12 +22,14 @@ const StyledIcon = styled.img<{ $submenuExpanded: SubmenuExpandedType; }>`
 
 type SubmenuToggleButtonProps = {
     id: number;
-    sidebarExpanded: boolean;
     submenu: SubmenuType;
     submenuExpanded: SubmenuExpandedType;
 }
 
-export const SubmenuToggleButton: React.FC<SubmenuToggleButtonProps> = ({ id, sidebarExpanded, submenu, submenuExpanded }) => {
+export const SubmenuToggleButton: React.FC<SubmenuToggleButtonProps> = ({ id, submenu, submenuExpanded }) => {
+
+    const { sidebarExpanded } = useContext(SidebarContext);
+
     const dispatch = useAppDispatch();
     const openSubmenu = () => {
         dispatch(setSubmenuExpanded(id))

@@ -5,7 +5,8 @@ import styled from 'styled-components'
 type ContentProps = {}
 
 const StyledContent = styled.div`
-    /* margin-left: 5%; */
+    /* Margin from Sidebar */
+    margin-left: var(--content-margin);
 `
 
 export const Content: React.FC<ContentProps> = () => {

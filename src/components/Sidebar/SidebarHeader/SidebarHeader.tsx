@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components';
 import { ToggleSidebar } from '../ToggleSidebar/ToggleSidebar';
 import { StyledSidebarGrid } from '../StyledSidebarGrid';
+import { SidebarContext } from '../Sidebar';
 
 
 const StyledHeaderContent = styled.div`
@@ -35,13 +36,13 @@ const StyledTitle = styled.div<{ $sidebarExpanded: boolean }>`
 const ChaliceIcon = './images/ChaliceIcon.png'
 
 
-interface SidebarHeaderProps extends React.ComponentProps<"div"> {
-    sidebarExpanded: boolean,
-    setExpanded: () => void;
-};
+type SidebarHeaderProps = { };
 
 
-export const SidebarHeader: React.FC<SidebarHeaderProps> = ({ sidebarExpanded, setExpanded }) => {
+export const SidebarHeader: React.FC<SidebarHeaderProps> = ({}) => {
+
+    const { sidebarExpanded } = useContext(SidebarContext);
+    
     return (
         <StyledHeaderContent>
             <StyledSidebarGrid>
@@ -50,7 +51,7 @@ export const SidebarHeader: React.FC<SidebarHeaderProps> = ({ sidebarExpanded, s
                     <span>Неупиваемая Чаша</span>
                 </StyledTitle>
             </StyledSidebarGrid>
-            <ToggleSidebar sidebarExpanded={sidebarExpanded} setExpanded={setExpanded} />
+            <ToggleSidebar />
         </StyledHeaderContent>
     );
 };

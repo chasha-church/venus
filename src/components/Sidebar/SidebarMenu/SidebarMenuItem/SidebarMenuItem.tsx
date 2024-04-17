@@ -1,15 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import { useAppDispatch, useAppSelector } from '../../../../redux/hooks/hooks';
 
-import { MenuItemType, setActiveItem } from '../../../../redux/features/sidebarSlice';
 import styled from 'styled-components';
+
+import { MenuItemType, selectActiveItemId } from '../../../../redux/features/sidebarSlice';
 import { SidebarMenuItemSubmenu } from './SidebarMenuItemSubmenu/SidebarMenuItemSubmenu';
-import { SubmenuToggleButton } from '../../MenuItems/MenuItem/SubmenuToggleButton/SubmenuToggleButton';
-import { SubmenuItem } from '../../MenuItems/MenuItem/MenuItemSubmenu/SubmenuItem/SubmenuItem';
-import { StyledSidebarGrid } from '../../StyledSidebarGrid';
-import { useAppDispatch } from '../../../../redux/hooks/hooks';
-import { HoverCaption } from '../../MenuItems/MenuItem/MenuItemHeader/HoverCaption/HoverCaption';
+import { SubmenuToggleButton } from './SubmenuToggleButton/SubmenuToggleButton';
+import { SidebarMenuItemHeader } from './SidebarMenuItemHeader/SidebarMenuItemHeader';
 
 const StyledMenuItem = styled.li<{ $isActive: boolean; }>`
+    position: relative;
     cursor: pointer;
 
     &:hover {
@@ -19,111 +19,44 @@ const StyledMenuItem = styled.li<{ $isActive: boolean; }>`
     background-color: ${props => props.$isActive ? "#C4ECFF" : "#fff"};
 `;
 
-const StyledHeader = styled.div`
-    position: relative;
-`
+type SidebarMenuItemProps = {} & MenuItemType;
 
-const StyledActiveStripe = styled.div<{ $isActive: boolean; }>`
-    width: 0.5em;
+export const SidebarMenuItem: React.FC<SidebarMenuItemProps> = ({ ...menuItem }) => {
 
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
+    const activeItemId = useAppSelector(selectActiveItemId);
+    const isActive = menuItem.id === activeItemId;
 
-    transition: background-color 300ms;
-    background-color: ${props => props.$isActive ? "#0075BA" : "transparent"};
-`
-
-const StyledIcon = styled.img`
-    width: 2.5em;
-`
-
-const StyledName = styled.div<{ $sidebarExpanded: boolean; }>`
-
-    display: grid;
-    grid-template-columns: ${props => props.$sidebarExpanded ? "1fr" : "0fr"};
-    transition: grid-template-columns 500ms; 
-
-    overflow: hidden;
-
-    span {
-        overflow: hidden;
-        text-wrap: nowrap;
-        font-weight: 600;
-    }
-`
-
-const StyledSubmenuGrid = styled(StyledSidebarGrid) <{ $sidebarExpanded: boolean; }>`
-    padding-top: 0;
-    padding-bottom: 0;
-`
-
-type SidebarMenuItemProps = {
-    sidebarExpanded: boolean;
-    isActive: boolean;
-} & MenuItemType;
-
-export const SidebarMenuItem: React.FC<SidebarMenuItemProps> = ({ sidebarExpanded, isActive, ...menuItem }) => {
-    const dispatch = useAppDispatch();
-    const onSetActiveItem = () => {
-        dispatch(setActiveItem(menuItem.id));
-    }
-
-    const [hoverCaptionVisible, setHoverCaptionVisible] = useState<boolean>(false);
-    const toggleHoverCaption = () => {
-        setHoverCaptionVisible(visible => !visible);
+    const [hoverCaptionVisible, toggleHoverCaptionVisibility] = useState<boolean>(false);
+    const handleHover = () => {
+        toggleHoverCaptionVisibility(!hoverCaptionVisible);
     }
 
     return (
         <StyledMenuItem
             $isActive={isActive}
-            onMouseEnter={toggleHoverCaption}
-            onMouseLeave={toggleHoverCaption}
+            onMouseEnter={handleHover}
+            onMouseLeave={handleHover}
         >
+            <SidebarMenuItemHeader
+                isActive={isActive}
+                id={menuItem.id}
+                icon={menuItem.icon}
+                name={menuItem.name}
+                hoverCaptionVisible={hoverCaptionVisible}
+            />
 
-            <StyledHeader onClick={onSetActiveItem}>
-                <StyledActiveStripe $isActive={isActive} />
+            <SidebarMenuItemSubmenu
+                id={menuItem.id}
+                submenu={menuItem.submenu}
+                submenuExpanded={menuItem.submenuExpanded}
+            />
 
-                <StyledSidebarGrid>
-                    <StyledIcon src={menuItem.icon} alt={menuItem.name} />
-                    <StyledName $sidebarExpanded={sidebarExpanded} >
-                        <span>{menuItem.name}</span>
-                    </StyledName>
-                </StyledSidebarGrid>
-
-                <SubmenuToggleButton
-                    id={menuItem.id}
-                    submenu={menuItem.submenu}
-                    submenuExpanded={menuItem.submenuExpanded}
-                    sidebarExpanded={sidebarExpanded}
-                />
-
-                <HoverCaption
-                    caption={menuItem.name}
-                    visible={hoverCaptionVisible}
-                    sidebarExpanded={sidebarExpanded}
-                />
-            </StyledHeader>
-
-
-            <StyledSubmenuGrid $sidebarExpanded={sidebarExpanded}>
-                {/* Mock element for grid: */}
-                <div></div>
-                <SidebarMenuItemSubmenu>
-                    {menuItem.submenu?.map(submenuItem =>
-                        <SubmenuItem
-                            key={submenuItem.id}
-                            id={menuItem.id}
-                            submenuExpanded={menuItem.submenuExpanded}
-                            name={submenuItem.name}
-                            sidebarExpanded={sidebarExpanded}
-                        />
-                    )}
-                </SidebarMenuItemSubmenu>
-            </StyledSubmenuGrid>
+            <SubmenuToggleButton
+                id={menuItem.id}
+                submenu={menuItem.submenu}
+                submenuExpanded={menuItem.submenuExpanded}
+            />
 
         </StyledMenuItem>
     );
-
 }

@@ -1,6 +1,6 @@
-import { SiderContext } from 'antd/es/layout/Sider';
 import React, { useContext } from 'react'
 import styled from 'styled-components';
+import { SidebarContext } from '../Sidebar';
 
 const StyledFooter = styled.div<{ $sidebarExpanded: boolean }>`
     margin-top: auto;
@@ -25,11 +25,12 @@ const StyledFooter = styled.div<{ $sidebarExpanded: boolean }>`
     }
 `;
 
-type SidebarFooterProps = {
-    sidebarExpanded: boolean,
-};
+type SidebarFooterProps = { };
 
-export const SidebarFooter: React.FC<SidebarFooterProps> = ({ sidebarExpanded }) => {
+export const SidebarFooter: React.FC<SidebarFooterProps> = ({ }) => {
+
+    const { sidebarExpanded } = useContext(SidebarContext);
+
     return (
         <StyledFooter $sidebarExpanded={sidebarExpanded}>
             <span>Неупиваемая Чаша, 2024</span>

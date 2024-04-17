@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { SubmenuExpandedType, setActiveItem } from '../../../../../../redux/features/sidebarSlice';
 import { useAppDispatch } from '../../../../../../redux/hooks/hooks';
 import styled from 'styled-components';
+import { SidebarContext } from '../../../../Sidebar';
 
 const StyledSubmenuItem = styled.li<{ $submenuExpanded: SubmenuExpandedType; $sidebarExpanded: boolean; }>`
     cursor: pointer;
@@ -25,10 +26,11 @@ type SubmenuItemProps = {
     id: number;
     name: string;
     submenuExpanded: SubmenuExpandedType;
-    sidebarExpanded: boolean;
 }
 
-export const SubmenuItem: React.FC<SubmenuItemProps> = ({ id, name, sidebarExpanded, submenuExpanded }) => {
+export const SubmenuItem: React.FC<SubmenuItemProps> = ({ id, name, submenuExpanded }) => {
+
+    const { sidebarExpanded } = useContext(SidebarContext);
 
     const dispatch = useAppDispatch();
     const setActiveMenuItem = () => {

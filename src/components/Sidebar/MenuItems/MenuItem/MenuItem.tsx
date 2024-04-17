@@ -2,7 +2,7 @@ import React from 'react'
 import { MenuItemHeader } from './MenuItemHeader/MenuItemHeader';
 import { MenuItemSubmenu } from './MenuItemSubmenu/MenuItemSubmenu';
 import { SubmenuExpandedType, SubmenuType } from '../../../../redux/features/sidebarSlice';
-import { SubmenuToggleButton } from './SubmenuToggleButton/SubmenuToggleButton';
+import { SubmenuToggleButton } from '../../SidebarMenu/SidebarMenuItem/SubmenuToggleButton/SubmenuToggleButton';
 
 type MenuItemProps = {
     id: number;

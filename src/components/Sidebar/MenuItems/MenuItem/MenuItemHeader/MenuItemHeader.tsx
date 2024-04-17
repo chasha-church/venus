@@ -1,7 +1,7 @@
 import React from 'react'
 import { ActiveItemStripe } from './ActiveItemStripe/ActiveItemStripe';
-import { SubmenuToggleButton } from '../SubmenuToggleButton/SubmenuToggleButton';
-import { HoverCaption } from './HoverCaption/HoverCaption';
+import { SubmenuToggleButton } from '../../../SidebarMenu/SidebarMenuItem/SubmenuToggleButton/SubmenuToggleButton';
+import { HoverCaption } from '../../../SidebarMenu/SidebarMenuItem/HoverCaption/HoverCaption';
 import { useAppDispatch } from '../../../../../redux/hooks/hooks';
 import { SubmenuExpandedType, SubmenuType, setActiveItem } from '../../../../../redux/features/sidebarSlice';
 

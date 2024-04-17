@@ -1,11 +1,10 @@
-import React, { createContext } from 'react'
+import React, { useState, createContext } from 'react'
 
 import { SidebarFooter } from './SidebarFooter/SidebarFooter'
 import { SidebarHeader } from './SidebarHeader/SidebarHeader';
 
-import { useAppDispatch, useAppSelector } from '../../redux/hooks/hooks';
-import { selectSidebarExpanded, setSidebarExpanded } from '../../redux/features/sidebarSlice';
 import styled from 'styled-components';
+
 import { SidebarMenu } from './SidebarMenu/SidebarMenu';
 
 const StyledSidebar = styled.aside`
@@ -18,8 +17,6 @@ const StyledSidebar = styled.aside`
     height: 100vh;
     height: 100svh;
 
-
-    background-color: lightgreen;
     background-color: #fff;
     color: rgb(75 85 99);
 
@@ -31,29 +28,30 @@ const StyledSidebar = styled.aside`
 
 type SidebarProps = {};
 
-// export const SidebarContext = createContext({ sidebarExpanded: false, setExpanded: () => { } });
 
 /* 
     ---
-    1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 2 hours of ticket work
+    1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 2 + 1 + 1 hours of ticket work
     --- 
 */
 
+export const SidebarContext = createContext({ sidebarExpanded: false, setSidebarExpanded: () => { } });
+
 export const Sidebar: React.FC<SidebarProps> = ({ }) => {
 
-    const dispatch = useAppDispatch();
-    const sidebarExpanded = useAppSelector(selectSidebarExpanded);
-    const setExpanded = () => {
-        dispatch(setSidebarExpanded(sidebarExpanded));
+    const [expanded, setExpanded] = useState<boolean>(false);
+
+    const setSidebarExpanded = () => {
+        setExpanded(!expanded);
     }
 
     return (
-        <StyledSidebar>
-            {/* <SidebarContext.Provider value={{ sidebarExpanded, setExpanded }}> */}
-            <SidebarHeader sidebarExpanded={sidebarExpanded} setExpanded={setExpanded} />  
-            <SidebarMenu sidebarExpanded={sidebarExpanded} />
-            <SidebarFooter sidebarExpanded={sidebarExpanded} />
-            {/* </SidebarContext.Provider> */}
-        </StyledSidebar >
+        <SidebarContext.Provider value={{ sidebarExpanded: expanded, setSidebarExpanded }}>
+            <StyledSidebar>
+                <SidebarHeader />
+                <SidebarMenu />
+                <SidebarFooter />
+            </StyledSidebar >
+        </SidebarContext.Provider>
     )
 }
