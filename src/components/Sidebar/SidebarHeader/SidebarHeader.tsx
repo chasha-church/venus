@@ -11,6 +11,11 @@ const StyledHeaderContent = styled.div`
     position: relative;
 `
 
+const StyledHeaderGrid = styled(StyledSidebarGrid) <{ $sidebarExpanded: boolean; }>`
+    padding-top: 0;
+    padding-bottom: 0;
+`
+
 const StyledTitle = styled.div<{ $sidebarExpanded: boolean }>`
     /* These properties make the width of title text animate while collapsing! 
     Great solution with grid */
@@ -39,12 +44,12 @@ export const SidebarHeader: React.FC<SidebarHeaderProps> = ({ }) => {
 
     return (
         <StyledHeaderContent>
-            <StyledSidebarGrid>
+            <StyledHeaderGrid $sidebarExpanded={sidebarExpanded}>
                 <ChashaIcon width={"3em"} />
                 <StyledTitle $sidebarExpanded={sidebarExpanded}>
                     <span>Неупиваемая Чаша</span>
                 </StyledTitle>
-            </StyledSidebarGrid>
+            </StyledHeaderGrid>
             <ToggleSidebar />
         </StyledHeaderContent>
     );

@@ -42,8 +42,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ }) => {
         <SidebarContext.Provider value={{ sidebarExpanded: expanded, setSidebarExpanded }}>
             <StyledSidebar>
                 <SidebarHeader />
-                {/* <SidebarMenu /> */}
-                {/* <SidebarFooter /> */}
+                <SidebarMenu />
+                <SidebarFooter />
             </StyledSidebar >
         </SidebarContext.Provider>
     )

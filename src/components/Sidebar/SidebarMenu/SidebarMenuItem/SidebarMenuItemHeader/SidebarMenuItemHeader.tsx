@@ -25,7 +25,6 @@ const StyledActiveStripe = styled.div<{ $isActive: boolean; }>`
 const StyledIcon = styled.div`
     & :only-child {
         width: 2.5em;
-        border: 3px red solid;
     }
 `
 

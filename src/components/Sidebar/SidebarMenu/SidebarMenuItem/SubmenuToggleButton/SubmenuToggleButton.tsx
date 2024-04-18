@@ -17,7 +17,6 @@ const StyledButton = styled.button<{ $sidebarExpanded: boolean; }>`
 
 const StyledIcon = styled.div<{ $submenuExpanded: SubmenuExpandedType; }>`
     & :only-child {
-        background-color: red; // SHOW!
         width: 1.25em;
         transition: all 300ms;
         transform: ${props => props.$submenuExpanded ? "rotate(180deg)" : "rotate(0deg)"};
