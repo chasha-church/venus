@@ -44,7 +44,7 @@ dd {
 }
 button {
   border: none;
-  /* background-color: transparent; */
+  background-color: transparent;
   font-family: inherit;
   padding: 0;
   cursor: pointer;

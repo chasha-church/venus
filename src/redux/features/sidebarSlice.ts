@@ -2,19 +2,20 @@ import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { RootState } from '../store';
 
-interface SidebarState {
-    sidebarExpanded: boolean;
+type SidebarState = {
     activeItemId: number | null;
     menuItems: MenuType;
-}
+};
 
-export type MenuType = Array<MenuItemType>
+export type MenuType = Array<MenuItemType>;
+
 export type MenuItemType = {
     id: number;
     name: string;
     submenuExpanded: SubmenuExpandedType;
     submenu: SubmenuType;
-}
+};
+
 export type SubmenuExpandedType = boolean | null;
 
 export type SubmenuType = Array<SubmenuItemType> | null;
@@ -22,7 +23,7 @@ export type SubmenuType = Array<SubmenuItemType> | null;
 export type SubmenuItemType = {
     id: number;
     name: string;
-}
+};
 
 export enum SideBarIds {
     Church = 0,
@@ -30,10 +31,9 @@ export enum SideBarIds {
     Collaboration,
     Contacts,
     Donate
-}
+};
 
 const initialState: SidebarState = {
-    sidebarExpanded: false,
     activeItemId: null,
     menuItems: [
         {
@@ -103,9 +103,6 @@ export const sidebarSlice = createSlice({
     name: 'sidebar',
     initialState,
     reducers: {
-        setSidebarExpanded: (state, action: PayloadAction<boolean>) => {
-            state.sidebarExpanded = !action.payload;
-        },
         setSubmenuExpanded: (state, action: PayloadAction<number>) => {
             state.menuItems[action.payload].submenuExpanded = !state.menuItems[action.payload].submenuExpanded;
             state.menuItems.forEach((item, index) => {
@@ -120,10 +117,9 @@ export const sidebarSlice = createSlice({
 })
 
 // Actions
-export const { setSidebarExpanded, setSubmenuExpanded, setActiveItem } = sidebarSlice.actions
+export const { setSubmenuExpanded, setActiveItem } = sidebarSlice.actions
 
 // Selectors
-export const selectSidebarExpanded = (state: RootState) => state.sidebar.sidebarExpanded;
 export const selectMenuItems = (state: RootState) => state.sidebar.menuItems;
 export const selectActiveItemId = (state: RootState) => state.sidebar.activeItemId;
 
