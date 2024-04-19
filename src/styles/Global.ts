@@ -5,6 +5,11 @@ export const GlobalStyles = createGlobalStyle`
  ${fontsCss} // this works as a normal styled css
 
 /* Box sizing rules */
+
+:root {
+  font-size: 16px;
+}
+
 *,
 *::before,
 *::after {
@@ -69,6 +74,10 @@ html:focus-within {
   scroll-behavior: smooth;
 }
 /* A elements that don't have a class get default styles */
+a {
+  text-decoration: none;
+  color: #000;
+}
 a:not([class]) {
   text-decoration-skip-ink: auto;
 }
