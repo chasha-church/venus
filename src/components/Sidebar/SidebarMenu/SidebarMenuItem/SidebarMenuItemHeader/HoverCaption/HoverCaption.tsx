@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components';
-import { SidebarContext } from '../../../Sidebar';
+import { SidebarContext } from '../../../../Sidebar';
 
 const StyledCaption = styled.div<{ $visible: boolean; }>`
     position: absolute;

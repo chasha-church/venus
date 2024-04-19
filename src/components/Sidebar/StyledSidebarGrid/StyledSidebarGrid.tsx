@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledSidebarGrid = styled.div`
+export const StyledSidebarGrid = styled.div<{ $sidebarExpanded?: boolean; }>`
     display: grid;    
     align-items: center;
 

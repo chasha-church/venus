@@ -1,16 +1,16 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components';
-import { StyledSidebarGrid } from '../../../StyledSidebarGrid';
-import { HoverCaption } from '../HoverCaption/HoverCaption';
+
+import { HoverCaption } from './HoverCaption/HoverCaption';
 import { setActiveItem } from '../../../../../redux/features/sidebarSlice';
 import { useAppDispatch } from '../../../../../redux/hooks/hooks';
 import { SidebarContext } from '../../../Sidebar';
-
+import { IconMatcher } from '../../../../../utils/IconMatcher';
+import { StyledSidebarGrid } from '../../../StyledSidebarGrid/StyledSidebarGrid';
 
 const StyledHeader = styled.div`
     position: relative;
 `
-
 const StyledActiveStripe = styled.div<{ $isActive: boolean; }>`
     width: 0.35em;
 
@@ -23,8 +23,10 @@ const StyledActiveStripe = styled.div<{ $isActive: boolean; }>`
     background-color: ${props => props.$isActive ? "#0075BA" : "transparent"};
 `
 
-const StyledIcon = styled.img`
-    width: 2.5em;
+const StyledIcon = styled.div`
+    & :only-child {
+        width: 2.5em;
+    }
 `
 
 const StyledName = styled.div<{ $sidebarExpanded: boolean; }>`
@@ -45,13 +47,13 @@ const StyledName = styled.div<{ $sidebarExpanded: boolean; }>`
 type SidebarMenuItemHeaderProps = {
     isActive: boolean,
     id: number,
-    icon: string,
     name: string,
     hoverCaptionVisible: boolean,
 }
 
-export const SidebarMenuItemHeader: React.FC<SidebarMenuItemHeaderProps> = ({ isActive, id, icon, name, hoverCaptionVisible }) => {
-    
+
+export const SidebarMenuItemHeader: React.FC<SidebarMenuItemHeaderProps> = ({ isActive, id, name, hoverCaptionVisible }) => {
+
     const { sidebarExpanded } = useContext(SidebarContext);
 
     const dispatch = useAppDispatch();
@@ -59,12 +61,14 @@ export const SidebarMenuItemHeader: React.FC<SidebarMenuItemHeaderProps> = ({ is
         dispatch(setActiveItem(id));
     }
 
+    const Icon = IconMatcher.getIcon(id);
+
     return (
         <StyledHeader onClick={handleSetActiveItem}>
             <StyledActiveStripe $isActive={isActive} />
 
             <StyledSidebarGrid>
-                <StyledIcon src={icon} alt={name} />
+                <StyledIcon>{Icon}</StyledIcon>
                 <StyledName $sidebarExpanded={sidebarExpanded} >
                     <span>{name}</span>
                 </StyledName>

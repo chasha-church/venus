@@ -1,11 +1,8 @@
 import React, { useContext } from 'react'
-
-// @ts-ignore
-import { SvgLoader } from 'react-svgmt';
-
-import SidebarShowIcon from '../../../assets/images/SidebarShowIcon.svg'
 import styled from 'styled-components'
-import { SidebarContext } from '../Sidebar';
+import { SidebarContext } from '../../Sidebar';
+
+import { SidebarShowIcon } from '../../../common/Icons/SidebarShowIcon';
 
 const StyledBtn = styled.button`
     position: absolute;
@@ -23,14 +20,13 @@ export const ToggleSidebar: React.FC<ToggleSidebarProps> = ({ }) => {
 
     return (
         <StyledBtn onClick={setSidebarExpanded}>
-            <SvgLoader 
-                width={"30px"} 
-                path={SidebarShowIcon} 
-                style={{ 
-                    transition: "all .3s ease", 
+            <SidebarShowIcon
+                style={{
+                    width: "2em",
+                    transition: "all .3s ease",
                     transform: `rotate(${sidebarExpanded ? "0deg" : "-180deg"})`
-                }}>
-            </SvgLoader>
+                }}
+            />
         </StyledBtn>
     )
-} 
+}

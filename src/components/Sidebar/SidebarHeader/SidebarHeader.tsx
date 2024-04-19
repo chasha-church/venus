@@ -1,16 +1,19 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components';
-import { ToggleSidebar } from '../ToggleSidebar/ToggleSidebar';
-import { StyledSidebarGrid } from '../StyledSidebarGrid';
+
+import { ToggleSidebar } from './ToggleSidebar/ToggleSidebar';
+import { StyledSidebarGrid } from '../StyledSidebarGrid/StyledSidebarGrid';
 import { SidebarContext } from '../Sidebar';
 
+import { ChashaIcon } from '../../common/Icons/ChashaIcon';
 
 const StyledHeaderContent = styled.div`
     position: relative;
 `
 
-const StyledIcon = styled.img`
-    width: 3em;
+const StyledHeaderGrid = styled(StyledSidebarGrid) <{ $sidebarExpanded?: boolean; }>`
+    padding-top: 0;
+    padding-bottom: 0;
 `
 
 const StyledTitle = styled.div<{ $sidebarExpanded: boolean }>`
@@ -33,25 +36,21 @@ const StyledTitle = styled.div<{ $sidebarExpanded: boolean }>`
     }
 `
 
-const ChaliceIcon = './images/ChaliceIcon.png'
+type SidebarHeaderProps = {};
 
-
-type SidebarHeaderProps = { };
-
-
-export const SidebarHeader: React.FC<SidebarHeaderProps> = ({}) => {
+export const SidebarHeader: React.FC<SidebarHeaderProps> = ({ }) => {
 
     const { sidebarExpanded } = useContext(SidebarContext);
     
     return (
         <StyledHeaderContent>
-            <StyledSidebarGrid>
-                <StyledIcon src={ChaliceIcon} alt="Logo" />
+            <StyledHeaderGrid>
+                <ChashaIcon width={"3em"} />
                 <StyledTitle $sidebarExpanded={sidebarExpanded}>
                     <span>Неупиваемая Чаша</span>
                 </StyledTitle>
-            </StyledSidebarGrid>
+            </StyledHeaderGrid>
             <ToggleSidebar />
         </StyledHeaderContent>
     );
-};
+}

@@ -1,9 +1,9 @@
-import React from 'react'
+import React, {useMemo} from 'react'
+import styled from 'styled-components';
 
 import { useAppSelector } from '../../../redux/hooks/hooks';
 import { selectMenuItems } from '../../../redux/features/sidebarSlice';
 import { SidebarMenuItem } from './SidebarMenuItem/SidebarMenuItem';
-import styled from 'styled-components';
 
 const StyledMenuList = styled.ul`
 `
@@ -11,7 +11,7 @@ const StyledMenuList = styled.ul`
 type SidebarMenuProps = { }
 
 export const SidebarMenu: React.FC<SidebarMenuProps> = ({ }) => {
-
+    
     const menuItems = useAppSelector(selectMenuItems);
 
     return (
@@ -26,4 +26,5 @@ export const SidebarMenu: React.FC<SidebarMenuProps> = ({ }) => {
             </StyledMenuList>
         </nav>
     );
+
 }

@@ -2,10 +2,9 @@ import React, { useState, createContext } from 'react'
 
 import { SidebarFooter } from './SidebarFooter/SidebarFooter'
 import { SidebarHeader } from './SidebarHeader/SidebarHeader';
+import { SidebarMenu } from './SidebarMenu/SidebarMenu';
 
 import styled from 'styled-components';
-
-import { SidebarMenu } from './SidebarMenu/SidebarMenu';
 
 const StyledSidebar = styled.aside`
     position: fixed;
@@ -15,7 +14,7 @@ const StyledSidebar = styled.aside`
 
     /* SVH is a new CSS unit and not all browsers use it yet */
     height: 100vh;
-    height: 100svh;
+    height: 100svh;     
 
     background-color: #fff;
     color: rgb(75 85 99);
