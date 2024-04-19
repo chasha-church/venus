@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle, css } from 'styled-components'
+import { createGlobalStyle, css } from 'styled-components'
 import fontsCss from './fonts.module.css'
 
 export const GlobalStyles = createGlobalStyle`
@@ -21,11 +21,11 @@ body {
   overflow-x: hidden;
   min-height: 100vh;
   text-rendering: optimizeSpeed;
-  font-family: ${({ theme }) => theme.fonts.anekMalayalam}, sans-serif;
-  font-size: 1rem;
+  font-family: ${({ theme }) => theme.fonts.fontFamily}, sans-serif;
+  font-size: ${({ theme }) => theme.fonts.fontSize.sm};
   color: ${({ theme }) => theme.colors.text};
   background-color: ${({ theme }) => theme.colors.background};
-  line-height: 1;
+  line-height: ${({ theme }) => theme.fonts.fontSize.sm};
 }
 h1,
 h2,
@@ -44,7 +44,7 @@ dd {
 }
 button {
   border: none;
-  /* background-color: transparent; */
+  background-color: transparent;
   font-family: inherit;
   padding: 0;
   cursor: pointer;

@@ -1,35 +1,46 @@
 import 'styled-components'
 
 declare module 'styled-components' {
+
+    export type HEX = `#${string}`;
+    export type SizeConfig = {
+        xs: string,
+        sm: string,
+        md: string,
+        lg: string,
+        xl: string,
+        xxl: string,
+    };
+
     export interface DefaultTheme {
         colors: {
-            primary: '#FAFAFA'
-            secondary: '#FFC80A'
-            tertiary: '#303030'
-            background: '#ffffff'
-            text: '#000000'
-            primaryTextColor: '#594F43'
-            secondaryTextColor: '#777777'
-            inputPlaceholder: '#C7C7C7'
-            darkGrayText: '#303030'
-            darkText: '#1A1A1A'
-            black: '#000000'
-            white: '#ffffff'
-            dark: ''
-            medium: ''
-            light: ''
-            danger: ''
-            success: '#66A15A'
+            primary: HEX,
+            secondary: HEX,
+            tertiary: HEX,
+            background: HEX,
+            text: HEX,
+            primaryTextColor: HEX,
+            secondaryTextColor: HEX,
+            inputPlaceholder: HEX,
+            darkGrayText: HEX,
+            darkText: HEX,
+            danger: HEX,
+            success: HEX,
+            [key: string]: HEX,
         }
         fonts: {
-            anekMalayalam: 'Anek Malayalam'
+            fontFamily: string,
+            fontSize: SizeConfig,
+            [key: string]: string | SizeConfig,
         }
         paddings: {
-            container: '15px'
-            pageTop: '30px'
+            container: string,
+            pageTop: string,
+            [key: string]: string | SizeConfig,
         }
         margins: {
-            pageTop: '30px'
+            pageTop: string,
+            [key: string]: string | SizeConfig,
         }
     }
 }

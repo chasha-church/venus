@@ -2,20 +2,20 @@ import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { RootState } from '../store';
 
-interface SidebarState {
-    sidebarExpanded: boolean;
+type SidebarState = {
     activeItemId: number | null;
     menuItems: MenuType;
-}
+};
 
-export type MenuType = Array<MenuItemType>
+export type MenuType = Array<MenuItemType>;
+
 export type MenuItemType = {
     id: number;
     name: string;
-    icon: string;
     submenuExpanded: SubmenuExpandedType;
     submenu: SubmenuType;
-}
+};
+
 export type SubmenuExpandedType = boolean | null;
 
 export type SubmenuType = Array<SubmenuItemType> | null;
@@ -23,16 +23,22 @@ export type SubmenuType = Array<SubmenuItemType> | null;
 export type SubmenuItemType = {
     id: number;
     name: string;
-}
+};
+
+export enum SideBarIds {
+    Church = 0,
+    Schedule,
+    Collaboration,
+    Contacts,
+    Donate
+};
 
 const initialState: SidebarState = {
-    sidebarExpanded: false,
     activeItemId: null,
     menuItems: [
         {
-            id: 0,
+            id: SideBarIds.Church,
             name: "Храм",
-            icon: "./images/ChurchIcon.png",
             submenuExpanded: false,
             submenu: [
                 {
@@ -50,16 +56,14 @@ const initialState: SidebarState = {
             ],
         },
         {
-            id: 1,
+            id: SideBarIds.Schedule,
             name: "Богослужения",
-            icon: "./images/ScheduleIcon.png",
             submenuExpanded: false,
             submenu: null,
         },
         {
-            id: 2,
+            id: SideBarIds.Collaboration,
             name: "Деятельность",
-            icon: "./images/СollaborationIcon.png",
             submenuExpanded: false,
             submenu: [
                 {
@@ -81,16 +85,14 @@ const initialState: SidebarState = {
             ],
         },
         {
-            id: 3,
+            id: SideBarIds.Contacts,
             name: "Контакты",
-            icon: "./images/ContactsIcon.png",
             submenuExpanded: false,
             submenu: null,
         },
         {
-            id: 4,
+            id: SideBarIds.Donate,
             name: "Пожертвовать",
-            icon: "./images/DonateIcon.png",
             submenuExpanded: false,
             submenu: null,
         },
@@ -101,11 +103,10 @@ export const sidebarSlice = createSlice({
     name: 'sidebar',
     initialState,
     reducers: {
-        setSidebarExpanded: (state, action: PayloadAction<boolean>) => {
-            state.sidebarExpanded = !action.payload;
-        },
         setSubmenuExpanded: (state, action: PayloadAction<number>) => {
             state.menuItems[action.payload].submenuExpanded = !state.menuItems[action.payload].submenuExpanded;
+
+            // Close opened submenu's so there is always only one open
             state.menuItems.forEach((item, index) => {
                 if (index === action.payload) return;
                 item.submenuExpanded = false
@@ -118,10 +119,9 @@ export const sidebarSlice = createSlice({
 })
 
 // Actions
-export const { setSidebarExpanded, setSubmenuExpanded, setActiveItem } = sidebarSlice.actions
+export const { setSubmenuExpanded, setActiveItem } = sidebarSlice.actions
 
 // Selectors
-export const selectSidebarExpanded = (state: RootState) => state.sidebar.sidebarExpanded;
 export const selectMenuItems = (state: RootState) => state.sidebar.menuItems;
 export const selectActiveItemId = (state: RootState) => state.sidebar.activeItemId;
 

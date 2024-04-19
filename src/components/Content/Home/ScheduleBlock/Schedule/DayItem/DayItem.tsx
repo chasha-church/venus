@@ -13,11 +13,13 @@ const StyledContainer = styled.div<{ $isToday: boolean; }>`
     margin-bottom: 15px;
     padding: 15px;
 
-    font-size: 18px;
+    font-size: ${({ theme }) => theme.fonts.fontSize.sm};
 
     box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.25);
 
-    border: ${props => props.$isToday ? "2px solid #0085FF" : "none"};
+    border: ${props => props.$isToday
+        ? `2px solid ${props.theme.colors.primaryTextColor}`
+        : "none"};
 `
 
 const StyledHeader = styled.div`
@@ -34,7 +36,7 @@ const StyledDay = styled.div`
     }
 
     & b {
-        font-size: 28px;
+        font-size: ${({ theme }) => theme.fonts.fontSize.lg};
         font-weight: 600;
         margin-right: 5px;
     }
@@ -56,9 +58,8 @@ const StyledDayInfo = styled.p`
     line-height: 1.5;
 `
 
-/* TODO: Investigate color management for the App */
 const StyledHoliday = styled.span`
-    color: #0085FF;
+    color: ${({ theme }) => theme.colors.primaryTextColor};
 `
 
 const StyledInfoItems = styled.ul`
@@ -68,7 +69,7 @@ const StyledInfoItems = styled.ul`
 const StyledInfoItem = styled.li`
     margin-top: 10px;
     & time {
-        font-size: 20px;
+        font-size: ${({ theme }) => theme.fonts.fontSize.md};
     }
 `
 
@@ -78,7 +79,9 @@ type DayItemProps = {
     children?: React.ReactNode;
 };
 
-export const DayItem: FunctionComponent<DayItemProps> = ({ dayInfo, maxPeopleToShow, children }) => {
+export const DayItem: FunctionComponent<DayItemProps> = (
+    { dayInfo, maxPeopleToShow, children }
+) => {
 
     const [day, month] = dayInfo.date.split("-").reverse().slice(0, 2);
 

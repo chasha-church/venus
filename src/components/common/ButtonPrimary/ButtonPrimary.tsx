@@ -1,23 +1,27 @@
 import React from 'react'
 
 import { Button, ConfigProvider } from 'antd';
+import { PRIMARY_COLOR } from '../../../constants/colors';
 
 type ButtonProps = {
     value: string;
 }
-
-const colorPrimary = "#F0A202";
 
 export const ButtonPrimary: React.FC<ButtonProps> = ({ value }) => {
     return (
         <ConfigProvider
             theme={{
                 token: {
-                    colorPrimary,
+                    colorPrimary: PRIMARY_COLOR,
                 },
             }}
         >
-            <Button type="primary" style={{backgroundColor: colorPrimary}}>{value}</Button>
+            <Button 
+                type="primary"
+                style={{backgroundColor: PRIMARY_COLOR}}
+            >
+                {value}
+            </Button>
         </ConfigProvider>
     )
 }

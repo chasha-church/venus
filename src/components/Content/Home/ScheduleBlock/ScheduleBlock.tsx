@@ -7,15 +7,18 @@ import { Schedule } from "./Schedule/Schedule";
 const StyledParagraph = styled.p`
     text-align: center;
     margin-top: 70px;
-    font-size: 24px;
+    font-size: ${({ theme }) => theme.fonts.fontSize.md};
 `
 
 type ScheduleBlockProps = {};
 
-export const ScheduleBlock: FunctionComponent<ScheduleBlockProps> = ({ }) => {
+export const ScheduleBlock: FunctionComponent<ScheduleBlockProps> = (props) => {
     return (
         <section>
-            <Heading value="Расписание богослужений" />
+            <Heading
+                value="Расписание богослужений"
+                id="schedule"
+            />
             <StyledParagraph>Храм открыт ежедневно с 8:00 до 21:00</StyledParagraph>
             <Schedule />
         </section>
