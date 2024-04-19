@@ -43,7 +43,6 @@ const DecorationEdge = styled.div`
     transform: skew(-30deg);
 
     border: 2px solid ${({ theme }) => theme.colors.primary}; 
-    border-bottom-width: 3px ;  
     background: ${({ theme }) => theme.colors.background};
 `;
 
