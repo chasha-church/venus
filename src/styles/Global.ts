@@ -4,12 +4,19 @@ import fontsCss from './fonts.module.css'
 export const GlobalStyles = createGlobalStyle`
  ${fontsCss} // this works as a normal styled css
 
-/* Box sizing rules */
-
 :root {
   font-size: 16px;
+  /* Sidebar variables */
+  --sidebar-grid-left-col: 3em;
+  --sidebar-grid-gap: 0.5em;
+  --sidebar-grid-padding: 1em;
+
+  /* Content */
+  --content-margin:
+  calc(var(--sidebar-grid-left-col) + var(--sidebar-grid-gap) + var(--sidebar-grid-padding) * 2);
 }
 
+/* Box sizing rules */
 *,
 *::before,
 *::after {
