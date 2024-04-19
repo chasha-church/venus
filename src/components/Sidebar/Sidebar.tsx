@@ -4,7 +4,6 @@ import { SidebarFooter } from './SidebarFooter/SidebarFooter'
 import { SidebarHeader } from './SidebarHeader/SidebarHeader';
 import { SidebarMenu } from './SidebarMenu/SidebarMenu';
 
-
 import styled from 'styled-components';
 
 const StyledSidebar = styled.aside`
@@ -15,7 +14,7 @@ const StyledSidebar = styled.aside`
 
     /* SVH is a new CSS unit and not all browsers use it yet */
     height: 100vh;
-    height: 100svh;
+    height: 100svh;     
 
     background-color: #fff;
     color: rgb(75 85 99);

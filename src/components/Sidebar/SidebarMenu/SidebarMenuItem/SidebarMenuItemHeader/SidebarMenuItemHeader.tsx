@@ -1,11 +1,12 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components';
-import { StyledSidebarGrid } from '../../../StyledSidebarGrid';
+
 import { HoverCaption } from './HoverCaption/HoverCaption';
 import { setActiveItem } from '../../../../../redux/features/sidebarSlice';
 import { useAppDispatch } from '../../../../../redux/hooks/hooks';
 import { SidebarContext } from '../../../Sidebar';
 import { IconMatcher } from '../../../../../utils/IconMatcher';
+import { StyledSidebarGrid } from '../../../StyledSidebarGrid/StyledSidebarGrid';
 
 const StyledHeader = styled.div`
     position: relative;

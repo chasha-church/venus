@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import styled from 'styled-components';
 
 import { ToggleSidebar } from './ToggleSidebar/ToggleSidebar';
-import { StyledSidebarGrid } from '../StyledSidebarGrid';
+import { StyledSidebarGrid } from '../StyledSidebarGrid/StyledSidebarGrid';
 import { SidebarContext } from '../Sidebar';
 
 import { ChashaIcon } from '../../common/Icons/ChashaIcon';
@@ -11,7 +11,7 @@ const StyledHeaderContent = styled.div`
     position: relative;
 `
 
-const StyledHeaderGrid = styled(StyledSidebarGrid) <{ $sidebarExpanded: boolean; }>`
+const StyledHeaderGrid = styled(StyledSidebarGrid) <{ $sidebarExpanded?: boolean; }>`
     padding-top: 0;
     padding-bottom: 0;
 `
@@ -41,10 +41,10 @@ type SidebarHeaderProps = {};
 export const SidebarHeader: React.FC<SidebarHeaderProps> = ({ }) => {
 
     const { sidebarExpanded } = useContext(SidebarContext);
-
+    
     return (
         <StyledHeaderContent>
-            <StyledHeaderGrid $sidebarExpanded={sidebarExpanded}>
+            <StyledHeaderGrid>
                 <ChashaIcon width={"3em"} />
                 <StyledTitle $sidebarExpanded={sidebarExpanded}>
                     <span>Неупиваемая Чаша</span>

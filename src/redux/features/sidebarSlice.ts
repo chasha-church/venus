@@ -105,6 +105,8 @@ export const sidebarSlice = createSlice({
     reducers: {
         setSubmenuExpanded: (state, action: PayloadAction<number>) => {
             state.menuItems[action.payload].submenuExpanded = !state.menuItems[action.payload].submenuExpanded;
+
+            // Close opened submenu's so there is always only one open
             state.menuItems.forEach((item, index) => {
                 if (index === action.payload) return;
                 item.submenuExpanded = false
