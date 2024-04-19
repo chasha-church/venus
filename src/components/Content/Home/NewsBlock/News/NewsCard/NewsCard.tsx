@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
 
-import styled from "styled-components";
+import styled from 'styled-components';
 import { NewsListItemType } from '../../../../../../redux/features/newsSlice';
-import MockImage from "../../../../../../assets/images/Church.png";
+import MockImage from '../../../../../../assets/images/Church.png';
 import { PRIMARY_COLOR } from '../../../../../../constants/colors';
-import {Link} from "react-router-dom";
+import {Link} from 'react-router-dom';
 import {Button, ConfigProvider} from 'antd';
 
 const CardImage = styled.img`
@@ -42,6 +42,7 @@ const CardTitle = styled.div`
 
 const DetailsButton = styled(Button)`
     margin: 0 0 15px 0;
+    background-color: ${({ theme }) => theme.colors.background};
 `;
 
 type NewsBlockProps = {
@@ -49,7 +50,7 @@ type NewsBlockProps = {
 }
 
 export const NewsCard: React.FC<NewsBlockProps> = ({ newsData }) => {
-    const parseDate = (date: string): string => date.slice(0, 10).split("-").reverse().join(".");
+    const parseDate = (date: string): string => date.slice(0, 10).split('-').reverse().join('.');
 
     return (
         <InnerCardContainer >
@@ -69,4 +70,4 @@ export const NewsCard: React.FC<NewsBlockProps> = ({ newsData }) => {
             </ConfigProvider>
         </InnerCardContainer>
     );
-}
+};

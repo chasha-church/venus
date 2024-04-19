@@ -1,6 +1,6 @@
-import { FunctionComponent } from "react";
-import styled from "styled-components";
-import { useAppDispatch, useAppSelector } from "../../../../../redux/hooks/hooks";
+import { FunctionComponent } from 'react';
+import styled from 'styled-components';
+import { useAppDispatch, useAppSelector } from '../../../../../redux/hooks/hooks';
 import { 
     fetchNews,
     selectCurrentNews,
@@ -8,11 +8,11 @@ import {
     selectNewsIsPending,
     selectNewsPageSize,
     selectNextNewsPage
-} from "../../../../../redux/features/newsSlice";
-import { NewsCard } from "./NewsCard/NewsCard";
-import { Preloader } from "../../../../common/Preloader/Preloader";
-import { APIError } from "../../../../service/APIError/APIError";
-import { useAPIFetch } from "../../../../../redux/hooks/useAPIFetch";
+} from '../../../../../redux/features/newsSlice';
+import { NewsCard } from './NewsCard/NewsCard';
+import { Preloader } from '../../../../common/Preloader/Preloader';
+import { APIError } from '../../../../service/APIError/APIError';
+import { useAPIFetch } from '../../../../../redux/hooks/useAPIFetch';
 
 const NewsCardContainer = styled.div`
     display: flex;
@@ -29,7 +29,7 @@ export const News: FunctionComponent = ({ }) => {
     const dispatch = useAppDispatch();
 
     const { data: news, isPending, error: fetchError } = useAPIFetch(
-        () => { dispatch(fetchNews({ pageSize, page })) },
+        () => { dispatch(fetchNews({ pageSize, page })); },
         [pageSize, page],
         { 
             data: selectCurrentNews,
@@ -39,18 +39,18 @@ export const News: FunctionComponent = ({ }) => {
     );
 
     /* In case that data has not been fetched yet: */
-    if (isPending) return <Preloader />
+    if (isPending) return <Preloader />;
 
     /* In case that error happened while fetching: */
-    if (fetchError) return <APIError error={fetchError} />
+    if (fetchError) return <APIError error={fetchError} />;
 
     const newsCards = news?.map(
         news => <NewsCard key={news.news_content_id} newsData={news} />
-    )
+    );
 
     return (
         <NewsCardContainer>
             {newsCards}
         </NewsCardContainer>
     );
-}
+};

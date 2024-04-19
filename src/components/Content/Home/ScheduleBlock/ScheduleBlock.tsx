@@ -7,12 +7,12 @@ import { Schedule } from "./Schedule/Schedule";
 const StyledParagraph = styled.p`
     text-align: center;
     margin-top: 70px;
-    font-size: 24px;
+    font-size: ${({ theme }) => theme.fonts.fontSize.md};
 `
 
 type ScheduleBlockProps = {};
 
-export const ScheduleBlock: FunctionComponent<ScheduleBlockProps> = ({ }) => {
+export const ScheduleBlock: FunctionComponent<ScheduleBlockProps> = (props) => {
     return (
         <section>
             <Heading

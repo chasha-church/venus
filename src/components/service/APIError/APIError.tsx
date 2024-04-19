@@ -9,14 +9,14 @@ const StyledError = styled.div`
     margin: 50px auto;
 
     & h1 {
-        font-size: 24px;
+        font-size: ${props => props.theme.fonts.fontSize.md};
         font-weight: 600;
     }
 
     & pre {
         color: red;
         margin: 30px 0;
-        font-size: 24px;
+        font-size: ${props => props.theme.fonts.fontSize.md};
     }
 `;
 
@@ -28,7 +28,7 @@ export const APIError: React.FunctionComponent<ErrorFallbackProps> = ({ error = 
 
     return (
         <StyledError>
-            <h1>К сожалению, произошла ошибка:</h1>
+            <span>К сожалению, произошла ошибка:</span>
             <pre color="red">{error}</pre>
             {children}
         </StyledError>

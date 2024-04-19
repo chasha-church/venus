@@ -17,9 +17,9 @@ const ScheduleButton = styled(Button)`
 
     padding: 20px 15px;
 
-    background-color: white;
-    border-color: #0075BA;
-    color: #0075BA;
+    background-color: ${({ theme }) => theme.colors.background};
+    border-color: ${({ theme }) => theme.colors.primary};
+    color: ${({ theme }) => theme.colors.primary};
     border-radius: 10px;
 
     display: inline-flex;
@@ -31,7 +31,7 @@ const ScheduleButton = styled(Button)`
     bottom: 4%;
 
     font-weight: 700;
-    font-size: 1em;
+    font-size: ${({ theme }) => theme.fonts.fontSize.sm};
     text-align: center;
 `
 
