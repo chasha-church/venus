@@ -27,6 +27,13 @@ body {
   background-color: ${({ theme }) => theme.colors.background};
   line-height: ${({ theme }) => theme.fonts.fontSize.sm};
 }
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: inherit;
+  font-family: inherit;
+}
+
 h1,
 h2,
 h3,
