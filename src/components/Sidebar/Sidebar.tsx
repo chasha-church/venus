@@ -1,42 +1,50 @@
-import React from 'react'
+import React, { useState, createContext } from 'react'
 
-import { MenuItems } from './MenuItems/MenuItems'
 import { SidebarFooter } from './SidebarFooter/SidebarFooter'
 import { SidebarHeader } from './SidebarHeader/SidebarHeader';
+import { SidebarMenu } from './SidebarMenu/SidebarMenu';
 
-import { useAppDispatch, useAppSelector } from '../../redux/hooks/hooks';
-import { selectSidebarExpanded, setSidebarExpanded } from '../../redux/features/sidebarSlice';
-import { ToggleSidebar } from './ToggleSidebar/ToggleSidebar';
 import styled from 'styled-components';
 
+const StyledSidebar = styled.aside`
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+
+    /* SVH is a new CSS unit and not all browsers use it yet */
+    height: 100svh;
+    height: 100vh;   
+
+    background-color: ${({ theme }) => theme.colors.background};
+    color: ${({ theme }) => theme.colors.lightGrayText};
+    
+
+    border-right: 1px solid ${({ theme }) => theme.colors.lightGrayBorder};
+
+    display: flex;
+    flex-direction: column;
+`
+
+export const SidebarContext = createContext({ sidebarExpanded: false, setSidebarExpanded: () => { } });
 
 type SidebarProps = {};
 
-const StyledAside = styled.aside`
-    background: ${({ theme }) => theme.colors.background};
-`
-
 export const Sidebar: React.FC<SidebarProps> = ({ }) => {
 
-    const dispatch = useAppDispatch();
-    const sidebarExpanded = useAppSelector(selectSidebarExpanded);
-    const setExpanded = () => {
-        dispatch(setSidebarExpanded(sidebarExpanded));
+    const [expanded, setExpanded] = useState<boolean>(false);
+
+    const setSidebarExpanded = () => {
+        setExpanded(!expanded);
     }
 
     return (
-        <StyledAside
-            className={`fixed top-0 l-0 z-10 flex flex-col justify-between h-screen border-r`}
-        >
-            <ToggleSidebar expanded={sidebarExpanded} setExpanded={setExpanded} />
-            <nav className={`
-                overflow-y-scroll overflow-x-hidden
-                scrollbar scrollbar-w-1.5 scrollbar-thumb-rounded scrollbar-thumb-scrollThumb scrollbar-track-transparent
-            `}>
-                <SidebarHeader expanded={sidebarExpanded} setExpanded={setExpanded} />
-                <MenuItems expanded={sidebarExpanded} />
-            </nav>
-            <SidebarFooter expanded={sidebarExpanded} />
-        </StyledAside>
+        <SidebarContext.Provider value={{ sidebarExpanded: expanded, setSidebarExpanded }}>
+            <StyledSidebar>
+                <SidebarHeader />
+                <SidebarMenu />
+                <SidebarFooter />
+            </StyledSidebar >
+        </SidebarContext.Provider>
     )
 }

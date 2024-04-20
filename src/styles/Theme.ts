@@ -5,13 +5,19 @@ export const defaultTheme: DefaultTheme = {
         primary: '#0075BA',
         secondary: '#80BADD',
         tertiary: '#C0DDEE',
+        lightPrimary: '#C4ECFF', // transparent skyblue
         background: '#FFFFFF',
+
         text: '#000000',
         primaryTextColor: '#0085FF',
         secondaryTextColor: '#777777',
-        inputPlaceholder: '#C7C7C7',
+        lightGrayText: '#4b5563',
         darkGrayText: '#303030',
         darkText: '#1A1A1A',
+
+        inputPlaceholder: '#C7C7C7',
+        lightGrayBorder: '#e5e7eb',
+
         danger: '#F32013',
         success: '#5CB85C',
     },
@@ -38,15 +44,19 @@ export const defaultTheme: DefaultTheme = {
 export const darkTheme: DefaultTheme = {
     colors: {
         primary: '#E0EEF7',
-        text: '#FFFFFF',
         secondary: '#C0DDEE',
         tertiary: '#80BADD',
         background: '#001E2F',
+
+        text: '#FFFFFF',
         primaryTextColor: '#594F43',
         secondaryTextColor: '#777777',
-        inputPlaceholder: '#F1F1F1',
         darkGrayText: defaultTheme.colors.darkGrayText,
         darkText: defaultTheme.colors.darkText,
+
+        inputPlaceholder: '#F1F1F1',
+        lightGrayBorder: '#e5e7eb',
+
         danger: '#FF0000',
         success: '#AEDCAE',
     },

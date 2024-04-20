@@ -4,6 +4,18 @@ import fontsCss from './fonts.module.css'
 export const GlobalStyles = createGlobalStyle`
  ${fontsCss} // this works as a normal styled css
 
+:root {
+  font-size: 16px;
+  /* Sidebar variables */
+  --sidebar-grid-left-col: 3em;
+  --sidebar-grid-gap: 0.5em;
+  --sidebar-grid-padding: 1em;
+
+  /* Content */
+  --content-margin:
+  calc(var(--sidebar-grid-left-col) + var(--sidebar-grid-gap) + var(--sidebar-grid-padding) * 2);
+}
+
 /* Box sizing rules */
 *,
 *::before,
@@ -27,6 +39,13 @@ body {
   background-color: ${({ theme }) => theme.colors.background};
   line-height: ${({ theme }) => theme.fonts.fontSize.sm};
 }
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: inherit;
+  font-family: inherit;
+}
+
 h1,
 h2,
 h3,
@@ -44,7 +63,7 @@ dd {
 }
 button {
   border: none;
-  /* background-color: transparent; */
+  background-color: transparent;
   font-family: inherit;
   padding: 0;
   cursor: pointer;
@@ -62,6 +81,10 @@ html:focus-within {
   scroll-behavior: smooth;
 }
 /* A elements that don't have a class get default styles */
+a {
+  text-decoration: none;
+  color: #000;
+}
 a:not([class]) {
   text-decoration-skip-ink: auto;
 }

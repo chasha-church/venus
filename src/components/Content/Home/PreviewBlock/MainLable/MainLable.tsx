@@ -27,6 +27,7 @@ const MainTextWrapper = styled.div`
 
     border: 2px solid ${({ theme }) => theme.colors.primary};
     border-right: none;
+    border-left: none;
     background: ${({ theme }) => theme.colors.background};
 `;
 
@@ -47,8 +48,8 @@ const DecorationEdge = styled.div`
 
 const ChashaMerge = styled.div`
     position: absolute;
-    left: 40%;
-    top: 5%;
+    left: 42%;
+    top: 40%;
     z-index: 1;
 `;
 
@@ -58,7 +59,7 @@ export const MainLable: React.FC<MainLable> = () => {
             <MainTextWrapper>
                 <h1>Храм в честь иконы Божьей Матери “Неупиваемая Чаша”</h1>
                 <ChashaMerge>
-                    <ChashaIcon width={168} height={232}/>
+                    <ChashaIcon width={"4em"} height={"4em"}/>
                 </ChashaMerge>
             </MainTextWrapper>
             <DecorationEdge />

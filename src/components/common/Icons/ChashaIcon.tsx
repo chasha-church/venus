@@ -4,10 +4,10 @@ import Chasha from '../../../assets/images/ChashaIcon.svg';
 import { ComponentProps } from 'react';
 
 export const ChashaIcon: React.FC<ComponentProps<'svg'>> = (
-    { width = 36, height = 36 }
+    { ...styles }
 ) => {
     return (
-        <SvgLoader width={width} height={height} path={Chasha}>
+        <SvgLoader path={Chasha} {...styles} >
             <SvgProxy selector="rect" />
         </SvgLoader>
     );
