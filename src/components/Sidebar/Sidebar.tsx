@@ -1,6 +1,6 @@
-import React, { useState, createContext } from 'react'
+import React, { useState, createContext } from 'react';
 
-import { SidebarFooter } from './SidebarFooter/SidebarFooter'
+import { SidebarFooter } from './SidebarFooter/SidebarFooter';
 import { SidebarHeader } from './SidebarHeader/SidebarHeader';
 import { SidebarMenu } from './SidebarMenu/SidebarMenu';
 
@@ -14,37 +14,40 @@ const StyledSidebar = styled.aside`
 
     /* SVH is a new CSS unit and not all browsers use it yet */
     height: 100svh;
-    height: 100vh;   
+    height: 100vh;
 
     background-color: ${({ theme }) => theme.colors.background};
     color: ${({ theme }) => theme.colors.lightGrayText};
-    
 
     border-right: 1px solid ${({ theme }) => theme.colors.lightGrayBorder};
 
     display: flex;
     flex-direction: column;
-`
+`;
 
-export const SidebarContext = createContext({ sidebarExpanded: false, setSidebarExpanded: () => { } });
+export const SidebarContext = createContext({
+    sidebarExpanded: false,
+    setSidebarExpanded: () => {},
+});
 
 type SidebarProps = {};
 
-export const Sidebar: React.FC<SidebarProps> = ({ }) => {
-
+export const Sidebar: React.FC<SidebarProps> = ({}) => {
     const [expanded, setExpanded] = useState<boolean>(false);
 
     const setSidebarExpanded = () => {
         setExpanded(!expanded);
-    }
+    };
 
     return (
-        <SidebarContext.Provider value={{ sidebarExpanded: expanded, setSidebarExpanded }}>
+        <SidebarContext.Provider
+            value={{ sidebarExpanded: expanded, setSidebarExpanded }}
+        >
             <StyledSidebar>
                 <SidebarHeader />
                 <SidebarMenu />
                 <SidebarFooter />
-            </StyledSidebar >
+            </StyledSidebar>
         </SidebarContext.Provider>
-    )
-}
+    );
+};

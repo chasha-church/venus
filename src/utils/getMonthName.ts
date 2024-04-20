@@ -1,58 +1,58 @@
 enum MONTHS {
-    JANUARY = "января",
-    FEBRUARY = "февраля",
-    MARCH = "марта",
-    APRIL = "апреля",
-    MAY = "мая",
-    JUNE = "июня",
-    JULY = "июля",
-    AUGUST = "августа",
-    SEPTEMBER = "сентября",
-    OCTOBER = "октября",
-    NOVEMBER = "ноября",
-    DECEMBER = "декабря",
-};
+    JANUARY = 'января',
+    FEBRUARY = 'февраля',
+    MARCH = 'марта',
+    APRIL = 'апреля',
+    MAY = 'мая',
+    JUNE = 'июня',
+    JULY = 'июля',
+    AUGUST = 'августа',
+    SEPTEMBER = 'сентября',
+    OCTOBER = 'октября',
+    NOVEMBER = 'ноября',
+    DECEMBER = 'декабря',
+}
 
 export const getMonthName = (monthNumber: number): string => {
     switch (monthNumber) {
         case 1: {
-            return MONTHS.JANUARY
+            return MONTHS.JANUARY;
         }
         case 2: {
-            return MONTHS.FEBRUARY
+            return MONTHS.FEBRUARY;
         }
         case 3: {
-            return MONTHS.MARCH
+            return MONTHS.MARCH;
         }
         case 4: {
-            return MONTHS.APRIL
+            return MONTHS.APRIL;
         }
         case 5: {
-            return MONTHS.MAY
+            return MONTHS.MAY;
         }
         case 6: {
-            return MONTHS.JUNE
+            return MONTHS.JUNE;
         }
         case 7: {
-            return MONTHS.JULY
+            return MONTHS.JULY;
         }
         case 8: {
-            return MONTHS.AUGUST
+            return MONTHS.AUGUST;
         }
         case 9: {
-            return MONTHS.SEPTEMBER
+            return MONTHS.SEPTEMBER;
         }
         case 10: {
-            return MONTHS.OCTOBER
+            return MONTHS.OCTOBER;
         }
         case 11: {
-            return MONTHS.NOVEMBER
+            return MONTHS.NOVEMBER;
         }
         case 12: {
-            return MONTHS.DECEMBER
+            return MONTHS.DECEMBER;
         }
         default: {
-            return "";
+            return '';
         }
     }
-}
+};
