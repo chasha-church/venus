@@ -7,7 +7,7 @@ const StyledCaption = styled.div<{ $visible: boolean; }>`
     left: 100%;
     top: 50%;
 
-    background-color: #C4ECFF;
+    background-color: ${props => props.theme.colors.lightPrimary};
     border-radius: 0.5em;
 
     margin-left: 0.5em;

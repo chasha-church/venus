@@ -3,7 +3,7 @@ import { useAppSelector } from '../../../../redux/hooks/hooks';
 
 import styled from 'styled-components';
 
-import { MenuItemType, selectActiveItemId, sidebarReducer } from '../../../../redux/features/sidebarSlice';
+import { MenuItemType, selectActiveItemId } from '../../../../redux/features/sidebarSlice';
 import { SidebarMenuItemSubmenu } from './SidebarMenuItemSubmenu/SidebarMenuItemSubmenu';
 import { SubmenuToggleButton } from './SubmenuToggleButton/SubmenuToggleButton';
 import { SidebarMenuItemHeader } from './SidebarMenuItemHeader/SidebarMenuItemHeader';
@@ -14,10 +14,10 @@ const StyledMenuItem = styled.li<{ $isActive: boolean; }>`
     cursor: pointer;
 
     &:hover {
-        background-color: #C4ECFF;
+        background-color: ${props => props.theme.colors.lightPrimary};
     }
 
-    background-color: ${props => props.$isActive ? "#C4ECFF" : "#fff"};
+    background-color: ${props => props.$isActive ? props.theme.colors.lightPrimary : props.theme.colors.background};
 `;
 
 type SidebarMenuItemProps = {} & MenuItemType;

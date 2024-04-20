@@ -24,7 +24,7 @@ export const ToggleSidebar: React.FC<ToggleSidebarProps> = ({ }) => {
                 style={{
                     width: "2em",
                     transition: "all .3s ease",
-                    transform: `rotate(${sidebarExpanded ? "0deg" : "-180deg"})`
+                    transform: `rotate(${sidebarExpanded ? "-180deg" : "0deg"})`
                 }}
             />
         </StyledBtn>

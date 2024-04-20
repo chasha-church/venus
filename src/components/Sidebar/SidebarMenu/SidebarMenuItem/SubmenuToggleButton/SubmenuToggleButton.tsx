@@ -10,7 +10,7 @@ import { SubmenuToggleIcon } from '../../../../common/Icons/SubmenuToggleIcon';
 const StyledButton = styled.button<{ $sidebarExpanded: boolean; }>`
     position: absolute;
     right: 0.5em;
-    top: 1.1em;
+    top: 0.9em;
 
     padding: 0.5em;
     

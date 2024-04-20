@@ -10,13 +10,13 @@ import { Content } from "./components/Content/Content";
 const App: React.FC = () => {
     return (
         <ThemeProvider theme={defaultTheme}>
-        <GlobalStyles />
-        <div className="App">
-            <Sidebar />
-            <Content />
-        </div>
+            <GlobalStyles />
+            <div className="App">
+                <Sidebar />
+                <Content />
+            </div>
         </ThemeProvider>
-    )
+    );
 }
 
 export default App

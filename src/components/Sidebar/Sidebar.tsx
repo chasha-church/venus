@@ -13,13 +13,14 @@ const StyledSidebar = styled.aside`
     z-index: 10;
 
     /* SVH is a new CSS unit and not all browsers use it yet */
-    height: 100vh;
-    height: 100svh;     
+    height: 100svh;
+    height: 100vh;   
 
-    background-color: #fff;
-    color: rgb(75 85 99);
+    background-color: ${({ theme }) => theme.colors.background};
+    color: ${({ theme }) => theme.colors.lightGrayText};
+    
 
-    border-right: 1px solid #e5e7eb;
+    border-right: 1px solid ${({ theme }) => theme.colors.lightGrayBorder};
 
     display: flex;
     flex-direction: column;

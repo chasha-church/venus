@@ -1,10 +1,12 @@
 import React, { useContext } from 'react'
-import styled from 'styled-components';
+import styled, { DefaultTheme } from 'styled-components';
 import { SidebarContext } from '../Sidebar';
+import { defaultTheme } from '../../../styles/Theme';
+
 
 const StyledFooter = styled.div<{ $sidebarExpanded: boolean }>`
     margin-top: auto;
-    border-top: ${props => props.$sidebarExpanded ? "1px solid #e5e7eb" : "none"};
+    border-top: ${props => props.$sidebarExpanded ? `1px solid ${props.theme.colors.lightGrayBorder}` : "none"};
     
     /* These properties make the width of footer text animate while collapsing! 
     Great solution with grid: */

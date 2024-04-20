@@ -7,6 +7,7 @@ import { useAppDispatch } from '../../../../../redux/hooks/hooks';
 import { SidebarContext } from '../../../Sidebar';
 import { IconMatcher } from '../../../../../utils/IconMatcher';
 import { StyledSidebarGrid } from '../../../StyledSidebarGrid/StyledSidebarGrid';
+import { theme } from 'antd';
 
 const StyledHeader = styled.div`
     position: relative;
@@ -20,7 +21,13 @@ const StyledActiveStripe = styled.div<{ $isActive: boolean; }>`
     left: 0;
 
     transition: background-color 300ms;
-    background-color: ${props => props.$isActive ? "#0075BA" : "transparent"};
+    background-color: ${props => props.$isActive ? props.theme.colors.primary : "transparent"};
+`
+
+const StyledHeaderGrid = styled(StyledSidebarGrid)`
+    padding-top: 0.75em;
+    padding-bottom: 0.75em;
+
 `
 
 const StyledIcon = styled.div`
@@ -67,12 +74,12 @@ export const SidebarMenuItemHeader: React.FC<SidebarMenuItemHeaderProps> = ({ is
         <StyledHeader onClick={handleSetActiveItem}>
             <StyledActiveStripe $isActive={isActive} />
 
-            <StyledSidebarGrid>
+            <StyledHeaderGrid>
                 <StyledIcon>{Icon}</StyledIcon>
                 <StyledName $sidebarExpanded={sidebarExpanded} >
                     <span>{name}</span>
                 </StyledName>
-            </StyledSidebarGrid>
+            </StyledHeaderGrid>
 
             <HoverCaption
                 caption={name}
