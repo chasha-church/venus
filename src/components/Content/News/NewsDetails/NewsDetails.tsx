@@ -19,7 +19,7 @@ const Data = {
     'updated_by_id': 1
 };
 
-const NewsItemDetailsWrapper = styled.div`
+const StyledNewsItemDetailsWrapper = styled.div`
     flex: 25rem;
 
     overflow-y: scroll;
@@ -47,33 +47,33 @@ const NewsItemDetailsWrapper = styled.div`
 `;
 
 
-const NewsMainImageWrapper = styled.div`
+const StyledNewsMainImageWrapper = styled.div`
     width: 40vw;
     margin: auto;
     
     grid-area: mainAsset;
 `;
 
-const NewsHeader = styled.p`
+const StyledNewsHeader = styled.p`
     font-size: 1.5em;
     text-align: center;
     
     grid-area: header;
 `;
 
-const NewsText = styled.p`
+const StyledNewsText = styled.p`
     font-size: 1em;
 
     grid-area: text;
 `;
 
-const NewsCreatedDate = styled.div`
+const StyledNewsCreatedDate = styled.div`
     text-align: right;
     
     grid-area: date;
 `;
 
-const NewsAssetImage = styled(Image)`
+const StyledNewsAssetImage = styled(Image)`
     object-fit: cover;
 `;
 
@@ -83,29 +83,29 @@ export const NewsItemDetails: React.FC<NewsItemDetailsProps> = ({}) => {
     const parseDate = (date: string): string => date.slice(0, 10).split('-').reverse().join('.');
 
     return (
-        <NewsItemDetailsWrapper>
-            <NewsMainImageWrapper>
+        <StyledNewsItemDetailsWrapper>
+            <StyledNewsMainImageWrapper>
                 <Image
                     width={'100%'}
                     src={Data.main_asset_url}/>
-            </NewsMainImageWrapper>
-            <NewsHeader>{Data.title}</NewsHeader>
-            <NewsText>{Data.text}</NewsText>
-            <NewsCreatedDate>{parseDate(Data.created_date)}</NewsCreatedDate>
-            <NewsAssetImage height={'100%'} src={Data.assets_url[0]}/>
-            <NewsAssetImage height={'100%'} src={MockImage}/>
-            <NewsAssetImage height={'100%'} src={Data.assets_url[1]}/>
-            <NewsAssetImage height={'100%'} src={MockImage}/>
+            </StyledNewsMainImageWrapper>
+            <StyledNewsHeader>{Data.title}</StyledNewsHeader>
+            <StyledNewsText>{Data.text}</StyledNewsText>
+            <StyledNewsCreatedDate>{parseDate(Data.created_date)}</StyledNewsCreatedDate>
+            <StyledNewsAssetImage height={'100%'} src={Data.assets_url[0]}/>
+            <StyledNewsAssetImage height={'100%'} src={MockImage}/>
+            <StyledNewsAssetImage height={'100%'} src={Data.assets_url[1]}/>
+            <StyledNewsAssetImage height={'100%'} src={MockImage}/>
 
-            <NewsAssetImage height={'100%'} src={MockImage}/>
-            <NewsAssetImage height={'100%'} src={MockImage}/>
-            <NewsAssetImage height={'100%'} src={MockImage}/>
-            <NewsAssetImage height={'100%'} src={MockImage}/>
-            <NewsAssetImage height={'100%'} src={MockImage}/>
-            <NewsAssetImage height={'100%'} src={MockImage}/>
-            <NewsAssetImage height={'100%'} src={MockImage}/>
-            <NewsAssetImage height={'100%'} src={MockImage}/>
-            <NewsAssetImage height={'100%'} src={MockImage}/>
-        </NewsItemDetailsWrapper>
+            <StyledNewsAssetImage height={'100%'} src={MockImage}/>
+            <StyledNewsAssetImage height={'100%'} src={MockImage}/>
+            <StyledNewsAssetImage height={'100%'} src={MockImage}/>
+            <StyledNewsAssetImage height={'100%'} src={MockImage}/>
+            <StyledNewsAssetImage height={'100%'} src={MockImage}/>
+            <StyledNewsAssetImage height={'100%'} src={MockImage}/>
+            <StyledNewsAssetImage height={'100%'} src={MockImage}/>
+            <StyledNewsAssetImage height={'100%'} src={MockImage}/>
+            <StyledNewsAssetImage height={'100%'} src={MockImage}/>
+        </StyledNewsItemDetailsWrapper>
     );
 };
