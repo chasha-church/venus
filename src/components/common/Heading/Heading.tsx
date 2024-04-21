@@ -11,7 +11,7 @@ const StyledHeading = styled.div`
     gap: 50px;
     align-items: center;
     
-    margin: 70px 0 30px 0;
+    padding: 70px 0 30px 0;
     font-size: ${({ theme }) => theme.fonts.fontSize.xxl};
     text-align: center;
 `;
