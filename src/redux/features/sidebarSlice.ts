@@ -1,5 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit'
-import type { PayloadAction } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../store';
 
 type SidebarState = {
@@ -30,73 +30,73 @@ export enum SideBarIds {
     Schedule,
     Collaboration,
     Contacts,
-    Donate
-};
+    Donate,
+}
 
 const initialState: SidebarState = {
     activeItemId: null,
     menuItems: [
         {
             id: SideBarIds.Church,
-            name: "Храм",
+            name: 'Храм',
             submenuExpanded: false,
             submenu: [
                 {
                     id: 0,
-                    name: "Новости"
+                    name: 'Новости',
                 },
                 {
                     id: 1,
-                    name: "История храма"
+                    name: 'История храма',
                 },
                 {
                     id: 2,
-                    name: "Духовенство"
+                    name: 'Духовенство',
                 },
             ],
         },
         {
             id: SideBarIds.Schedule,
-            name: "Богослужения",
+            name: 'Богослужения',
             submenuExpanded: false,
             submenu: null,
         },
         {
             id: SideBarIds.Collaboration,
-            name: "Деятельность",
+            name: 'Деятельность',
             submenuExpanded: false,
             submenu: [
                 {
                     id: 0,
-                    name: "Воскресная школа"
+                    name: 'Воскресная школа',
                 },
                 {
                     id: 1,
-                    name: "«Живоносный источник»"
+                    name: '«Живоносный источник»',
                 },
                 {
                     id: 2,
-                    name: "«Спасительная Чаша»"
+                    name: '«Спасительная Чаша»',
                 },
                 {
                     id: 3,
-                    name: "Психология для жизни"
+                    name: 'Психология для жизни',
                 },
             ],
         },
         {
             id: SideBarIds.Contacts,
-            name: "Контакты",
+            name: 'Контакты',
             submenuExpanded: false,
             submenu: null,
         },
         {
             id: SideBarIds.Donate,
-            name: "Пожертвовать",
+            name: 'Пожертвовать',
             submenuExpanded: false,
             submenu: null,
         },
-    ]
+    ],
 };
 
 export const sidebarSlice = createSlice({
@@ -104,26 +104,28 @@ export const sidebarSlice = createSlice({
     initialState,
     reducers: {
         setSubmenuExpanded: (state, action: PayloadAction<number>) => {
-            state.menuItems[action.payload].submenuExpanded = !state.menuItems[action.payload].submenuExpanded;
+            state.menuItems[action.payload].submenuExpanded =
+                !state.menuItems[action.payload].submenuExpanded;
 
             // Close opened submenu's so there is always only one open
             state.menuItems.forEach((item, index) => {
                 if (index === action.payload) return;
-                item.submenuExpanded = false
+                item.submenuExpanded = false;
             });
         },
         setActiveItem: (state, action: PayloadAction<number>) => {
             state.activeItemId = action.payload;
         },
     },
-})
+});
 
 // Actions
-export const { setSubmenuExpanded, setActiveItem } = sidebarSlice.actions
+export const { setSubmenuExpanded, setActiveItem } = sidebarSlice.actions;
 
 // Selectors
 export const selectMenuItems = (state: RootState) => state.sidebar.menuItems;
-export const selectActiveItemId = (state: RootState) => state.sidebar.activeItemId;
+export const selectActiveItemId = (state: RootState) =>
+    state.sidebar.activeItemId;
 
 // Reducer
 export const sidebarReducer = sidebarSlice.reducer;

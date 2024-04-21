@@ -1,15 +1,15 @@
-import React from 'react'
+import React from 'react';
 import { Button, Carousel, ConfigProvider } from 'antd';
 
 const Church = './images/Church.png';
-const ChurchInside = "./images/Church_inside.jpg";
-const Church_2 = "./images/Church_2.jpg";
+const ChurchInside = './images/Church_inside.jpg';
+const Church_2 = './images/Church_2.jpg';
 
-import styled from "styled-components";
+import styled from 'styled-components';
 import { MainLable } from './MainLable/MainLable';
 import { PRIMARY_COLOR } from '../../../../constants/colors';
 
-type PreviewBlockProps = {}
+type PreviewBlockProps = {};
 
 const ScheduleButton = styled(Button)`
     width: fit-content;
@@ -33,7 +33,7 @@ const ScheduleButton = styled(Button)`
     font-weight: 700;
     font-size: ${({ theme }) => theme.fonts.fontSize.sm};
     text-align: center;
-`
+`;
 
 const CarouselWrapper = styled.div`
     position: relative;
@@ -45,7 +45,6 @@ const HomeImage = styled.img`
     height: 100vh;
     object-fit: cover;
 `;
-
 
 export const PreviewBlock: React.FC<PreviewBlockProps> = () => {
     return (
@@ -63,8 +62,10 @@ export const PreviewBlock: React.FC<PreviewBlockProps> = () => {
                     },
                 }}
             >
-                <ScheduleButton href='#schedule'>Расписание богослужений</ScheduleButton>
+                <ScheduleButton href="#schedule">
+                    Расписание богослужений
+                </ScheduleButton>
             </ConfigProvider>
         </CarouselWrapper>
-    )
-}
+    );
+};

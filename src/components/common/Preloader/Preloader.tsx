@@ -1,35 +1,38 @@
-import React from "react";
-import styled from "styled-components";
-import { PreloaderIcon } from "../Icons/PreloaderIcon";
+import React from 'react';
+import styled from 'styled-components';
+import { PreloaderIcon } from '../Icons/PreloaderIcon';
 
 const StyledPreloader = styled.div`
     width: fit-content;
     margin: 50px auto;
     text-align: center;
-`
+`;
 
-export const Preloader: React.FunctionComponent<React.ComponentProps<'div'>> = ({ children, ...props }) => {
+export const Preloader: React.FunctionComponent<
+    React.ComponentProps<'div'>
+> = ({ children, ...props }) => {
     return (
         <StyledPreloader {...props}>
-            {
-                children
-                || <>
+            {children || (
+                <>
                     <PreloaderIcon />
                     <PreloaderText />
                 </>
-            }
+            )}
         </StyledPreloader>
     );
-}
+};
 
 const StyledPreloaderText = styled.p`
-    font-size: ${props => props.theme.fonts.fontSize.md};
-`
+    font-size: ${(props) => props.theme.fonts.fontSize.md};
+`;
 
-export const PreloaderText: React.FunctionComponent<React.ComponentProps<'p'>> = ({ children, ...props }) => {
+export const PreloaderText: React.FunctionComponent<
+    React.ComponentProps<'p'>
+> = ({ children, ...props }) => {
     return (
         <StyledPreloaderText {...props}>
-            {children || "Идет загрузка..."}
+            {children || 'Идет загрузка...'}
         </StyledPreloaderText>
     );
-}
+};

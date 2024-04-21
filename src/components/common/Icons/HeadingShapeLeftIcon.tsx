@@ -3,12 +3,17 @@ import HeadingShapeLeft from '../../../assets/images/HeadingShapeLeft.svg';
 import { SvgLoader, SvgProxy } from 'react-svgmt';
 import { ComponentProps } from 'react';
 
-export const HeadingShapeLeftIcon: React.FC<ComponentProps<'svg'>> = 
-    ({ width = 96, height = 26 }
-) => {
+export const HeadingShapeLeftIcon: React.FC<ComponentProps<'svg'>> = ({
+    width = 96,
+    height = 26,
+}) => {
     return (
-        <SvgLoader width={width} height={height} path={HeadingShapeLeft}>
+        <SvgLoader
+            width={width}
+            height={height}
+            path={HeadingShapeLeft}
+        >
             <SvgProxy selector="rect" />
         </SvgLoader>
     );
-}
+};
