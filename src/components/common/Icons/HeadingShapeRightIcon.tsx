@@ -12,4 +12,4 @@ export const HeadingShapeRightIcon: React.FC<ComponentProps<'svg'>> = (
             <SvgProxy selector="rect" />
         </SvgLoader>
     );
-}
+};

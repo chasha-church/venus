@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 import { Button, ConfigProvider } from 'antd';
 import { PRIMARY_COLOR } from '../../../constants/colors';
@@ -23,5 +23,5 @@ export const ButtonPrimary: React.FC<ButtonProps> = ({ value }) => {
                 {value}
             </Button>
         </ConfigProvider>
-    )
-}
+    );
+};

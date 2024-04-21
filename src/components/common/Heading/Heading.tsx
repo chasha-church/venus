@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
 
 import { HeadingShapeLeftIcon } from '../Icons/HeadingShapeLeftIcon';
@@ -20,7 +20,7 @@ interface HeadingProps extends React.ComponentProps<'div'> {
     value?: string;
 }
 
-export const Heading: React.FunctionComponent<HeadingProps> = ({ value = "", children, ...props }) => {
+export const Heading: React.FunctionComponent<HeadingProps> = ({ value = '', children, ...props }) => {
 
     return (
         <StyledHeading {...props}>
@@ -37,8 +37,8 @@ export const Heading: React.FunctionComponent<HeadingProps> = ({ value = "", chi
                 </>
             }
         </StyledHeading>
-    )
-}
+    );
+};
 
 const StyledHeadingText = styled.h2``;
 
@@ -49,8 +49,8 @@ export const HeadingText: React.FunctionComponent<React.ComponentProps<'h2'>> = 
         <StyledHeadingText {...props}>
             {children}
         </StyledHeadingText>
-    )
-}
+    );
+};
 
 const StyledHeadingIcon = styled.div``;
 
@@ -61,5 +61,5 @@ export const HeadingIcon: React.FunctionComponent<React.ComponentProps<'div'>> =
         <StyledHeadingIcon {...props}>
             {children}
         </StyledHeadingIcon>
-    )
-}
+    );
+};

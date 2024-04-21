@@ -19,4 +19,4 @@ export const DateHelper = {
     getCurrentDay() {
         return this.date.getDate();
     }
-}
+};

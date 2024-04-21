@@ -1,5 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit'
-import type { PayloadAction } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../store';
 
 interface SidebarState {
@@ -12,7 +12,6 @@ export type MenuType = Array<MenuItemType>
 export type MenuItemType = {
     id: number;
     name: string;
-    icon: string;
     url: string;
     submenuExpanded: SubmenuExpandedType;
     submenu: SubmenuType;
@@ -41,78 +40,73 @@ const initialState: SidebarState = {
     menuItems: [
         {
             id: SideBarIds.Church,
-            name: "Храм",
-            icon: "/public/images/ChurchIcon.png",
-            url: "/#",
+            name: 'Храм',
+            url: '/#',
             submenuExpanded: false,
             submenu: [
                 {
                     id: 0,
-                    name: "Новости",
-                    url: "news/",
+                    name: 'Новости',
+                    url: 'news/',
                 },
                 {
                     id: 1,
-                    name: "История храма",
-                    url: "#",
+                    name: 'История храма',
+                    url: '#',
                 },
                 {
                     id: 2,
-                    name: "Духовенство",
-                    url: "#",
+                    name: 'Духовенство',
+                    url: '#',
                 },
             ],
         },
         {
             id: SideBarIds.Schedule,
-            name: "Богослужения",
-            icon: "/public/images/ScheduleIcon.png",
-            url: "/#schedule",
+            name: 'Богослужения',
+            url: '/#schedule',
             submenuExpanded: false,
             submenu: null,
         },
         {
             id: SideBarIds.Collaboration,
-            name: "Деятельность",
-            icon: "/public/images/СollaborationIcon.png",
-            url: "#",
+            name: 'Деятельность',
+            url: '#',
             submenuExpanded: false,
             submenu: [
                 {
                     id: 0,
-                    name: "Воскресная школа",
-                    url: "#",
+                    name: 'Воскресная школа',
+                    url: '#',
                 },
                 {
                     id: 1,
-                    name: "«Живоносный источник»",
-                    url: "#",
+                    name: '«Живоносный источник»',
+                    url: '#',
                 },
                 {
                     id: 2,
-                    name: "«Спасительная Чаша»",
-                    url: "#",
+                    name: '«Спасительная Чаша»',
+                    url: '#',
                 },
                 {
                     id: 3,
-                    name: "Психология для жизни",
-                    url: "#",
+                    name: 'Психология для жизни',
+                    url: '#',
                 },
             ],
         },
         {
             id: SideBarIds.Contacts,
-            name: "Контакты",
-            icon: "/public/images/ContactsIcon.png",
-            url: "#",
+            name: 'Контакты',
+            url: '#',
             submenuExpanded: false,
             submenu: null,
         },
         {
             id: SideBarIds.Donate,
-            name: "Пожертвовать",
-            icon: "/public/images/DonateIcon.png",
-            url: "#",
+            name: 'Пожертвовать',
+            url: '#',
             submenuExpanded: false,
             submenu: null,
         },
@@ -130,17 +124,17 @@ export const sidebarSlice = createSlice({
             state.menuItems[action.payload].submenuExpanded = !state.menuItems[action.payload].submenuExpanded;
             state.menuItems.forEach((item, index) => {
                 if (index === action.payload) return;
-                item.submenuExpanded = false
+                item.submenuExpanded = false;
             });
         },
         setActiveItem: (state, action: PayloadAction<number>) => {
             state.activeItemId = action.payload;
         },
     },
-})
+});
 
 // Actions
-export const { setSidebarExpanded, setSubmenuExpanded, setActiveItem } = sidebarSlice.actions
+export const { setSidebarExpanded, setSubmenuExpanded, setActiveItem } = sidebarSlice.actions;
 
 // Selectors
 export const selectSidebarExpanded = (state: RootState) => state.sidebar.sidebarExpanded;

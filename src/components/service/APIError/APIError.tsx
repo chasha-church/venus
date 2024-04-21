@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import React from "react";
+import styled from 'styled-components';
+import React from 'react';
 
 const StyledError = styled.div`
     text-align: center;
@@ -24,7 +24,7 @@ interface ErrorFallbackProps extends React.ComponentProps<'div'> {
     error?: string;
 }
 
-export const APIError: React.FunctionComponent<ErrorFallbackProps> = ({ error = "", children }) => {
+export const APIError: React.FunctionComponent<ErrorFallbackProps> = ({ error = '', children }) => {
 
     return (
         <StyledError>
@@ -33,4 +33,4 @@ export const APIError: React.FunctionComponent<ErrorFallbackProps> = ({ error = 
             {children}
         </StyledError>
     );
-}
+};

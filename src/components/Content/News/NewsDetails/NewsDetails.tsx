@@ -1,23 +1,23 @@
-import React from 'react'
-import styled from "styled-components";
-import {Image} from "antd";
-import MockImage from "../../../../assets/images/Church.png";
+import React from 'react';
+import styled from 'styled-components';
+import {Image} from 'antd';
+import MockImage from '../../../../assets/images/Church.png';
 
 const Data = {
-    "news_content_id": 320,
-    "title": "Масленичное гуляние в приходе",
-    "text": "    Обряд величания молодоженов, масленичные песни и народные танцы, веселые конкурсы и, конечно, блинное изобилие с чаем из горячего самовара ожидали всех прихожан и гостей на Масленичном гулянии. Особыми гостями праздника стали воспитанники социально-педагогического центра с приютом Ленинского района г.Минска. Ребята с удовольствием приняли участие во всех конкурсах на силу, быстроту и меткость, а также тепло пообщались за чаем с учащимися воскресной школы прихода. Фоторепортаж",
-    "view_data": null,
-    "main_asset_url": "https://chashaby.s3.eu-central-1.amazonaws.com/photo_2023-03-26_21-23-44.jpg",
-    "assets_url": [
-        "https://chashaby.s3.eu-central-1.amazonaws.com/photo_2023-03-26_21-23-44.jpg",
-        "https://chashaby.s3.eu-central-1.amazonaws.com/photo_2023-03-26_21-34-54.jpg",
+    'news_content_id': 320,
+    'title': 'Масленичное гуляние в приходе',
+    'text': '    Обряд величания молодоженов, масленичные песни и народные танцы, веселые конкурсы и, конечно, блинное изобилие с чаем из горячего самовара ожидали всех прихожан и гостей на Масленичном гулянии. Особыми гостями праздника стали воспитанники социально-педагогического центра с приютом Ленинского района г.Минска. Ребята с удовольствием приняли участие во всех конкурсах на силу, быстроту и меткость, а также тепло пообщались за чаем с учащимися воскресной школы прихода. Фоторепортаж',
+    'view_data': null,
+    'main_asset_url': 'https://chashaby.s3.eu-central-1.amazonaws.com/photo_2023-03-26_21-23-44.jpg',
+    'assets_url': [
+        'https://chashaby.s3.eu-central-1.amazonaws.com/photo_2023-03-26_21-23-44.jpg',
+        'https://chashaby.s3.eu-central-1.amazonaws.com/photo_2023-03-26_21-34-54.jpg',
     ],
-    "created_date": "2023-03-26T18:32:51",
-    "created_by_id": 1,
-    "updated_date": "2023-11-29T15:42:20",
-    "updated_by_id": 1
-}
+    'created_date': '2023-03-26T18:32:51',
+    'created_by_id': 1,
+    'updated_date': '2023-11-29T15:42:20',
+    'updated_by_id': 1
+};
 
 const NewsItemDetailsWrapper = styled.div`
     flex: 25rem;
@@ -80,7 +80,7 @@ const NewsAssetImage = styled(Image)`
 type NewsItemDetailsProps = {}
 
 export const NewsItemDetails: React.FC<NewsItemDetailsProps> = ({}) => {
-    const parseDate = (date: string): string => date.slice(0, 10).split("-").reverse().join(".");
+    const parseDate = (date: string): string => date.slice(0, 10).split('-').reverse().join('.');
 
     return (
         <NewsItemDetailsWrapper>
@@ -108,4 +108,4 @@ export const NewsItemDetails: React.FC<NewsItemDetailsProps> = ({}) => {
             <NewsAssetImage height={'100%'} src={MockImage}/>
         </NewsItemDetailsWrapper>
     );
-}
+};

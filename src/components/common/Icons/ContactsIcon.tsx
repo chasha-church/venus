@@ -1,4 +1,4 @@
-import { ComponentProps } from 'react'
+import { ComponentProps } from 'react';
 import Contacts from '../../../assets/images/ContactsIcon.svg';
 // @ts-ignore
 import { SvgLoader, SvgProxy } from 'react-svgmt';
@@ -11,4 +11,4 @@ export const ContactsIcon: React.FC<ComponentProps<'svg'>> = (
             <SvgProxy selector="rect" />
         </SvgLoader>
     );
-}
+};

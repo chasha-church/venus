@@ -1,5 +1,5 @@
-import {useRouteError} from "react-router-dom";
-import React from "react";
+import {useRouteError} from 'react-router-dom';
+import React from 'react';
 
 type RouteErrorProps = {}
 type RouteErrorObject = {
@@ -18,4 +18,4 @@ export const RouteError: React.FC<RouteErrorProps> = ({}) => {
             <p><i>{error.statusText || error.message}</i></p>
         </div>
     );
-}
+};
