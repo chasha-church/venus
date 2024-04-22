@@ -1,7 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Image} from 'antd';
+import { CloseOutlined } from '@ant-design/icons';
+import {Image, FloatButton} from 'antd';
 import MockImage from '../../../../assets/images/Church.png';
+import {selectSidebarNewsExpanded, setSidebarNewsExpanded} from '../../../../redux/features/sidebarNewsSlice';
+import {useAppDispatch, useAppSelector} from '../../../../redux/hooks/hooks';
 
 const Data = {
     'news_content_id': 320,
@@ -26,7 +29,7 @@ const StyledNewsItemDetailsWrapper = styled.div`
     height: 100vh;
 
     display: grid;
-    grid-template-columns: 48% 48%;
+    grid-template-columns: 1fr 1fr;
     grid-auto-rows: min-content;
     gap: 0.5rem;
 
@@ -55,14 +58,16 @@ const StyledNewsMainImageWrapper = styled.div`
 `;
 
 const StyledNewsHeader = styled.p`
-    font-size: 1.5em;
+    font-size: 2em;
     text-align: center;
+    margin: 1.5rem auto;
     
     grid-area: header;
 `;
 
 const StyledNewsText = styled.p`
-    font-size: 1em;
+    font-size: 1.2em;
+    line-height: 1.5rem;
 
     grid-area: text;
 `;
@@ -81,9 +86,19 @@ type NewsItemDetailsProps = {}
 
 export const NewsItemDetails: React.FC<NewsItemDetailsProps> = ({}) => {
     const parseDate = (date: string): string => date.slice(0, 10).split('-').reverse().join('.');
+    const dispatch = useAppDispatch();
+    const returnBackToNewsListOnClick = () => {
+        dispatch(setSidebarNewsExpanded(false));
+    };
 
+    const sidebarNewsExpanded = useAppSelector(selectSidebarNewsExpanded);
     return (
         <StyledNewsItemDetailsWrapper>
+            <FloatButton
+                style={{top: '1rem', right: '1.5rem', display: `${sidebarNewsExpanded ? 'inherit' : 'none'}`, transition: 'display 500ms'}}
+                onClick={returnBackToNewsListOnClick}
+                icon={<CloseOutlined />}
+            />
             <StyledNewsMainImageWrapper>
                 <Image
                     width={'100%'}

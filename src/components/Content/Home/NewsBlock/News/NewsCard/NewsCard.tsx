@@ -23,8 +23,14 @@ const InnerCardContainer = styled.div`
     justify-content: space-between; 
     align-items: center;
     margin: 5vh 80px;
-    
+
+    transition: 0.3s;
     box-shadow: 0 0 0.5em 0.3em rgba(0, 0, 0, 0.25) ;
+    
+    &:hover{
+        box-shadow: 0 0 0.5em 0.3em rgba(0, 0, 0, 0.4) ;
+    }
+    
 `;
 
 const CardDate = styled.div`

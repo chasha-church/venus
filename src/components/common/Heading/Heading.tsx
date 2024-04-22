@@ -13,6 +13,7 @@ const StyledHeading = styled.div`
     
     padding: 70px 0 30px 0;
     font-size: ${({ theme }) => theme.fonts.fontSize.xxl};
+    line-height: ${({ theme }) => theme.fonts.fontSize.xxl};
     text-align: center;
 `;
 
