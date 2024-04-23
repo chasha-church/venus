@@ -1,5 +1,5 @@
 import { createAppAsyncThunk } from './../hooks/hooks';
-import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { PayloadAction, SerializedError, createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../store';
 import { scheduleAPI } from '../../api/scheduleAPI';
 import { DateHelper } from '../../utils/DateHelper';

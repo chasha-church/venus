@@ -37,6 +37,7 @@ export const SidebarMenuItemSubmenu: React.FC<MenuItemSubmenuProps> = ({
                     <SubmenuItem
                         key={submenuItem.id}
                         id={menuItem.id}
+                        url={submenuItem.url}
                         submenuExpanded={menuItem.submenuExpanded}
                         name={submenuItem.name}
                     />

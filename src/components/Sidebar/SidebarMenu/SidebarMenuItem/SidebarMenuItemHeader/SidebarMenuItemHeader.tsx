@@ -7,7 +7,7 @@ import { useAppDispatch } from '../../../../../redux/hooks/hooks';
 import { SidebarContext } from '../../../Sidebar';
 import { IconMatcher } from '../../../../../utils/IconMatcher';
 import { StyledSidebarGrid } from '../../../StyledSidebarGrid/StyledSidebarGrid';
-import { theme } from 'antd';
+import { HashLink } from 'react-router-hash-link';
 
 const StyledHeader = styled.div`
     position: relative;
@@ -54,6 +54,7 @@ const StyledName = styled.div<{ $sidebarExpanded: boolean }>`
 type SidebarMenuItemHeaderProps = {
     isActive: boolean;
     id: number;
+    url: string;
     name: string;
     hoverCaptionVisible: boolean;
 };
@@ -61,6 +62,7 @@ type SidebarMenuItemHeaderProps = {
 export const SidebarMenuItemHeader: React.FC<SidebarMenuItemHeaderProps> = ({
     isActive,
     id,
+    url,
     name,
     hoverCaptionVisible,
 }) => {
@@ -77,12 +79,14 @@ export const SidebarMenuItemHeader: React.FC<SidebarMenuItemHeaderProps> = ({
         <StyledHeader onClick={handleSetActiveItem}>
             <StyledActiveStripe $isActive={isActive} />
 
-            <StyledHeaderGrid>
-                <StyledIcon>{Icon}</StyledIcon>
-                <StyledName $sidebarExpanded={sidebarExpanded}>
-                    <span>{name}</span>
-                </StyledName>
-            </StyledHeaderGrid>
+            <HashLink to={url}>
+                <StyledHeaderGrid>
+                    <StyledIcon>{Icon}</StyledIcon>
+                    <StyledName $sidebarExpanded={sidebarExpanded}>
+                        <span>{name}</span>
+                    </StyledName>
+                </StyledHeaderGrid>
+            </HashLink>
 
             <HoverCaption
                 caption={name}

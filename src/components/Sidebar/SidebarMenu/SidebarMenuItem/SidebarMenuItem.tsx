@@ -54,6 +54,7 @@ export const SidebarMenuItem: React.FC<SidebarMenuItemProps> = ({
             <SidebarMenuItemHeader
                 isActive={isActive}
                 id={menuItem.id}
+                url={menuItem.url}
                 name={menuItem.name}
                 hoverCaptionVisible={hoverCaptionVisible}
             />

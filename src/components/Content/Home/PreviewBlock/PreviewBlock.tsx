@@ -1,13 +1,14 @@
 import React from 'react';
 import { Button, Carousel, ConfigProvider } from 'antd';
 
-const Church = './images/Church.png';
-const ChurchInside = './images/Church_inside.jpg';
-const Church_2 = './images/Church_2.jpg';
-
 import styled from 'styled-components';
 import { MainLable } from './MainLable/MainLable';
 import { PRIMARY_COLOR } from '../../../../constants/colors';
+import { HashLink } from 'react-router-hash-link';
+
+const Church = './images/Church.png';
+const ChurchInside = './images/Church_inside.jpg';
+const Church_2 = './images/Church_2.jpg';
 
 type PreviewBlockProps = {};
 
@@ -62,9 +63,9 @@ export const PreviewBlock: React.FC<PreviewBlockProps> = () => {
                     },
                 }}
             >
-                <ScheduleButton href="#schedule">
-                    Расписание богослужений
-                </ScheduleButton>
+                <HashLink to="/#schedule">
+                    <ScheduleButton>Расписание богослужений</ScheduleButton>
+                </HashLink>
             </ConfigProvider>
         </CarouselWrapper>
     );

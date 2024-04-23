@@ -14,7 +14,7 @@ import {
 } from '../../../../../redux/features/newsSlice';
 import { NewsCard } from './NewsCard/NewsCard';
 import { Preloader } from '../../../../common/Preloader/Preloader';
-import { APIError } from '../../../../common/APIError/APIError';
+import { APIError } from '../../../../service/APIError/APIError';
 import { useAPIFetch } from '../../../../../redux/hooks/useAPIFetch';
 
 const NewsCardContainer = styled.div`

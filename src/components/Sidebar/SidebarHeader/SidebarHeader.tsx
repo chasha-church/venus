@@ -6,6 +6,7 @@ import { StyledSidebarGrid } from '../StyledSidebarGrid/StyledSidebarGrid';
 import { SidebarContext } from '../Sidebar';
 
 import { ChashaIcon } from '../../common/Icons/ChashaIcon';
+import { Link } from 'react-router-dom';
 
 const StyledHeaderContent = styled.div`
     position: relative;
@@ -46,12 +47,14 @@ export const SidebarHeader: React.FC<SidebarHeaderProps> = ({}) => {
 
     return (
         <StyledHeaderContent>
-            <StyledHeaderGrid>
-                <ChashaIcon width={'3em'} />
-                <StyledTitle $sidebarExpanded={sidebarExpanded}>
-                    <span>Неупиваемая Чаша</span>
-                </StyledTitle>
-            </StyledHeaderGrid>
+            <Link to="/">
+                <StyledHeaderGrid>
+                    <ChashaIcon width={'3em'} />
+                    <StyledTitle $sidebarExpanded={sidebarExpanded}>
+                        <span>Неупиваемая Чаша</span>
+                    </StyledTitle>
+                </StyledHeaderGrid>
+            </Link>
             <ToggleSidebar />
         </StyledHeaderContent>
     );

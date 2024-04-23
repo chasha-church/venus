@@ -8,6 +8,7 @@ const StyledParagraph = styled.p`
     text-align: center;
     margin-top: 70px;
     font-size: ${({ theme }) => theme.fonts.fontSize.md};
+    line-height: ${({ theme }) => theme.fonts.fontSize.md};
 `;
 
 type ScheduleBlockProps = {};

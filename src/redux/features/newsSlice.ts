@@ -1,28 +1,25 @@
 import { isAxiosError } from 'axios';
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import {
+    createAsyncThunk,
+    createSlice,
+    type PayloadAction,
+} from '@reduxjs/toolkit';
 import { RootState } from '../store';
 import { newsAPI } from '../../api/newsAPI';
 
 type NewsState = {
     pageSize: number;
     newsPage: number;
-    news: Array<NewsItemType> | null;
+    news: Array<NewsListItemType> | null;
     isPending: boolean;
     error: string | null;
 };
 
-/* TODO: Remove unused properties */
-export type NewsItemType = {
+export type NewsListItemType = {
     news_content_id: number;
     title: string;
-    text: string;
-    view_data: null; // this property goes null from backend
     main_asset_url: string;
-    assets_url: string[];
     created_date: string;
-    created_by_id: number;
-    updated_date: string;
-    updated_by_id: number;
 };
 
 const initialState: NewsState = {
@@ -51,9 +48,6 @@ export const newsSlice = createSlice({
         });
     },
 });
-
-// Actions
-export const {} = newsSlice.actions;
 
 // Asynchronous actions
 type FetchNewsPayload = {
