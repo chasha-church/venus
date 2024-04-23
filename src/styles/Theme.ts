@@ -1,4 +1,4 @@
-import { DefaultTheme } from 'styled-components';
+import { DefaultTheme } from 'styled-components'
 
 export const defaultTheme: DefaultTheme = {
     colors: {
@@ -39,7 +39,7 @@ export const defaultTheme: DefaultTheme = {
     margins: {
         pageTop: '2rem',
     },
-};
+}
 
 export const darkTheme: DefaultTheme = {
     colors: {

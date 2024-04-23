@@ -6,9 +6,8 @@
     font-style: normal;
     font-weight: 100;
     src: url('../assets/fonts/anek-malayalam-v4-malayalam-100.woff2')
-            format('woff2'),
-        url('../assets/fonts/anek-malayalam-v4-malayalam-100.woff')
-            format('woff');
+    format('woff2'),
+    url('../assets/fonts/anek-malayalam-v4-malayalam-100.woff') format('woff');
     font-display: swap;
 }
 
@@ -17,9 +16,8 @@
     font-style: normal;
     font-weight: 200;
     src: url('../assets/fonts/anek-malayalam-v4-malayalam-200.woff2')
-            format('woff2'),
-        url('../assets/fonts/anek-malayalam-v4-malayalam-200.woff')
-            format('woff');
+    format('woff2'),
+    url('../assets/fonts/anek-malayalam-v4-malayalam-200.woff') format('woff');
     font-display: swap;
 }
 
@@ -28,9 +26,8 @@
     font-style: normal;
     font-weight: 300;
     src: url('../assets/fonts/anek-malayalam-v4-malayalam-300.woff2')
-            format('woff2'),
-        url('../assets/fonts/anek-malayalam-v4-malayalam-300.woff')
-            format('woff');
+    format('woff2'),
+    url('../assets/fonts/anek-malayalam-v4-malayalam-300.woff') format('woff');
     font-display: swap;
 }
 
@@ -39,9 +36,8 @@
     font-style: normal;
     font-weight: 400;
     src: url('../assets/fonts/anek-malayalam-v4-malayalam-400.woff2')
-            format('woff2'),
-        url('../assets/fonts/anek-malayalam-v4-malayalam-400.woff')
-            format('woff');
+    format('woff2'),
+    url('../assets/fonts/anek-malayalam-v4-malayalam-400.woff') format('woff');
     font-display: swap;
 }
 
@@ -50,9 +46,8 @@
     font-style: normal;
     font-weight: 500;
     src: url('../assets/fonts/anek-malayalam-v4-malayalam-500.woff2')
-            format('woff2'),
-        url('../assets/fonts/anek-malayalam-v4-malayalam-500.woff')
-            format('woff');
+    format('woff2'),
+    url('../assets/fonts/anek-malayalam-v4-malayalam-500.woff') format('woff');
     font-display: swap;
 }
 
@@ -61,9 +56,8 @@
     font-style: normal;
     font-weight: 600;
     src: url('../assets/fonts/anek-malayalam-v4-malayalam-600.woff2')
-            format('woff2'),
-        url('../assets/fonts/anek-malayalam-v4-malayalam-600.woff')
-            format('woff');
+    format('woff2'),
+    url('../assets/fonts/anek-malayalam-v4-malayalam-600.woff') format('woff');
     font-display: swap;
 }
 
@@ -72,9 +66,8 @@
     font-style: normal;
     font-weight: 700;
     src: url('../assets/fonts/anek-malayalam-v4-malayalam-700.woff2')
-            format('woff2'),
-        url('../assets/fonts/anek-malayalam-v4-malayalam-700.woff')
-            format('woff');
+    format('woff2'),
+    url('../assets/fonts/anek-malayalam-v4-malayalam-700.woff') format('woff');
     font-display: swap;
 }
 
@@ -83,8 +76,7 @@
     font-style: normal;
     font-weight: 800;
     src: url('../assets/fonts/anek-malayalam-v4-malayalam-800.woff2')
-            format('woff2'),
-        url('../assets/fonts/anek-malayalam-v4-malayalam-800.woff')
-            format('woff');
+    format('woff2'),
+    url('../assets/fonts/anek-malayalam-v4-malayalam-800.woff') format('woff');
     font-display: swap;
 }

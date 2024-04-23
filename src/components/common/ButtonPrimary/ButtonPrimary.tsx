@@ -1,11 +1,11 @@
-import React from 'react';
+import React from 'react'
 
 import { Button, ConfigProvider } from 'antd';
 import { PRIMARY_COLOR } from '../../../constants/colors';
 
 type ButtonProps = {
     value: string;
-};
+}
 
 export const ButtonPrimary: React.FC<ButtonProps> = ({ value }) => {
     return (
@@ -16,12 +16,12 @@ export const ButtonPrimary: React.FC<ButtonProps> = ({ value }) => {
                 },
             }}
         >
-            <Button
+            <Button 
                 type="primary"
-                style={{ backgroundColor: PRIMARY_COLOR }}
+                style={{backgroundColor: PRIMARY_COLOR}}
             >
                 {value}
             </Button>
         </ConfigProvider>
-    );
-};
+    )
+}

@@ -1,10 +1,10 @@
-import { ReactNode } from 'react';
-import { ChurchIcon } from '../components/common/Icons/ChurchIcon';
-import { SideBarIds } from '../redux/features/sidebarSlice';
-import { CollaborationIcon } from '../components/common/Icons/CollaborationIcon';
-import { ScheduleIcon } from '../components/common/Icons/ScheduleIcon';
-import { ContactsIcon } from '../components/common/Icons/ContactsIcon';
-import { DonateIcon } from '../components/common/Icons/DonateIcon';
+import { ReactNode } from "react";
+import { ChurchIcon } from "../components/common/Icons/ChurchIcon";
+import { SideBarIds } from "../redux/features/sidebarSlice";
+import { CollaborationIcon } from "../components/common/Icons/CollaborationIcon";
+import { ScheduleIcon } from "../components/common/Icons/ScheduleIcon";
+import { ContactsIcon } from "../components/common/Icons/ContactsIcon";
+import { DonateIcon } from "../components/common/Icons/DonateIcon";
 
 export const IconMatcher = {
     getIcon(id: number): ReactNode {
@@ -20,5 +20,5 @@ export const IconMatcher = {
             case SideBarIds.Donate:
                 return <DonateIcon />;
         }
-    },
-};
+    }
+}
