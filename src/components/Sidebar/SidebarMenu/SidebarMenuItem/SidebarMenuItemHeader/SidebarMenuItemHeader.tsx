@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 
 import { HoverCaption } from './HoverCaption/HoverCaption';
@@ -7,11 +7,11 @@ import { useAppDispatch } from '../../../../../redux/hooks/hooks';
 import { SidebarContext } from '../../../Sidebar';
 import { IconMatcher } from '../../../../../utils/IconMatcher';
 import { StyledSidebarGrid } from '../../../StyledSidebarGrid/StyledSidebarGrid';
-import { theme } from 'antd';
+import {HashLink} from 'react-router-hash-link';
 
 const StyledHeader = styled.div`
     position: relative;
-`
+`;
 const StyledActiveStripe = styled.div<{ $isActive: boolean; }>`
     width: 0.35em;
 
@@ -21,25 +21,25 @@ const StyledActiveStripe = styled.div<{ $isActive: boolean; }>`
     left: 0;
 
     transition: background-color 300ms;
-    background-color: ${props => props.$isActive ? props.theme.colors.primary : "transparent"};
-`
+    background-color: ${props => props.$isActive ? props.theme.colors.primary : 'transparent'};
+`;
 
 const StyledHeaderGrid = styled(StyledSidebarGrid)`
     padding-top: 0.75em;
     padding-bottom: 0.75em;
 
-`
+`;
 
 const StyledIcon = styled.div`
     & :only-child {
         width: 2.5em;
     }
-`
+`;
 
 const StyledName = styled.div<{ $sidebarExpanded: boolean; }>`
 
     display: grid;
-    grid-template-columns: ${props => props.$sidebarExpanded ? "1fr" : "0fr"};
+    grid-template-columns: ${props => props.$sidebarExpanded ? '1fr' : '0fr'};
     transition: grid-template-columns 500ms; 
 
     overflow: hidden;
@@ -49,24 +49,25 @@ const StyledName = styled.div<{ $sidebarExpanded: boolean; }>`
         text-wrap: nowrap;
         font-weight: 600;
     }
-`
+`;
 
 type SidebarMenuItemHeaderProps = {
     isActive: boolean,
     id: number,
+    url: string,
     name: string,
     hoverCaptionVisible: boolean,
 }
 
 
-export const SidebarMenuItemHeader: React.FC<SidebarMenuItemHeaderProps> = ({ isActive, id, name, hoverCaptionVisible }) => {
+export const SidebarMenuItemHeader: React.FC<SidebarMenuItemHeaderProps> = ({ isActive, id, url,  name, hoverCaptionVisible }) => {
 
     const { sidebarExpanded } = useContext(SidebarContext);
 
     const dispatch = useAppDispatch();
     const handleSetActiveItem = () => {
         dispatch(setActiveItem(id));
-    }
+    };
 
     const Icon = IconMatcher.getIcon(id);
 
@@ -74,12 +75,14 @@ export const SidebarMenuItemHeader: React.FC<SidebarMenuItemHeaderProps> = ({ is
         <StyledHeader onClick={handleSetActiveItem}>
             <StyledActiveStripe $isActive={isActive} />
 
-            <StyledHeaderGrid>
-                <StyledIcon>{Icon}</StyledIcon>
-                <StyledName $sidebarExpanded={sidebarExpanded} >
-                    <span>{name}</span>
-                </StyledName>
-            </StyledHeaderGrid>
+            <HashLink to={url}>
+                <StyledHeaderGrid>
+                    <StyledIcon>{Icon}</StyledIcon>
+                    <StyledName $sidebarExpanded={sidebarExpanded}>
+                        <span>{name}</span>
+                    </StyledName>
+                </StyledHeaderGrid>
+            </HashLink>
 
             <HoverCaption
                 caption={name}
@@ -87,4 +90,4 @@ export const SidebarMenuItemHeader: React.FC<SidebarMenuItemHeaderProps> = ({ is
             />
         </StyledHeader>
     );
-}
+};

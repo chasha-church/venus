@@ -1,6 +1,6 @@
-import React, { useState, createContext } from 'react'
+import React, { useState, createContext } from 'react';
 
-import { SidebarFooter } from './SidebarFooter/SidebarFooter'
+import { SidebarFooter } from './SidebarFooter/SidebarFooter';
 import { SidebarHeader } from './SidebarHeader/SidebarHeader';
 import { SidebarMenu } from './SidebarMenu/SidebarMenu';
 
@@ -24,7 +24,7 @@ const StyledSidebar = styled.aside`
 
     display: flex;
     flex-direction: column;
-`
+`;
 
 export const SidebarContext = createContext({ sidebarExpanded: false, setSidebarExpanded: () => { } });
 
@@ -36,7 +36,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ }) => {
 
     const setSidebarExpanded = () => {
         setExpanded(!expanded);
-    }
+    };
 
     return (
         <SidebarContext.Provider value={{ sidebarExpanded: expanded, setSidebarExpanded }}>
@@ -46,5 +46,5 @@ export const Sidebar: React.FC<SidebarProps> = ({ }) => {
                 <SidebarFooter />
             </StyledSidebar >
         </SidebarContext.Provider>
-    )
-}
+    );
+};

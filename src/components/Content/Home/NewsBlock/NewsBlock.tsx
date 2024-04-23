@@ -1,6 +1,6 @@
-import { FunctionComponent } from "react";
-import { Heading } from "../../../common/Heading/Heading";
-import { News } from "./News/News";
+import { FunctionComponent } from 'react';
+import { Heading } from '../../../common/Heading/Heading';
+import { News } from './News/News';
 
 type NewsBlockProps = {};
 
@@ -11,4 +11,4 @@ export const NewsBlock: FunctionComponent<NewsBlockProps> = ({ }) => {
             <News />
         </div>
     );
-}
+};

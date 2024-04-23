@@ -1,5 +1,5 @@
-import { createGlobalStyle, css } from 'styled-components'
-import fontsCss from './fonts.module.css'
+import { createGlobalStyle, css } from 'styled-components';
+import fontsCss from './fonts.module.css';
 
 export const GlobalStyles = createGlobalStyle`
  ${fontsCss} // this works as a normal styled css
@@ -118,4 +118,4 @@ select {
     scroll-behavior: auto !important;
   }
 }
-`
+`;

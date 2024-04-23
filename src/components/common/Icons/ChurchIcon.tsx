@@ -11,4 +11,4 @@ export const ChurchIcon: React.FC<ComponentProps<'svg'>> = (
             <SvgProxy selector="rect" />
         </SvgLoader>
     );
-}
+};

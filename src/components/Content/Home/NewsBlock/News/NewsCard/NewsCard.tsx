@@ -1,15 +1,11 @@
-import React from 'react'
-import { Button, ConfigProvider } from 'antd';
+import React from 'react';
 
-import styled from "styled-components";
-import { NewsItemType } from '../../../../../../redux/features/newsSlice';
-
-import MockImage from "../../../../../../assets/images/Church.png";
+import styled from 'styled-components';
+import { NewsListItemType } from '../../../../../../redux/features/newsSlice';
+import MockImage from '../../../../../../assets/images/Church.png';
 import { PRIMARY_COLOR } from '../../../../../../constants/colors';
-
-type NewsBlockProps = {
-    newsData: NewsItemType;
-}
+import {Link} from 'react-router-dom';
+import {Button, ConfigProvider} from 'antd';
 
 const CardImage = styled.img`
     object-fit: cover;
@@ -27,8 +23,14 @@ const InnerCardContainer = styled.div`
     justify-content: space-between; 
     align-items: center;
     margin: 5vh 80px;
-    
+
+    transition: 0.3s;
     box-shadow: 0 0 0.5em 0.3em rgba(0, 0, 0, 0.25) ;
+    
+    &:hover{
+        box-shadow: 0 0 0.5em 0.3em rgba(0, 0, 0, 0.4) ;
+    }
+    
 `;
 
 const CardDate = styled.div`
@@ -49,8 +51,12 @@ const DetailsButton = styled(Button)`
     background-color: ${({ theme }) => theme.colors.background};
 `;
 
+type NewsBlockProps = {
+    newsData: NewsListItemType;
+}
+
 export const NewsCard: React.FC<NewsBlockProps> = ({ newsData }) => {
-    const parseDate = (date: string): string => date.slice(0, 10).split("-").reverse().join(".");
+    const parseDate = (date: string): string => date.slice(0, 10).split('-').reverse().join('.');
 
     return (
         <InnerCardContainer >
@@ -64,8 +70,10 @@ export const NewsCard: React.FC<NewsBlockProps> = ({ newsData }) => {
                     },
                 }}
             >
-                <DetailsButton>Подробнее</DetailsButton>
+                <Link to={`/news/${newsData.news_content_id}`}>
+                    <DetailsButton>Подробнее</DetailsButton>
+                </Link>
             </ConfigProvider>
         </InnerCardContainer>
     );
-}
+};

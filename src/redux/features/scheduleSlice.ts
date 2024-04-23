@@ -1,5 +1,5 @@
 import { createAppAsyncThunk } from './../hooks/hooks';
-import { PayloadAction, SerializedError, createSlice } from '@reduxjs/toolkit'
+import { PayloadAction, SerializedError, createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../store';
 import { scheduleAPI } from '../../api/scheduleAPI';
 import { DateHelper } from '../../utils/DateHelper';
@@ -16,12 +16,12 @@ type ScheduleState = {
 export type WeekSchedule = Array<WeekDay> | null;
 
 export type WeekDay = {
-    "holidays": Array<{ "name": string; "url": string; }>;
-    "people": Array<{ "name": string; "url": string; }>;
-    "events": Array<{ "title": string; "time": string; }> | null;
-    "date": string;
-    "day_of_week": string;
-    "id": string;
+    'holidays': Array<{ 'name': string; 'url': string; }>;
+    'people': Array<{ 'name': string; 'url': string; }>;
+    'events': Array<{ 'title': string; 'time': string; }> | null;
+    'date': string;
+    'day_of_week': string;
+    'id': string;
 }
 
 const createDayId = (dayIndex: number): string => {
@@ -29,7 +29,7 @@ const createDayId = (dayIndex: number): string => {
     const day = (week - 1) * 7 + (dayIndex + 1);
 
     return `${new Date().getFullYear()}-${day}`;
-}
+};
 
 const initialState: ScheduleState = {
     weekSchedule: null,
@@ -50,37 +50,37 @@ export const scheduleSlice = createSlice({
             /* If schedule is null the map returns undefined so we add '|| null' */
             schedule =
                 schedule?.map((element, index) => {
-                    return { ...element, id: createDayId(index) }
+                    return { ...element, id: createDayId(index) };
                 })
                 ||
                 null;
 
             state.weekSchedule = schedule;
             state.isPending = false;
-        })
+        });
         builder.addCase(fetchWeekSchedule.pending, (state, action) => {
             state.isPending = true;
-        })
+        });
         builder.addCase(fetchWeekSchedule.rejected, (state, action) => {
             state.fetchError = action.payload as string;
             state.isPending = false;
-        })
+        });
     }
-})
+});
 
 // Actions
-export const { } = scheduleSlice.actions
+export const { } = scheduleSlice.actions;
 
 // Asynchronous actions
 export const fetchWeekSchedule = createAppAsyncThunk(
-    "schedule/fetchWeekSchedule",
+    'schedule/fetchWeekSchedule',
     async (weekNumber: number, { rejectWithValue }) => {
         try {
             const response = await scheduleAPI.getWeekSchedule(weekNumber);
             return response.data.results;
         }
         catch (error) {
-            return rejectWithValue(isAxiosError(error) ? error.message : "Server Error happened");
+            return rejectWithValue(isAxiosError(error) ? error.message : 'Server Error happened');
         }
     }
 

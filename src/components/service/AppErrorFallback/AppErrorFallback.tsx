@@ -1,8 +1,6 @@
 import {
-    ErrorBoundary,
     FallbackProps,
-    useErrorBoundary,
-} from "react-error-boundary";
+} from 'react-error-boundary';
 
 export function AppErrorFallback(props: FallbackProps) {
     const { error, resetErrorBoundary } = props;

@@ -1,4 +1,4 @@
-import { ComponentProps } from 'react'
+import { ComponentProps } from 'react';
 // @ts-ignore
 import { SvgLoader, SvgProxy } from 'react-svgmt';
 import SidebarHide from '../../../assets/images/SidebarHideIcon.svg';
@@ -11,4 +11,4 @@ export const SidebarHideIcon: React.FC<ComponentProps<'svg'>> = (
             <SvgProxy selector="rect" />
         </SvgLoader>
     );
-}
+};

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { SubmenuExpandedType, SubmenuType } from '../../../../../redux/features/sidebarSlice';
 import { SubmenuItem } from './SubmenuItem/SubmenuItem';
@@ -6,12 +6,12 @@ import { StyledSidebarGrid } from '../../../StyledSidebarGrid/StyledSidebarGrid'
 import { SidebarContext } from '../../../Sidebar';
 
 const StyledSubmenu = styled.ul`
-`
+`;
 
 const StyledSubmenuGrid = styled(StyledSidebarGrid) <{ $sidebarExpanded: boolean; }>`
     padding-top: 0;
     padding-bottom: 0;
-`
+`;
 
 type MenuItemSubmenuProps = {
     id: number;
@@ -32,6 +32,7 @@ export const SidebarMenuItemSubmenu: React.FC<MenuItemSubmenuProps> = ({ ...menu
                     <SubmenuItem
                         key={submenuItem.id}
                         id={menuItem.id}
+                        url={submenuItem.url}
                         submenuExpanded={menuItem.submenuExpanded}
                         name={submenuItem.name}
                     />
@@ -39,4 +40,4 @@ export const SidebarMenuItemSubmenu: React.FC<MenuItemSubmenuProps> = ({ ...menu
             </StyledSubmenu>
         </StyledSubmenuGrid>
     );
-}
+};

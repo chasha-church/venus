@@ -11,4 +11,4 @@ export const SidebarShowIcon: React.FC<ComponentProps<'svg'>> = (
             <SvgProxy selector="rect" />
         </SvgLoader>
     );
-}
+};

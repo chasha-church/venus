@@ -1,9 +1,9 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent } from 'react';
 
-import styled from "styled-components";
-import { WeekDay } from "../../../../../../redux/features/scheduleSlice";
-import { getMonthName } from "../../../../../../utils/getMonthName";
-import { DateHelper } from "../../../../../../utils/DateHelper";
+import styled from 'styled-components';
+import { WeekDay } from '../../../../../../redux/features/scheduleSlice';
+import { getMonthName } from '../../../../../../utils/getMonthName';
+import { DateHelper } from '../../../../../../utils/DateHelper';
 
 
 const StyledContainer = styled.div<{ $isToday: boolean; }>`
@@ -19,13 +19,13 @@ const StyledContainer = styled.div<{ $isToday: boolean; }>`
 
     border: ${props => props.$isToday
         ? `2px solid ${props.theme.colors.primaryTextColor}`
-        : "none"};
-`
+        : 'none'};
+`;
 
 const StyledHeader = styled.div`
     display: flex;
     align-items: baseline;
-`
+`;
 
 const StyledDay = styled.div`
 
@@ -46,32 +46,32 @@ const StyledDay = styled.div`
         position: relative;
         left: -2px;
     }
-`
+`;
 
 const StyledDash = styled.span`
     margin: 0 15px;
     position: relative;
     top: -1px;
-`
+`;
 
 const StyledDayInfo = styled.p`
     line-height: 1.5;
-`
+`;
 
 const StyledHoliday = styled.span`
     color: ${({ theme }) => theme.colors.primaryTextColor};
-`
+`;
 
 const StyledInfoItems = styled.ul`
     margin-top: 30px;
-`
+`;
 
 const StyledInfoItem = styled.li`
     margin-top: 10px;
     & time {
         font-size: ${({ theme }) => theme.fonts.fontSize.md};
     }
-`
+`;
 
 type DayItemProps = {
     dayInfo: WeekDay;
@@ -83,17 +83,17 @@ export const DayItem: FunctionComponent<DayItemProps> = (
     { dayInfo, maxPeopleToShow, children }
 ) => {
 
-    const [day, month] = dayInfo.date.split("-").reverse().slice(0, 2);
+    const [day, month] = dayInfo.date.split('-').reverse().slice(0, 2);
 
     const currentDay = DateHelper.getCurrentDay();
 
     const displayMonth = (month: number): string => {
         return getMonthName(month);
-    }
+    };
 
     const displayFirstLetterCapitalized = (str: string): string => {
         return str[0].toUpperCase() + str.slice(1);
-    }
+    };
 
     return (
         <StyledContainer $isToday={Number(day) === currentDay}>
@@ -126,4 +126,4 @@ export const DayItem: FunctionComponent<DayItemProps> = (
 
         </StyledContainer>
     );
-}
+};

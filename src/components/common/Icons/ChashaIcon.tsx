@@ -11,4 +11,4 @@ export const ChashaIcon: React.FC<ComponentProps<'svg'>> = (
             <SvgProxy selector="rect" />
         </SvgLoader>
     );
-}
+};

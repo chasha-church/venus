@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 
 import { ToggleSidebar } from './ToggleSidebar/ToggleSidebar';
@@ -6,21 +6,23 @@ import { StyledSidebarGrid } from '../StyledSidebarGrid/StyledSidebarGrid';
 import { SidebarContext } from '../Sidebar';
 
 import { ChashaIcon } from '../../common/Icons/ChashaIcon';
+import {Link} from 'react-router-dom';
+
 
 const StyledHeaderContent = styled.div`
     position: relative;
-`
+`;
 
 const StyledHeaderGrid = styled(StyledSidebarGrid) <{ $sidebarExpanded?: boolean; }>`
     padding-top: 0;
     padding-bottom: 0;
-`
+`;
 
 const StyledTitle = styled.div<{ $sidebarExpanded: boolean }>`
     /* These properties make the width of title text animate while collapsing! 
     Great solution with grid */
     display: grid;
-    grid-template-columns: ${props => props.$sidebarExpanded ? "1fr" : "0fr"};
+    grid-template-columns: ${props => props.$sidebarExpanded ? '1fr' : '0fr'};
     transition: grid-template-columns 500ms;
     overflow: hidden;
 
@@ -32,25 +34,27 @@ const StyledTitle = styled.div<{ $sidebarExpanded: boolean }>`
         text-wrap: nowrap;
 
         transition: margin 500ms;
-        margin-right: ${props => props.$sidebarExpanded ? "0.5em" : "0"};
+        margin-right: ${props => props.$sidebarExpanded ? '0.5em' : '0'};
     }
-`
+`;
 
 type SidebarHeaderProps = {};
 
-export const SidebarHeader: React.FC<SidebarHeaderProps> = ({ }) => {
+export const SidebarHeader: React.FC<SidebarHeaderProps> = ({}) => {
 
     const { sidebarExpanded } = useContext(SidebarContext);
     
     return (
         <StyledHeaderContent>
-            <StyledHeaderGrid>
-                <ChashaIcon width={"3em"} />
-                <StyledTitle $sidebarExpanded={sidebarExpanded}>
-                    <span>Неупиваемая Чаша</span>
-                </StyledTitle>
-            </StyledHeaderGrid>
-            <ToggleSidebar />
+            <Link to='/'>
+                <StyledHeaderGrid>
+                    <ChashaIcon width={'3em'}/>
+                    <StyledTitle $sidebarExpanded={sidebarExpanded}>
+                        <span>Неупиваемая Чаша</span>
+                    </StyledTitle>
+                </StyledHeaderGrid>
+            </Link>
+            <ToggleSidebar/>
         </StyledHeaderContent>
     );
-}
+};

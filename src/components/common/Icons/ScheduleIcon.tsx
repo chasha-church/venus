@@ -1,4 +1,4 @@
-import { ComponentProps } from 'react'
+import { ComponentProps } from 'react';
 import Schedule from '../../../assets/images/ScheduleIcon.svg';
 // @ts-ignore
 import { SvgLoader, SvgProxy } from 'react-svgmt';
@@ -11,4 +11,4 @@ export const ScheduleIcon: React.FC<ComponentProps<'svg'>> = (
             <SvgProxy selector="rect" />
         </SvgLoader>
     );
-}
+};

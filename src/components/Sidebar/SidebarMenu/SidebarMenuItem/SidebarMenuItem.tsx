@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext } from 'react';
 import { useAppSelector } from '../../../../redux/hooks/hooks';
 
 import styled from 'styled-components';
@@ -32,7 +32,7 @@ export const SidebarMenuItem: React.FC<SidebarMenuItemProps> = ({ ...menuItem })
     const [hoverCaptionVisible, toggleHoverCaptionVisibility] = useState<boolean>(false);
     const handleHover = () => {
         if (!sidebarExpanded) toggleHoverCaptionVisibility(!hoverCaptionVisible);
-    }
+    };
 
     /* TODO: Fix unwanted renders */
     return (
@@ -44,6 +44,7 @@ export const SidebarMenuItem: React.FC<SidebarMenuItemProps> = ({ ...menuItem })
             <SidebarMenuItemHeader
                 isActive={isActive}
                 id={menuItem.id}
+                url={menuItem.url}
                 name={menuItem.name}
                 hoverCaptionVisible={hoverCaptionVisible}
             />
@@ -62,4 +63,4 @@ export const SidebarMenuItem: React.FC<SidebarMenuItemProps> = ({ ...menuItem })
 
         </StyledMenuItem>
     );
-}
+};
