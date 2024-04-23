@@ -4,7 +4,7 @@ import styles from './ContactInfo.module.css';
 
 type ContactInfoProps = {
     someText: string;
-}
+};
 
 export const ContactInfo: React.FC<ContactInfoProps> = ({ someText }) => {
     return (

@@ -1,13 +1,16 @@
 import { FunctionComponent } from 'react';
 import styled from 'styled-components';
-import { useAppDispatch, useAppSelector } from '../../../../../redux/hooks/hooks';
-import { 
+import {
+    useAppDispatch,
+    useAppSelector,
+} from '../../../../../redux/hooks/hooks';
+import {
     fetchNews,
     selectCurrentNews,
     selectNewsFetchError,
     selectNewsIsPending,
     selectNewsPageSize,
-    selectNextNewsPage
+    selectNextNewsPage,
 } from '../../../../../redux/features/newsSlice';
 import { NewsCard } from './NewsCard/NewsCard';
 import { Preloader } from '../../../../common/Preloader/Preloader';
@@ -21,20 +24,25 @@ const NewsCardContainer = styled.div`
     margin: 0;
 `;
 
-export const News: FunctionComponent = ({ }) => {
-
+export const News: FunctionComponent = ({}) => {
     const pageSize = useAppSelector(selectNewsPageSize);
     const page = useAppSelector(selectNextNewsPage);
 
     const dispatch = useAppDispatch();
 
-    const { data: news, isPending, error: fetchError } = useAPIFetch(
-        () => { dispatch(fetchNews({ pageSize, page })); },
+    const {
+        data: news,
+        isPending,
+        error: fetchError,
+    } = useAPIFetch(
+        () => {
+            dispatch(fetchNews({ pageSize, page }));
+        },
         [pageSize, page],
-        { 
+        {
             data: selectCurrentNews,
             isPending: selectNewsIsPending,
-            error: selectNewsFetchError
+            error: selectNewsFetchError,
         }
     );
 
@@ -44,13 +52,12 @@ export const News: FunctionComponent = ({ }) => {
     /* In case that error happened while fetching: */
     if (fetchError) return <APIError error={fetchError} />;
 
-    const newsCards = news?.map(
-        news => <NewsCard key={news.news_content_id} newsData={news} />
-    );
+    const newsCards = news?.map((news) => (
+        <NewsCard
+            key={news.news_content_id}
+            newsData={news}
+        />
+    ));
 
-    return (
-        <NewsCardContainer>
-            {newsCards}
-        </NewsCardContainer>
-    );
+    return <NewsCardContainer>{newsCards}</NewsCardContainer>;
 };

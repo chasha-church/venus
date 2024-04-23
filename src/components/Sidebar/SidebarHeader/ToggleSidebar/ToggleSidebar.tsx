@@ -14,8 +14,7 @@ const StyledBtn = styled.button`
 
 type ToggleSidebarProps = {};
 
-export const ToggleSidebar: React.FC<ToggleSidebarProps> = ({ }) => {
-
+export const ToggleSidebar: React.FC<ToggleSidebarProps> = ({}) => {
     const { sidebarExpanded, setSidebarExpanded } = useContext(SidebarContext);
 
     return (
@@ -24,7 +23,9 @@ export const ToggleSidebar: React.FC<ToggleSidebarProps> = ({ }) => {
                 style={{
                     width: '2em',
                     transition: 'all .3s ease',
-                    transform: `rotate(${sidebarExpanded ? '-180deg' : '0deg'})`
+                    transform: `rotate(${
+                        sidebarExpanded ? '-180deg' : '0deg'
+                    })`,
                 }}
             />
         </StyledBtn>

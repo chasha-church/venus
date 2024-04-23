@@ -1,16 +1,16 @@
 import React from 'react';
-import {Button, Carousel, ConfigProvider} from 'antd';
+import { Button, Carousel, ConfigProvider } from 'antd';
 
 import styled from 'styled-components';
-import {MainLable} from './MainLable/MainLable';
-import {PRIMARY_COLOR} from '../../../../constants/colors';
-import {HashLink} from 'react-router-hash-link';
+import { MainLable } from './MainLable/MainLable';
+import { PRIMARY_COLOR } from '../../../../constants/colors';
+import { HashLink } from 'react-router-hash-link';
 
 const Church = './images/Church.png';
 const ChurchInside = './images/Church_inside.jpg';
 const Church_2 = './images/Church_2.jpg';
 
-type PreviewBlockProps = {}
+type PreviewBlockProps = {};
 
 const ScheduleButton = styled(Button)`
     width: fit-content;
@@ -18,9 +18,9 @@ const ScheduleButton = styled(Button)`
 
     padding: 20px 15px;
 
-    background-color: ${({theme}) => theme.colors.background};
-    border-color: ${({theme}) => theme.colors.primary};
-    color: ${({theme}) => theme.colors.primary};
+    background-color: ${({ theme }) => theme.colors.background};
+    border-color: ${({ theme }) => theme.colors.primary};
+    color: ${({ theme }) => theme.colors.primary};
     border-radius: 10px;
 
     display: inline-flex;
@@ -32,7 +32,7 @@ const ScheduleButton = styled(Button)`
     bottom: 4%;
 
     font-weight: 700;
-    font-size: ${({theme}) => theme.fonts.fontSize.sm};
+    font-size: ${({ theme }) => theme.fonts.fontSize.sm};
     text-align: center;
 `;
 
@@ -47,15 +47,14 @@ const HomeImage = styled.img`
     object-fit: cover;
 `;
 
-
 export const PreviewBlock: React.FC<PreviewBlockProps> = () => {
     return (
         <CarouselWrapper>
-            <MainLable/>
+            <MainLable />
             <Carousel autoplay>
-                <HomeImage src={Church}/>
-                <HomeImage src={ChurchInside}/>
-                <HomeImage src={Church_2}/>
+                <HomeImage src={Church} />
+                <HomeImage src={ChurchInside} />
+                <HomeImage src={Church_2} />
             </Carousel>
             <ConfigProvider
                 theme={{
@@ -64,7 +63,7 @@ export const PreviewBlock: React.FC<PreviewBlockProps> = () => {
                     },
                 }}
             >
-                <HashLink to='/#schedule'>
+                <HashLink to="/#schedule">
                     <ScheduleButton>Расписание богослужений</ScheduleButton>
                 </HashLink>
             </ConfigProvider>

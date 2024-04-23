@@ -26,11 +26,14 @@ export const sidebarNewsSlice = createSlice({
 });
 
 // Actions
-export const {setSidebarNewsExpanded, setNewsContentId} = sidebarNewsSlice.actions;
+export const { setSidebarNewsExpanded, setNewsContentId } =
+    sidebarNewsSlice.actions;
 
 // Selectors
-export const selectSidebarNewsExpanded = (state: RootState) => state.sidebarNews.sidebarNewsExpanded;
-export const selectNewsContentId = (state: RootState) => state.sidebarNews.newsContentId;
+export const selectSidebarNewsExpanded = (state: RootState) =>
+    state.sidebarNews.sidebarNewsExpanded;
+export const selectNewsContentId = (state: RootState) =>
+    state.sidebarNews.newsContentId;
 
 // Reducer
 export const sidebarNewsReducer = sidebarNewsSlice.reducer;

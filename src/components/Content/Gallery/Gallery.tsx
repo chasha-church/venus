@@ -4,7 +4,7 @@ import styles from './Gallery.module.css';
 
 type GalleryProps = {
     someText: string;
-}
+};
 
 export const Gallery: React.FC<GalleryProps> = ({ someText }) => {
     return (

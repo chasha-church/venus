@@ -4,7 +4,7 @@ import styles from './History.module.css';
 
 type HistoryProps = {
     someText: string;
-}
+};
 
 export const History: React.FC<HistoryProps> = ({ someText }) => {
     return (

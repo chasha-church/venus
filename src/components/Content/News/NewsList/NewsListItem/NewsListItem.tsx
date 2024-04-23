@@ -1,8 +1,11 @@
 import React from 'react';
-import {Avatar} from 'antd';
+import { Avatar } from 'antd';
 import styled from 'styled-components';
-import {useAppDispatch} from '../../../../../redux/hooks/hooks';
-import {setNewsContentId, setSidebarNewsExpanded} from '../../../../../redux/features/sidebarNewsSlice';
+import { useAppDispatch } from '../../../../../redux/hooks/hooks';
+import {
+    setNewsContentId,
+    setSidebarNewsExpanded,
+} from '../../../../../redux/features/sidebarNewsSlice';
 
 const StyledNewsListItemWrapper = styled.div`
     display: flex;
@@ -34,18 +37,19 @@ const StyledNewsItemDate = styled.div`
 `;
 
 type NewsListItemType = {
-    'news_content_id': string,
-    'title': string,
-    'main_asset_url': string,
-    'created_date': string,
-}
+    news_content_id: string;
+    title: string;
+    main_asset_url: string;
+    created_date: string;
+};
 
 type NewsListItemProps = {
-    data: NewsListItemType
-}
+    data: NewsListItemType;
+};
 
-export const NewsListItem: React.FC<NewsListItemProps> = ({data}) => {
-    const parseDate = (date: string): string => date.slice(0, 10).split('-').reverse().join('.');
+export const NewsListItem: React.FC<NewsListItemProps> = ({ data }) => {
+    const parseDate = (date: string): string =>
+        date.slice(0, 10).split('-').reverse().join('.');
 
     const dispatch = useAppDispatch();
     const newsItemOnClick = () => {
@@ -53,11 +57,17 @@ export const NewsListItem: React.FC<NewsListItemProps> = ({data}) => {
         dispatch(setNewsContentId(Number(data.news_content_id)));
     };
 
-    return <StyledNewsListItemWrapper onClick={newsItemOnClick}>
-        <StyledNewsItemAvatar shape="square"
-            size={{xs: 40, sm: 40, md: 64, lg: 80, xl: 100, xxl: 140, }}
-            src={data.main_asset_url}/>
-        <StyledNewsItemTitle>{data.title}</StyledNewsItemTitle>
-        <StyledNewsItemDate>{parseDate(data.created_date)}</StyledNewsItemDate>
-    </StyledNewsListItemWrapper>;
+    return (
+        <StyledNewsListItemWrapper onClick={newsItemOnClick}>
+            <StyledNewsItemAvatar
+                shape="square"
+                size={{ xs: 40, sm: 40, md: 64, lg: 80, xl: 100, xxl: 140 }}
+                src={data.main_asset_url}
+            />
+            <StyledNewsItemTitle>{data.title}</StyledNewsItemTitle>
+            <StyledNewsItemDate>
+                {parseDate(data.created_date)}
+            </StyledNewsItemDate>
+        </StyledNewsListItemWrapper>
+    );
 };

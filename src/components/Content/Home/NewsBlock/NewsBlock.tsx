@@ -4,10 +4,13 @@ import { News } from './News/News';
 
 type NewsBlockProps = {};
 
-export const NewsBlock: FunctionComponent<NewsBlockProps> = ({ }) => {
+export const NewsBlock: FunctionComponent<NewsBlockProps> = ({}) => {
     return (
         <div>
-            <Heading value="Новости" id="news" />
+            <Heading
+                value="Новости"
+                id="news"
+            />
             <News />
         </div>
     );
