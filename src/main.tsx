@@ -13,8 +13,8 @@ import {createBrowserRouter, RouterProvider} from 'react-router-dom';
 import {Home} from './components/Content/Home/Home';
 import {RouteError} from './components/service/RouteError';
 import {News} from './components/Content/News/News';
-import {defaultTheme} from "./styles/Theme";
-import {ThemeProvider} from "styled-components";
+import {defaultTheme} from './styles/Theme';
+import {ThemeProvider} from 'styled-components';
 
 const router: RemixRouter = createBrowserRouter([
     {

@@ -2,8 +2,8 @@ import React, {createContext, useState} from 'react';
 import {NewsList} from './NewsList/NewsList';
 import {NewsItemDetails} from './NewsDetails/NewsDetails';
 import styled from 'styled-components';
-import {useAppSelector} from "../../../redux/hooks/hooks";
-import {selectSidebarNewsExpanded} from "../../../redux/features/sidebarNewsSlice";
+import {useAppSelector} from '../../../redux/hooks/hooks';
+import {selectSidebarNewsExpanded} from '../../../redux/features/sidebarNewsSlice';
 
 type NewsProps = {}
 
