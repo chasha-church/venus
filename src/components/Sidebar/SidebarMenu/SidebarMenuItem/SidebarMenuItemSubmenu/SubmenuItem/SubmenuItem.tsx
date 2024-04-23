@@ -1,28 +1,19 @@
-import React, { useContext } from 'react';
+import React, { useContext } from 'react'
 import styled from 'styled-components';
 
-import {
-    SubmenuExpandedType,
-    setActiveItem,
-} from '../../../../../../redux/features/sidebarSlice';
+import { SubmenuExpandedType, setActiveItem } from '../../../../../../redux/features/sidebarSlice';
 import { useAppDispatch } from '../../../../../../redux/hooks/hooks';
 import { SidebarContext } from '../../../../Sidebar';
 
-const StyledSubmenuItem = styled.li<{
-    $submenuExpanded: SubmenuExpandedType;
-    $sidebarExpanded: boolean;
-}>`
+const StyledSubmenuItem = styled.li<{ $submenuExpanded: SubmenuExpandedType; $sidebarExpanded: boolean; }>`
     cursor: pointer;
     text-wrap: nowrap;
 
-    padding: ${(props) =>
-        props.$submenuExpanded && props.$sidebarExpanded ? '0.75em 0' : '0'};
+    padding: ${props => (props.$submenuExpanded && props.$sidebarExpanded) ? "0.75em 0" : "0"};
 
     display: grid;
-    grid-template-rows: ${(props) =>
-        props.$submenuExpanded && props.$sidebarExpanded ? '1fr' : '0fr'};
-    grid-template-columns: ${(props) =>
-        props.$sidebarExpanded ? '1fr' : '0fr'};
+    grid-template-rows: ${props => (props.$submenuExpanded && props.$sidebarExpanded) ? "1fr" : "0fr"};
+    grid-template-columns: ${props => props.$sidebarExpanded ? "1fr" : "0fr"};
     overflow: hidden;
 
     transition: all 500ms;
@@ -30,25 +21,22 @@ const StyledSubmenuItem = styled.li<{
     span {
         overflow: hidden;
     }
-`;
+`
 
 type SubmenuItemProps = {
     id: number;
     name: string;
     submenuExpanded: SubmenuExpandedType;
-};
+}
 
-export const SubmenuItem: React.FC<SubmenuItemProps> = ({
-    id,
-    name,
-    submenuExpanded,
-}) => {
+export const SubmenuItem: React.FC<SubmenuItemProps> = ({ id, name, submenuExpanded }) => {
+
     const { sidebarExpanded } = useContext(SidebarContext);
 
     const dispatch = useAppDispatch();
     const setActiveMenuItem = () => {
-        dispatch(setActiveItem(id));
-    };
+        dispatch(setActiveItem(id))
+    }
 
     return (
         <StyledSubmenuItem
@@ -58,5 +46,5 @@ export const SubmenuItem: React.FC<SubmenuItemProps> = ({
         >
             <span>{name}</span>
         </StyledSubmenuItem>
-    );
-};
+    )
+}

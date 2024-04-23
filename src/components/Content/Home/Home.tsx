@@ -1,17 +1,17 @@
-import React from 'react';
+import React from 'react'
 
-import { NewsBlock } from './NewsBlock/NewsBlock';
-import { PreviewBlock } from './PreviewBlock/PreviewBlock';
+import {NewsBlock} from "./NewsBlock/NewsBlock";
+import {PreviewBlock} from "./PreviewBlock/PreviewBlock";
 import { ScheduleBlock } from './ScheduleBlock/ScheduleBlock';
 
-type HomeProps = {};
+type HomeProps = {}
 
 export const Home: React.FC<HomeProps> = () => {
     return (
         <>
-            <PreviewBlock />
-            <NewsBlock />
+            <PreviewBlock/>
+            <NewsBlock/>
             <ScheduleBlock />
         </>
-    );
-};
+    )
+}

@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-export const StyledSidebarGrid = styled.div<{ $sidebarExpanded?: boolean }>`
-    display: grid;
+export const StyledSidebarGrid = styled.div<{ $sidebarExpanded?: boolean; }>`
+    display: grid;    
     align-items: center;
 
     grid-template-columns: var(--sidebar-grid-left-col) 1fr;
@@ -10,7 +10,7 @@ export const StyledSidebarGrid = styled.div<{ $sidebarExpanded?: boolean }>`
     padding: var(--sidebar-grid-padding);
 
     & :first-child {
-        justify-self: center;
+        justify-self: center;    
     }
     & :last-child {
         justify-self: start;

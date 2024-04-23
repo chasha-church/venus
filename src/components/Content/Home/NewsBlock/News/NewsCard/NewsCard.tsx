@@ -1,15 +1,15 @@
-import React from 'react';
+import React from 'react'
 import { Button, ConfigProvider } from 'antd';
 
-import styled from 'styled-components';
+import styled from "styled-components";
 import { NewsItemType } from '../../../../../../redux/features/newsSlice';
 
-import MockImage from '../../../../../../assets/images/Church.png';
+import MockImage from "../../../../../../assets/images/Church.png";
 import { PRIMARY_COLOR } from '../../../../../../constants/colors';
 
 type NewsBlockProps = {
     newsData: NewsItemType;
-};
+}
 
 const CardImage = styled.img`
     object-fit: cover;
@@ -19,16 +19,16 @@ const CardImage = styled.img`
 
 const InnerCardContainer = styled.div`
     flex: 190px;
-
+    
     min-width: 250px;
     max-width: 40%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-between; 
     align-items: center;
     margin: 5vh 80px;
-
-    box-shadow: 0 0 0.5em 0.3em rgba(0, 0, 0, 0.25);
+    
+    box-shadow: 0 0 0.5em 0.3em rgba(0, 0, 0, 0.25) ;
 `;
 
 const CardDate = styled.div`
@@ -50,11 +50,10 @@ const DetailsButton = styled(Button)`
 `;
 
 export const NewsCard: React.FC<NewsBlockProps> = ({ newsData }) => {
-    const parseDate = (date: string): string =>
-        date.slice(0, 10).split('-').reverse().join('.');
+    const parseDate = (date: string): string => date.slice(0, 10).split("-").reverse().join(".");
 
     return (
-        <InnerCardContainer>
+        <InnerCardContainer >
             <CardImage src={newsData.main_asset_url || MockImage} />
             <CardDate>{parseDate(newsData.created_date)}</CardDate>
             <CardTitle>{newsData.title}</CardTitle>
@@ -69,4 +68,4 @@ export const NewsCard: React.FC<NewsBlockProps> = ({ newsData }) => {
             </ConfigProvider>
         </InnerCardContainer>
     );
-};
+}
