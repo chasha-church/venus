@@ -4,7 +4,7 @@ import styles from './Activity.module.css';
 
 type ActivityProps = {
     someText: string;
-}
+};
 
 export const Activity: React.FC<ActivityProps> = ({ someText }) => {
     return (

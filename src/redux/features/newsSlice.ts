@@ -1,5 +1,9 @@
 import { isAxiosError } from 'axios';
-import {createAsyncThunk, createSlice, type PayloadAction} from '@reduxjs/toolkit';
+import {
+    createAsyncThunk,
+    createSlice,
+    type PayloadAction,
+} from '@reduxjs/toolkit';
 import { RootState } from '../store';
 import { newsAPI } from '../../api/newsAPI';
 
@@ -7,16 +11,16 @@ type NewsState = {
     pageSize: number;
     newsPage: number;
     news: Array<NewsListItemType> | null;
-    isPending: boolean,
-    error: string | null,
-}
+    isPending: boolean;
+    error: string | null;
+};
 
 export type NewsListItemType = {
-    'news_content_id': number,
-    'title': string,
-    'main_asset_url': string,
-    'created_date': string,
-}
+    news_content_id: number;
+    title: string;
+    main_asset_url: string;
+    created_date: string;
+};
 
 const initialState: NewsState = {
     pageSize: 3,
@@ -42,14 +46,14 @@ export const newsSlice = createSlice({
             state.error = action.payload as string;
             state.isPending = false;
         });
-    }
+    },
 });
 
 // Asynchronous actions
 type FetchNewsPayload = {
     pageSize: number;
     page: number;
-}
+};
 
 export const fetchNews = createAsyncThunk(
     'news/fetchNews',
@@ -57,9 +61,10 @@ export const fetchNews = createAsyncThunk(
         try {
             const response = await newsAPI.getNews(pageSize, page);
             return response.data.results;
-        }
-        catch (error) {
-            return rejectWithValue(isAxiosError(error) ? error.message : 'Server Error happened');
+        } catch (error) {
+            return rejectWithValue(
+                isAxiosError(error) ? error.message : 'Server Error happened'
+            );
         }
     }
 );

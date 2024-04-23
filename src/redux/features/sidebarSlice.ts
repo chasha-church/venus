@@ -8,14 +8,14 @@ interface SidebarState {
     menuItems: MenuType;
 }
 
-export type MenuType = Array<MenuItemType>
+export type MenuType = Array<MenuItemType>;
 export type MenuItemType = {
     id: number;
     name: string;
     url: string;
     submenuExpanded: SubmenuExpandedType;
     submenu: SubmenuType;
-}
+};
 export type SubmenuExpandedType = boolean | null;
 
 export type SubmenuType = Array<SubmenuItemType> | null;
@@ -24,14 +24,14 @@ export type SubmenuItemType = {
     id: number;
     name: string;
     url: string;
-}
+};
 
 export enum SideBarIds {
     Church = 0,
     Schedule,
     Collaboration,
     Contacts,
-    Donate
+    Donate,
 }
 
 const initialState: SidebarState = {
@@ -110,7 +110,7 @@ const initialState: SidebarState = {
             submenuExpanded: false,
             submenu: null,
         },
-    ]
+    ],
 };
 
 export const sidebarSlice = createSlice({
@@ -121,7 +121,8 @@ export const sidebarSlice = createSlice({
             state.sidebarExpanded = !action.payload;
         },
         setSubmenuExpanded: (state, action: PayloadAction<number>) => {
-            state.menuItems[action.payload].submenuExpanded = !state.menuItems[action.payload].submenuExpanded;
+            state.menuItems[action.payload].submenuExpanded =
+                !state.menuItems[action.payload].submenuExpanded;
             state.menuItems.forEach((item, index) => {
                 if (index === action.payload) return;
                 item.submenuExpanded = false;
@@ -134,12 +135,15 @@ export const sidebarSlice = createSlice({
 });
 
 // Actions
-export const { setSidebarExpanded, setSubmenuExpanded, setActiveItem } = sidebarSlice.actions;
+export const { setSidebarExpanded, setSubmenuExpanded, setActiveItem } =
+    sidebarSlice.actions;
 
 // Selectors
-export const selectSidebarExpanded = (state: RootState) => state.sidebar.sidebarExpanded;
+export const selectSidebarExpanded = (state: RootState) =>
+    state.sidebar.sidebarExpanded;
 export const selectMenuItems = (state: RootState) => state.sidebar.menuItems;
-export const selectActiveItemId = (state: RootState) => state.sidebar.activeItemId;
+export const selectActiveItemId = (state: RootState) =>
+    state.sidebar.activeItemId;
 
 // Reducer
 export const sidebarReducer = sidebarSlice.reducer;

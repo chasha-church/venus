@@ -10,7 +10,7 @@ const StyledHeading = styled.div`
     justify-content: center;
     gap: 50px;
     align-items: center;
-    
+
     padding: 70px 0 30px 0;
     font-size: ${({ theme }) => theme.fonts.fontSize.xxl};
     line-height: ${({ theme }) => theme.fonts.fontSize.xxl};
@@ -21,13 +21,15 @@ interface HeadingProps extends React.ComponentProps<'div'> {
     value?: string;
 }
 
-export const Heading: React.FunctionComponent<HeadingProps> = ({ value = '', children, ...props }) => {
-
+export const Heading: React.FunctionComponent<HeadingProps> = ({
+    value = '',
+    children,
+    ...props
+}) => {
     return (
         <StyledHeading {...props}>
-            {
-                children
-                || <>
+            {children || (
+                <>
                     <HeadingIcon>
                         <HeadingShapeLeftIcon />
                     </HeadingIcon>
@@ -36,31 +38,23 @@ export const Heading: React.FunctionComponent<HeadingProps> = ({ value = '', chi
                         <HeadingShapeRightIcon />
                     </HeadingIcon>
                 </>
-            }
+            )}
         </StyledHeading>
     );
 };
 
 const StyledHeadingText = styled.h2``;
 
-export const HeadingText: React.FunctionComponent<React.ComponentProps<'h2'>> = (
-    { children, ...props }
-) => {
-    return (
-        <StyledHeadingText {...props}>
-            {children}
-        </StyledHeadingText>
-    );
+export const HeadingText: React.FunctionComponent<
+    React.ComponentProps<'h2'>
+> = ({ children, ...props }) => {
+    return <StyledHeadingText {...props}>{children}</StyledHeadingText>;
 };
 
 const StyledHeadingIcon = styled.div``;
 
-export const HeadingIcon: React.FunctionComponent<React.ComponentProps<'div'>> = (
-    { children, ...props }
-) => {
-    return (
-        <StyledHeadingIcon {...props}>
-            {children}
-        </StyledHeadingIcon>
-    );
+export const HeadingIcon: React.FunctionComponent<
+    React.ComponentProps<'div'>
+> = ({ children, ...props }) => {
+    return <StyledHeadingIcon {...props}>{children}</StyledHeadingIcon>;
 };

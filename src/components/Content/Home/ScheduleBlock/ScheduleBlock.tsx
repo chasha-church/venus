@@ -20,8 +20,10 @@ export const ScheduleBlock: FunctionComponent<ScheduleBlockProps> = (props) => {
                 value="Расписание богослужений"
                 id="schedule"
             />
-            <StyledParagraph>Храм открыт ежедневно с 8:00 до 21:00</StyledParagraph>
-            <Schedule/>
+            <StyledParagraph>
+                Храм открыт ежедневно с 8:00 до 21:00
+            </StyledParagraph>
+            <Schedule />
         </section>
     );
 };

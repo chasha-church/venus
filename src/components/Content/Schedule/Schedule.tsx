@@ -4,7 +4,7 @@ import styles from './Schedule.module.css';
 
 type ContactInfoProps = {
     someText: string;
-}
+};
 
 export const Schedule: React.FC<ContactInfoProps> = ({ someText }) => {
     return (

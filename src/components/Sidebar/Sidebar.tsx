@@ -14,11 +14,10 @@ const StyledSidebar = styled.aside`
 
     /* SVH is a new CSS unit and not all browsers use it yet */
     height: 100svh;
-    height: 100vh;   
+    height: 100vh;
 
     background-color: ${({ theme }) => theme.colors.background};
     color: ${({ theme }) => theme.colors.lightGrayText};
-    
 
     border-right: 1px solid ${({ theme }) => theme.colors.lightGrayBorder};
 
@@ -26,12 +25,14 @@ const StyledSidebar = styled.aside`
     flex-direction: column;
 `;
 
-export const SidebarContext = createContext({ sidebarExpanded: false, setSidebarExpanded: () => { } });
+export const SidebarContext = createContext({
+    sidebarExpanded: false,
+    setSidebarExpanded: () => {},
+});
 
 type SidebarProps = {};
 
-export const Sidebar: React.FC<SidebarProps> = ({ }) => {
-
+export const Sidebar: React.FC<SidebarProps> = ({}) => {
     const [expanded, setExpanded] = useState<boolean>(false);
 
     const setSidebarExpanded = () => {
@@ -39,12 +40,14 @@ export const Sidebar: React.FC<SidebarProps> = ({ }) => {
     };
 
     return (
-        <SidebarContext.Provider value={{ sidebarExpanded: expanded, setSidebarExpanded }}>
+        <SidebarContext.Provider
+            value={{ sidebarExpanded: expanded, setSidebarExpanded }}
+        >
             <StyledSidebar>
                 <SidebarHeader />
                 <SidebarMenu />
                 <SidebarFooter />
-            </StyledSidebar >
+            </StyledSidebar>
         </SidebarContext.Provider>
     );
 };

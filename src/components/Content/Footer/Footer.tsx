@@ -4,7 +4,7 @@ import styles from './Footer.module.css';
 
 type FooterProps = {
     someText: string;
-}
+};
 
 export const Footer: React.FC<FooterProps> = ({ someText }) => {
     return (
