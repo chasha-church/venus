@@ -20,12 +20,8 @@ export const ToggleSidebar: React.FC<ToggleSidebarProps> = ({}) => {
     const { sidebarExpanded, toggleSidebarExpanded } =
         useContext(SidebarContext);
 
-    const clickHandler = () => {
-        toggleSidebarExpanded();
-    };
-
     return (
-        <StyledBtn onClick={clickHandler}>
+        <StyledBtn onClick={toggleSidebarExpanded}>
             <SidebarShowIcon
                 style={{
                     width: '2em',
