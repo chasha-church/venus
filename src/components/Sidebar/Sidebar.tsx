@@ -27,7 +27,7 @@ const StyledSidebar = styled.aside`
 
 export const SidebarContext = createContext({
     sidebarExpanded: false,
-    setSidebarExpanded: () => {},
+    toggleSidebarExpanded: () => {},
 });
 
 type SidebarProps = {};
@@ -35,15 +35,25 @@ type SidebarProps = {};
 export const Sidebar: React.FC<SidebarProps> = ({}) => {
     const [expanded, setExpanded] = useState<boolean>(false);
 
-    const setSidebarExpanded = () => {
+    const toggleSidebarExpanded = () => {
         setExpanded(!expanded);
+    };
+
+    const openSidebar = () => {
+        setExpanded(true);
+    };
+    const closeSidebar = () => {
+        setExpanded(false);
     };
 
     return (
         <SidebarContext.Provider
-            value={{ sidebarExpanded: expanded, setSidebarExpanded }}
+            value={{ sidebarExpanded: expanded, toggleSidebarExpanded }}
         >
-            <StyledSidebar>
+            <StyledSidebar
+                onMouseEnter={openSidebar}
+                onMouseLeave={closeSidebar}
+            >
                 <SidebarHeader />
                 <SidebarMenu />
                 <SidebarFooter />
