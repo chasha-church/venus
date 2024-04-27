@@ -6,7 +6,7 @@ import { SidebarMenu } from './SidebarMenu/SidebarMenu';
 
 import styled from 'styled-components';
 
-const StyledSidebar = styled.aside`
+const StyledSidebar = styled.aside<{ $sidebarExpanded: boolean }>`
     position: fixed;
     top: 0;
     left: 0;
@@ -39,7 +39,7 @@ export const Sidebar: React.FC<SidebarProps> = ({}) => {
         setExpanded(!expanded);
     };
 
-    const openSidebar = () => {
+    const openSidebar = (e: React.MouseEvent) => {
         setExpanded(true);
     };
     const closeSidebar = () => {
@@ -53,6 +53,7 @@ export const Sidebar: React.FC<SidebarProps> = ({}) => {
             <StyledSidebar
                 onMouseEnter={openSidebar}
                 onMouseLeave={closeSidebar}
+                $sidebarExpanded={expanded}
             >
                 <SidebarHeader />
                 <SidebarMenu />
