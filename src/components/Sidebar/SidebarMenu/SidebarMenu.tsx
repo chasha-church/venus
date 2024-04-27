@@ -6,27 +6,9 @@ import { selectMenuItems } from '../../../redux/features/sidebarSlice';
 import { SidebarMenuItem } from './SidebarMenuItem/SidebarMenuItem';
 import { SidebarContext } from '../Sidebar';
 
-const StyledNav = styled.nav<{ $sidebarExpanded: boolean }>`
-    overflow: auto;
-    oveflow-y: scroll;
-    visibility: ${(props) => (props.$sidebarExpanded ? 'visible' : 'hidden')};
+const StyledNav = styled.nav<{ $sidebarExpanded: boolean }>``;
 
-    margin-right: ${(props) => (props.$sidebarExpanded ? '0.25em' : '0')};
-    &::-webkit-scrollbar {
-        width: ${(props) =>
-            props.$sidebarExpanded ? 'var(--sidebar-scroll-width)' : '0'};
-    }
-
-    &::-webkit-scrollbar-thumb {
-        background-color: ${(props) => props.theme.colors.inputPlaceholder};
-        border-radius: 10px;
-    }
-`;
-
-const StyledMenuList = styled.ul`
-    /* Invisibiltity was inherited from StyledNav parent, so we need to overwrite it */
-    visibility: visible;
-`;
+const StyledMenuList = styled.ul``;
 
 type SidebarMenuProps = {};
 
