@@ -13,10 +13,6 @@ const StyledSidebar = styled.aside<{ $sidebarExpanded: boolean }>`
     left: 0;
     z-index: 10;
 
-    /* SVH is a new CSS unit and not all browsers use it yet */
-    /* height: 100vh; */
-    /* height: 100svh; */
-
     background-color: ${({ theme }) => theme.colors.background};
     color: ${({ theme }) => theme.colors.lightGrayText};
 

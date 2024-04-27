@@ -21,6 +21,10 @@ const StyledNav = styled.nav<{ $sidebarExpanded: boolean }>`
         background-color: ${(props) => props.theme.colors.inputPlaceholder};
         border-radius: 10px;
     }
+
+    scrollbar-width: thin;
+    scrollbar-color: ${(props) => props.theme.colors.inputPlaceholder}
+        transparent;
 `;
 
 const StyledMenuList = styled.ul`
