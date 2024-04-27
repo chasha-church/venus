@@ -8,7 +8,6 @@ import { SidebarContext } from '../Sidebar';
 
 const StyledNav = styled.nav<{ $sidebarExpanded: boolean }>`
     overflow: auto;
-    oveflow-y: scroll;
     visibility: ${(props) => (props.$sidebarExpanded ? 'visible' : 'hidden')};
 
     margin-right: ${(props) => (props.$sidebarExpanded ? '0.25em' : '0')};

@@ -34,7 +34,6 @@ const StyledTitle = styled.div<{ $sidebarExpanded: boolean }>`
         overflow: hidden;
 
         font-weight: bold;
-        /* text-wrap: nowrap; */
         white-space: nowrap;
 
         transition: margin 500ms;
