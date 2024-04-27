@@ -25,6 +25,7 @@ const StyledTitle = styled.div<{ $sidebarExpanded: boolean }>`
     display: grid;
     grid-template-columns: ${(props) =>
         props.$sidebarExpanded ? '1fr' : '0fr'};
+
     transition: grid-template-columns 500ms;
     overflow: hidden;
 
@@ -33,7 +34,8 @@ const StyledTitle = styled.div<{ $sidebarExpanded: boolean }>`
         overflow: hidden;
 
         font-weight: bold;
-        text-wrap: nowrap;
+        /* text-wrap: nowrap; */
+        white-space: nowrap;
 
         transition: margin 500ms;
         margin-right: ${(props) => (props.$sidebarExpanded ? '0.5em' : '0')};
