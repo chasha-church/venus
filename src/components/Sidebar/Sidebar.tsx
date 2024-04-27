@@ -39,7 +39,7 @@ export const Sidebar: React.FC<SidebarProps> = ({}) => {
         setExpanded(!expanded);
     };
 
-    const openSidebar = (e: React.MouseEvent) => {
+    const openSidebar = () => {
         setExpanded(true);
     };
     const closeSidebar = () => {
