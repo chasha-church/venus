@@ -13,7 +13,7 @@ const StyledSidebar = styled.aside<{ $sidebarExpanded: boolean }>`
     left: 0;
     z-index: 10;
 
-    background-color: ${({ theme }) => theme.colors.background};
+    background-color: ${({ theme }) => theme.colors.primary};
     color: ${({ theme }) => theme.colors.lightGrayText};
 
     border-right: 1px solid ${({ theme }) => theme.colors.lightGrayBorder};
