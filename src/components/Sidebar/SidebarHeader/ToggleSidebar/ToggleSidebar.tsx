@@ -10,15 +10,18 @@ const StyledBtn = styled.button`
     right: 0%;
     transform: translateX(50%) translateY(-50%);
     cursor: pointer;
+
+    padding: 5px;
 `;
 
 type ToggleSidebarProps = {};
 
 export const ToggleSidebar: React.FC<ToggleSidebarProps> = ({}) => {
-    const { sidebarExpanded, setSidebarExpanded } = useContext(SidebarContext);
+    const { sidebarExpanded, toggleSidebarExpanded } =
+        useContext(SidebarContext);
 
     return (
-        <StyledBtn onClick={setSidebarExpanded}>
+        <StyledBtn onClick={toggleSidebarExpanded}>
             <SidebarShowIcon
                 style={{
                     width: '2em',

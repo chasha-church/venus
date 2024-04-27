@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 
-import { HoverCaption } from './HoverCaption/HoverCaption';
 import { setActiveItem } from '../../../../../redux/features/sidebarSlice';
 import { useAppDispatch } from '../../../../../redux/hooks/hooks';
 import { SidebarContext } from '../../../Sidebar';
@@ -56,7 +55,6 @@ type SidebarMenuItemHeaderProps = {
     id: number;
     url: string;
     name: string;
-    hoverCaptionVisible: boolean;
 };
 
 export const SidebarMenuItemHeader: React.FC<SidebarMenuItemHeaderProps> = ({
@@ -64,7 +62,6 @@ export const SidebarMenuItemHeader: React.FC<SidebarMenuItemHeaderProps> = ({
     id,
     url,
     name,
-    hoverCaptionVisible,
 }) => {
     const { sidebarExpanded } = useContext(SidebarContext);
 
@@ -87,11 +84,6 @@ export const SidebarMenuItemHeader: React.FC<SidebarMenuItemHeaderProps> = ({
                     </StyledName>
                 </StyledHeaderGrid>
             </HashLink>
-
-            <HoverCaption
-                caption={name}
-                visible={hoverCaptionVisible}
-            />
         </StyledHeader>
     );
 };

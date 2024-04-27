@@ -12,8 +12,8 @@ export const GlobalStyles = createGlobalStyle`
   --sidebar-grid-padding: 1em;
 
   /* Content */
-  --content-margin:
-  calc(var(--sidebar-grid-left-col) + var(--sidebar-grid-gap) + var(--sidebar-grid-padding) * 2);
+  --content-margin: 
+    calc(var(--sidebar-grid-left-col) + var(--sidebar-grid-gap) + var(--sidebar-grid-padding) * 2);
 }
 
 /* Box sizing rules */
