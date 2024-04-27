@@ -1,4 +1,4 @@
-import React, { useContext, useContext, useMemo } from 'react';
+import React, { useContext, useMemo } from 'react';
 import styled from 'styled-components';
 
 import { useAppSelector } from '../../../redux/hooks/hooks';
@@ -32,7 +32,6 @@ type SidebarMenuProps = {};
 
 export const SidebarMenu: React.FC<SidebarMenuProps> = ({}) => {
     const menuItems = useAppSelector(selectMenuItems);
-    const { sidebarExpanded } = useContext(SidebarContext);
     const { sidebarExpanded } = useContext(SidebarContext);
 
     return (
