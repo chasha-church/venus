@@ -14,7 +14,6 @@ const StyledSubmenuItem = styled.li<{
     $sidebarExpanded: boolean;
 }>`
     cursor: pointer;
-    text-wrap: nowrap;
 
     padding: ${(props) =>
         props.$submenuExpanded && props.$sidebarExpanded ? '0.75em 0' : '0'};
@@ -24,11 +23,12 @@ const StyledSubmenuItem = styled.li<{
         props.$submenuExpanded && props.$sidebarExpanded ? '1fr' : '0fr'};
     grid-template-columns: ${(props) =>
         props.$sidebarExpanded ? '1fr' : '0fr'};
-    overflow: hidden;
-
     transition: all 500ms;
 
+    overflow: hidden;
+
     span {
+        white-space: nowrap;
         overflow: hidden;
     }
 `;

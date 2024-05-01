@@ -9,12 +9,9 @@ import styled from 'styled-components';
 const StyledSidebar = styled.aside<{ $sidebarExpanded: boolean }>`
     position: fixed;
     top: 0;
+    bottom: 0;
     left: 0;
     z-index: 10;
-
-    /* SVH is a new CSS unit and not all browsers use it yet */
-    height: 100svh;
-    height: 100vh;
 
     background-color: ${({ theme }) => theme.colors.background};
     color: ${({ theme }) => theme.colors.lightGrayText};

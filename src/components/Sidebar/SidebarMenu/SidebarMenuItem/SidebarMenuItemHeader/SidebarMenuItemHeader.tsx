@@ -45,7 +45,7 @@ const StyledName = styled.div<{ $sidebarExpanded: boolean }>`
 
     span {
         overflow: hidden;
-        text-wrap: nowrap;
+        white-space: nowrap;
         font-weight: 600;
     }
 `;
