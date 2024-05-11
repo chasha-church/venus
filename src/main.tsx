@@ -8,36 +8,50 @@ import App from './App';
 import './index.css';
 import { ErrorBoundary } from 'react-error-boundary';
 import { AppErrorFallback } from './components/service/AppErrorFallback/AppErrorFallback';
-import type {Router as RemixRouter} from '@remix-run/router/dist/router';
-import {createBrowserRouter, RouterProvider} from 'react-router-dom';
-import {Home} from './components/Content/Home/Home';
-import {RouteError} from './components/service/RouteError';
-import {News} from './components/Content/News/News';
-import {defaultTheme} from './styles/Theme';
-import {ThemeProvider} from 'styled-components';
+import type { Router as RemixRouter } from '@remix-run/router/dist/router';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { Home } from './components/Content/Home/Home';
+import { RouteError } from './components/service/RouteError';
+import { News } from './components/Content/News/News';
+import { defaultTheme } from './styles/Theme';
+import { ThemeProvider } from 'styled-components';
+import { Signin } from './components/Content/Auth/Signin';
 
 const router: RemixRouter = createBrowserRouter([
     {
         path: '/',
-        element: <App/>,
-        errorElement: <ThemeProvider theme={defaultTheme}><RouteError/></ThemeProvider>,
+        element: <App />,
+        errorElement: (
+            <ThemeProvider theme={defaultTheme}>
+                <RouteError />
+            </ThemeProvider>
+        ),
         children: [
             {
                 path: '',
-                element: <Home/>,
+                element: <Home />,
             },
             {
                 path: 'news/',
                 children: [
                     {
                         path: '',
-                        element: <News/>,
+                        element: <News />,
                     },
                     {
                         path: ':newsContentId',
-                        element: <News/>,
+                        element: <News />,
                     },
-                ]
+                ],
+            },
+            {
+                path: 'auth',
+                children: [
+                    {
+                        path: 'signin',
+                        element: <Signin />,
+                    },
+                ],
             },
         ],
     },
@@ -50,5 +64,5 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                 <RouterProvider router={router} />
             </Provider>
         </ErrorBoundary>
-    </React.StrictMode>,
+    </React.StrictMode>
 );
