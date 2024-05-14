@@ -2,15 +2,12 @@ import { FunctionComponent } from 'react';
 import styled from 'styled-components';
 import {
     useAppDispatch,
-    useAppSelector,
 } from '../../../../../redux/hooks/hooks';
 import {
     fetchNews,
     selectCurrentNews,
     selectNewsFetchError,
     selectNewsIsPending,
-    selectNewsPageSize,
-    selectNextNewsPage,
 } from '../../../../../redux/features/newsSlice';
 import { NewsCard } from './NewsCard/NewsCard';
 import { Preloader } from '../../../../common/Preloader/Preloader';
@@ -25,8 +22,8 @@ const NewsCardContainer = styled.div`
 `;
 
 export const News: FunctionComponent = ({}) => {
-    const pageSize = useAppSelector(selectNewsPageSize);
-    const page = useAppSelector(selectNextNewsPage);
+    const pageSize = 3;
+    const page = 1;
 
     const dispatch = useAppDispatch();
 

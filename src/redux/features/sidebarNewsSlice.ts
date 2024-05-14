@@ -4,12 +4,12 @@ import { RootState } from '../store';
 
 interface SidebarNewsState {
     sidebarNewsExpanded: boolean;
-    newsContentId: number | null;
+    newsContentId: number;
 }
 
 const initialState: SidebarNewsState = {
     sidebarNewsExpanded: false,
-    newsContentId: null,
+    newsContentId: 0,
 };
 
 export const sidebarNewsSlice = createSlice({

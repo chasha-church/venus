@@ -7,6 +7,6 @@ export const newsAPI = {
         );
     },
     async getNewsDetails(newsContentId: number) {
-        return chashaChurchInstance.get(`/news/${newsContentId}`);
+        return chashaChurchInstance.get(`/news/${newsContentId}/`);
     },
 };

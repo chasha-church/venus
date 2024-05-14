@@ -2,13 +2,15 @@ import React from 'react';
 import { Avatar } from 'antd';
 import styled from 'styled-components';
 import { useAppDispatch } from '../../../../../redux/hooks/hooks';
-import {
-    setNewsContentId,
-    setSidebarNewsExpanded,
-} from '../../../../../redux/features/sidebarNewsSlice';
+import {setNewsContentId} from '../../../../../redux/features/newsDetailsSlice';
+import {useGetSidebarNewsExpanded} from '../../News';
 
 const StyledNewsListItemWrapper = styled.div`
     display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-between;
+
     padding: 1rem 0.5rem;
     margin: 0.5rem 0.5rem;
     border: 0.15rem solid ${({ theme }) => theme.colors.primary};
@@ -26,18 +28,23 @@ const StyledNewsItemAvatar = styled(Avatar)`
 `;
 
 const StyledNewsItemTitle = styled.p`
+    flex: 4;
+    
     font-size: 1em;
     margin: 1rem 1rem;
 `;
 
 const StyledNewsItemDate = styled.div`
+    flex: 1;
+    flex-shrink: 0;
+    
     font-size: 1em;
     margin: auto;
     width: fit-content;
 `;
 
 type NewsListItemType = {
-    news_content_id: string;
+    news_content_id: number;
     title: string;
     main_asset_url: string;
     created_date: string;
@@ -48,13 +55,15 @@ type NewsListItemProps = {
 };
 
 export const NewsListItem: React.FC<NewsListItemProps> = ({ data }) => {
+    const {setSidebarNewsExpanded} = useGetSidebarNewsExpanded();
+
     const parseDate = (date: string): string =>
         date.slice(0, 10).split('-').reverse().join('.');
 
     const dispatch = useAppDispatch();
     const newsItemOnClick = () => {
-        dispatch(setSidebarNewsExpanded(true));
-        dispatch(setNewsContentId(Number(data.news_content_id)));
+        dispatch(setNewsContentId(data.news_content_id));
+        setSidebarNewsExpanded(true);
     };
 
     return (

@@ -3,11 +3,13 @@ import { newsReducer } from './features/newsSlice';
 import { configureStore } from '@reduxjs/toolkit';
 import { sidebarReducer } from './features/sidebarSlice';
 import { sidebarNewsReducer } from './features/sidebarNewsSlice';
+import {newsDetailsReducer} from './features/newsDetailsSlice';
 
 export const store = configureStore({
     reducer: {
         sidebar: sidebarReducer,
         news: newsReducer,
+        newsDetails: newsDetailsReducer,
         schedule: scheduleReducer,
         sidebarNews: sidebarNewsReducer,
     },
