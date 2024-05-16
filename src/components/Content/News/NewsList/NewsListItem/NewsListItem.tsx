@@ -1,9 +1,7 @@
 import React from 'react';
 import { Avatar } from 'antd';
 import styled from 'styled-components';
-import { useAppDispatch } from '../../../../../redux/hooks/hooks';
-import {setNewsContentId} from '../../../../../redux/features/newsDetailsSlice';
-import {useGetSidebarNewsExpanded} from '../../News';
+import MockImage from '../../../../../assets/images/Church.png';
 
 const StyledNewsListItemWrapper = styled.div`
     display: flex;
@@ -55,23 +53,16 @@ type NewsListItemProps = {
 };
 
 export const NewsListItem: React.FC<NewsListItemProps> = ({ data }) => {
-    const {setSidebarNewsExpanded} = useGetSidebarNewsExpanded();
 
     const parseDate = (date: string): string =>
         date.slice(0, 10).split('-').reverse().join('.');
 
-    const dispatch = useAppDispatch();
-    const newsItemOnClick = () => {
-        dispatch(setNewsContentId(data.news_content_id));
-        setSidebarNewsExpanded(true);
-    };
-
     return (
-        <StyledNewsListItemWrapper onClick={newsItemOnClick}>
+        <StyledNewsListItemWrapper>
             <StyledNewsItemAvatar
                 shape="square"
                 size={{ xs: 40, sm: 40, md: 64, lg: 80, xl: 100, xxl: 140 }}
-                src={data.main_asset_url}
+                src={data.main_asset_url || MockImage}
             />
             <StyledNewsItemTitle>{data.title}</StyledNewsItemTitle>
             <StyledNewsItemDate>

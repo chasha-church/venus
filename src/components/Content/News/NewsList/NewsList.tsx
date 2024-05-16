@@ -4,17 +4,7 @@ import styled from 'styled-components';
 import { NewsListItemType } from '../../../../redux/features/newsSlice';
 import {Link} from 'react-router-dom';
 
-const NewsListWrapper = styled.div`
-    flex: 25em;
-
-    overflow-y: scroll;
-    height: 100vh;
-
-    @media (max-width: 900px) {
-        height: 100%;
-        overflow-y: hidden;
-    }
-`;
+const NewsListWrapper = styled.div``;
 
 type NewsListProps = {
     data: Array<NewsListItemType>

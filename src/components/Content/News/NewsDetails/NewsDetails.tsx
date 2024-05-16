@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styled from 'styled-components';
 import {CloseOutlined} from '@ant-design/icons';
 import {Image, FloatButton} from 'antd';
@@ -12,13 +12,13 @@ import {
     selectCurrentNewsDetails, selectNewsDetailsFetchError,
     selectNewsDetailsIsPending
 } from '../../../../redux/features/newsDetailsSlice';
-import {useGetSidebarNewsExpanded} from '../News';
+import MockImage from '../../../../assets/images/Church.png';
+import {useParams} from 'react-router-dom';
 
 const StyledNewsItemDetailsWrapper = styled.div`
-    flex: 25rem;
-
-    overflow-y: scroll;
-    height: 100vh;
+    max-width: 800px;
+    margin: 3em auto;
+    padding: 0 3em;
 
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -31,19 +31,10 @@ const StyledNewsItemDetailsWrapper = styled.div`
         'text text'
         'date date'
         'assets assets';
-
-    padding: 1em 1em;
-
-    @media (max-width: 909px) {
-        height: 100%;
-        overflow-y: hidden;
-    }
 `;
 
 const StyledNewsMainImageWrapper = styled.div`
-    width: 100%;
-    justify-self: center;
-    overflow: hidden;
+    text-align: center;
 
     grid-area: mainAsset;
 `;
@@ -66,6 +57,8 @@ const StyledNewsHeader = styled.h1`
 const StyledNewsText = styled.p`
     font-size: 1.2em;
     line-height: 1.5rem;
+    text-align: justify;
+    margin-bottom: 1.5em;
 
     grid-area: text;
 `;
@@ -82,23 +75,27 @@ const StyledNewsAssetImage = styled(Image)`
     grid-area: assets;
 `;
 
-type NewsItemDetailsProps = {
-    newsContentId: number;
-};
+type NewsDetailsProps = {};
 
-export const NewsItemDetails: React.FC<NewsItemDetailsProps> = ({newsContentId}) => {
-    const {sidebarNewsExpanded, setSidebarNewsExpanded} = useGetSidebarNewsExpanded();
+export const NewsDetails: React.FC<NewsDetailsProps> = () => {
+    const {newsContentId} = useParams();
+
+    const returnBackToNewsListOnClick = () => {
+        history.back();
+    };
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     const parseDate = (date: string): string =>
         date.slice(0, 10).split('-').reverse().join('.');
+
     const dispatch = useAppDispatch();
-    const returnBackToNewsListOnClick = () => {
-        setSidebarNewsExpanded(false);
-    };
-    
+
     let newsDetailsContent;
-    
-    if (newsContentId != 0) {
+
+    if (newsContentId) {
         const {
             data: newsDetails,
             isPending: isPending,
@@ -118,8 +115,8 @@ export const NewsItemDetails: React.FC<NewsItemDetailsProps> = ({newsContentId})
         newsDetailsContent = <>
             <StyledNewsMainImageWrapper>
                 <StyledNewsMainImage
-                    width={'100%'}
-                    src={newsDetails.main_asset_url}
+                    height={'35vh'}
+                    src={newsDetails.main_asset_url || MockImage}
                 />
             </StyledNewsMainImageWrapper>
 
@@ -146,14 +143,10 @@ export const NewsItemDetails: React.FC<NewsItemDetailsProps> = ({newsContentId})
         /* In case that error happened while fetching: */
         if (fetchError) {
             newsDetailsContent = <APIError error={fetchError}/>;
-            newsDetailsContent = <div>Error!</div>;
-
         }
 
-    }
-    
-    else {
-        newsDetailsContent = <h1>Let is try again.</h1>;
+    } else {
+        newsDetailsContent = <APIError error='Информация недоступна.'/>;
     }
 
     return (
@@ -162,7 +155,7 @@ export const NewsItemDetails: React.FC<NewsItemDetailsProps> = ({newsContentId})
                 style={{
                     top: '1rem',
                     right: '1.5rem',
-                    display: `${sidebarNewsExpanded ? 'inherit' : 'none'}`,
+                    display: 'inherit',
                     transition: 'display 500ms',
                 }}
                 onClick={returnBackToNewsListOnClick}

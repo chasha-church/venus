@@ -2,7 +2,6 @@ import { isAxiosError } from 'axios';
 import {
     createAsyncThunk,
     createSlice,
-    type PayloadAction,
 } from '@reduxjs/toolkit';
 import { RootState } from '../store';
 import { newsAPI } from '../../api/newsAPI';
@@ -34,21 +33,17 @@ const initialState: NewsDetailsState = {
 export const newsDetailsSlice = createSlice({
     name: 'newsDetails',
     initialState,
-    reducers: {
-        setNewsContentId: (state, action: PayloadAction<number>) => {
-            state.news_content_id = action.payload;
-        },
-    },
+    reducers: {},
     extraReducers: (builder) => {
         builder.addCase(fetchNewsDetails.fulfilled, (state, action) => {
-            // state = action.payload;
             state.news_content_id = action.payload.news_content_id;
             state.text = action.payload.text;
             state.title = action.payload.title;
             state.assets_url = action.payload.assets_url;
             state.main_asset_url = action.payload.main_asset_url;
-            // state.view_data = action.payload.view_data;
-            // state.created_date = action.payload.created_date;
+            state.view_data = action.payload.view_data;
+            state.created_date = action.payload.created_date;
+
             state.isPending = false;
         });
         builder.addCase(fetchNewsDetails.pending, (state, action) => {
@@ -63,7 +58,7 @@ export const newsDetailsSlice = createSlice({
 
 // Asynchronous actions
 type FetchNewsDetailsPayload = {
-    newsContentId: number;
+    newsContentId: string;
 };
 
 export const fetchNewsDetails = createAsyncThunk(
@@ -80,13 +75,7 @@ export const fetchNewsDetails = createAsyncThunk(
     }
 );
 
-export const { setNewsContentId } =
-    newsDetailsSlice.actions;
-
 // Selectors
-// export const selectCurrentNewsDetails = (state: RootState) => {state.newsDetails.news_content_id,
-// state.newsDetails.title, state.newsDetails.text, state.newsDetails.main_asset_url, state.newsDetails.assets_url;};
-export const selectNewsDetailsContentId = (state: RootState) => state.newsDetails.news_content_id;
 export const selectCurrentNewsDetails = (state: RootState) => state.newsDetails;
 export const selectNewsDetailsIsPending = (state: RootState) => state.newsDetails.isPending;
 export const selectNewsDetailsFetchError = (state: RootState) => state.newsDetails.error;

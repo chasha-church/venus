@@ -14,7 +14,8 @@ import {RouteError} from './components/service/RouteError';
 import {News} from './components/Content/News/News';
 import {defaultTheme} from './styles/Theme';
 import {ThemeProvider} from 'styled-components';
-import {ErrorBoundary} from "react-error-boundary";
+import {ErrorBoundary} from 'react-error-boundary';
+import {NewsDetails} from './components/Content/News/NewsDetails/NewsDetails';
 
 const router: RemixRouter = createBrowserRouter([
     {
@@ -35,7 +36,7 @@ const router: RemixRouter = createBrowserRouter([
                     },
                     {
                         path: ':newsContentId',
-                        element: <News/>,
+                        element: <NewsDetails/>,
                     },
                 ]
             },
