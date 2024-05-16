@@ -10,10 +10,11 @@ export const GlobalStyles = createGlobalStyle`
   --sidebar-grid-left-col: 3em;
   --sidebar-grid-gap: 0.5em;
   --sidebar-grid-padding: 1em;
+  --sidebar-scroll-width: 8px;
 
   /* Content */
-  --content-margin:
-  calc(var(--sidebar-grid-left-col) + var(--sidebar-grid-gap) + var(--sidebar-grid-padding) * 2);
+  --content-margin: 
+    calc(var(--sidebar-grid-left-col) + var(--sidebar-grid-gap) + var(--sidebar-grid-padding) * 2);
 }
 
 /* Box sizing rules */

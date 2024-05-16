@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'react';
+import React, { FunctionComponent } from 'react';
 import styled from 'styled-components';
 
 import { Heading } from '../../../common/Heading/Heading';
@@ -13,7 +13,7 @@ const StyledParagraph = styled.p`
 
 type ScheduleBlockProps = {};
 
-export const ScheduleBlock: FunctionComponent<ScheduleBlockProps> = (props) => {
+export const ScheduleBlock: FunctionComponent<ScheduleBlockProps> = ({}) => {
     return (
         <section>
             <Heading

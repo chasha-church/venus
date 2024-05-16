@@ -21,7 +21,7 @@ const StyledFooter = styled.div<{ $sidebarExpanded: boolean }>`
     & > span:first-child {
         overflow: hidden;
 
-        text-wrap: nowrap;
+        white-space: nowrap;
         display: block;
         text-align: center;
 

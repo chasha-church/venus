@@ -36,27 +36,14 @@ export const SidebarMenuItem: React.FC<SidebarMenuItemProps> = ({
 
     const { sidebarExpanded } = useContext(SidebarContext);
 
-    // State for hover caption
-    const [hoverCaptionVisible, toggleHoverCaptionVisibility] =
-        useState<boolean>(false);
-    const handleHover = () => {
-        if (!sidebarExpanded)
-            toggleHoverCaptionVisibility(!hoverCaptionVisible);
-    };
-
     /* TODO: Fix unwanted renders */
     return (
-        <StyledMenuItem
-            $isActive={isActive}
-            onMouseEnter={handleHover}
-            onMouseLeave={handleHover}
-        >
+        <StyledMenuItem $isActive={isActive}>
             <SidebarMenuItemHeader
                 isActive={isActive}
                 id={menuItem.id}
                 url={menuItem.url}
                 name={menuItem.name}
-                hoverCaptionVisible={hoverCaptionVisible}
             />
 
             <SidebarMenuItemSubmenu
