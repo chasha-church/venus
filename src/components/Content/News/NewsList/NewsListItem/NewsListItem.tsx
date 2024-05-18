@@ -9,14 +9,14 @@ const StyledNewsListItemWrapper = styled.div`
     align-items: center;
     justify-content: space-between;
 
-    padding: 1rem 0.5rem;
-    margin: 0.5rem 0.5rem;
-    border: 0.15rem solid ${({ theme }) => theme.colors.primary};
-    border-radius: 0.5rem;
+    padding: 1em 0.5em;
+    margin: 0.5em 0.5em;
+    border: 0.15em solid ${({ theme }) => theme.colors.primary};
+    border-radius: 0.5em;
     transition: 0.3s;
 
     &:hover {
-        margin-left: 1.2rem;
+        margin-left: 1.2em;
         cursor: pointer;
     }
 `;
@@ -28,8 +28,8 @@ const StyledNewsItemAvatar = styled(Avatar)`
 const StyledNewsItemTitle = styled.p`
     flex: 4;
     
-    font-size: 1em;
-    margin: 1rem 1rem;
+    font-size: 1rem;
+    margin: 1em 1em;
 `;
 
 const StyledNewsItemDate = styled.div`

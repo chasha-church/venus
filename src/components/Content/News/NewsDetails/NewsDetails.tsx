@@ -16,14 +16,14 @@ import MockImage from '../../../../assets/images/Church.png';
 import {useParams} from 'react-router-dom';
 
 const StyledNewsItemDetailsWrapper = styled.div`
-    max-width: 800px;
-    margin: 3em auto;
+    max-width: 950px;
+    margin: 2.5em auto;
     padding: 0 3em;
 
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-auto-rows: min-content;
-    gap: 0.5rem;
+    gap: 0.5em;
 
     grid-template-areas:
         'mainAsset mainAsset'
@@ -46,17 +46,17 @@ const StyledNewsMainImage = styled(Image)`
 `;
 
 const StyledNewsHeader = styled.h1`
-    font-size: 2em;
+    font-size: 2rem;
     line-height: 1.2em;
     text-align: center;
-    margin: 1.5rem auto;
+    margin: 1.5em auto;
 
     grid-area: header;
 `;
 
 const StyledNewsText = styled.p`
-    font-size: 1.2em;
-    line-height: 1.5rem;
+    font-size: 1.2rem;
+    line-height: 1.5em;
     text-align: justify;
     margin-bottom: 1.5em;
 
