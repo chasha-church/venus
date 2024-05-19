@@ -9,7 +9,7 @@ import { newsAPI } from '../../api/newsAPI';
 
 type NewsState = {
     pageSize: number;
-    newsPage: number;
+    page: number;
     news: Array<NewsListItemType> | null;
     isPending: boolean;
     error: string | null;
@@ -24,7 +24,7 @@ export type NewsListItemType = {
 
 const initialState: NewsState = {
     pageSize: 3,
-    newsPage: 0,
+    page: 0,
     news: null,
     isPending: false,
     error: null,
@@ -33,7 +33,14 @@ const initialState: NewsState = {
 export const newsSlice = createSlice({
     name: 'news',
     initialState,
-    reducers: {},
+    reducers: {
+        setPageSize: (state, action: PayloadAction<number>) => {
+            state.pageSize = action.payload;
+        },
+        setPage: (state, action: PayloadAction<number>) => {
+            state.page = action.payload;
+        },
+    },
     extraReducers: (builder) => {
         builder.addCase(fetchNews.fulfilled, (state, action) => {
             state.news = action.payload;
@@ -69,12 +76,16 @@ export const fetchNews = createAsyncThunk(
     }
 );
 
+// Actions
+export const { setPageSize, setPage } =
+    newsSlice.actions;
+
 // Selectors
 export const selectCurrentNews = (state: RootState) => state.news.news;
 export const selectNewsIsPending = (state: RootState) => state.news.isPending;
 export const selectNewsFetchError = (state: RootState) => state.news.error;
 export const selectNewsPageSize = (state: RootState) => state.news.pageSize;
-export const selectNextNewsPage = (state: RootState) => state.news.newsPage + 1;
+export const selectNextNewsPage = (state: RootState) => state.news.page + 1;
 
 // Reducer
 export const newsReducer = newsSlice.reducer;
