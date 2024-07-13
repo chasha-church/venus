@@ -1,19 +1,20 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import {CloseOutlined} from '@ant-design/icons';
-import {Image, FloatButton} from 'antd';
+import { CloseOutlined } from '@ant-design/icons';
+import { Image, FloatButton } from 'antd';
 
-import {useAppDispatch} from '../../../../redux/hooks/hooks';
-import {useAPIFetch} from '../../../../redux/hooks/useAPIFetch';
-import {Preloader} from '../../../common/Preloader/Preloader';
-import {APIError} from '../../../service/APIError/APIError';
+import { useAppDispatch } from '../../../../redux/hooks/hooks';
+import { useAPIFetch } from '../../../../redux/hooks/useAPIFetch';
+import { Preloader } from '../../../common/Preloader/Preloader';
+import { APIError } from '../../../service/APIError/APIError';
 import {
     fetchNewsDetails,
-    selectCurrentNewsDetails, selectNewsDetailsFetchError,
-    selectNewsDetailsIsPending
-} from '../../../../redux/features/newsDetailsSlice';
+    selectNewsDetails,
+    selectNewsDetailsIsPending,
+    selectNewsDetailsFetchError,
+} from '../../../../redux/features/newsSlice';
 import MockImage from '../../../../assets/images/Church.png';
-import {useParams} from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 const StyledNewsItemDetailsWrapper = styled.div`
     max-width: 950px;
@@ -78,7 +79,7 @@ const StyledNewsAssetImage = styled(Image)`
 type NewsDetailsProps = {};
 
 export const NewsDetails: React.FC<NewsDetailsProps> = () => {
-    const {newsContentId} = useParams();
+    const { newsContentId } = useParams();
 
     const returnBackToNewsListOnClick = () => {
         history.back();
@@ -88,8 +89,10 @@ export const NewsDetails: React.FC<NewsDetailsProps> = () => {
         window.scrollTo(0, 0);
     }, []);
 
-    const parseDate = (date: string): string =>
-        date.slice(0, 10).split('-').reverse().join('.');
+    const parseDate = (date: string | undefined): string => {
+        if (date == undefined) return '';
+        return date?.slice(0, 10).split('-').reverse().join('.');
+    };
 
     const dispatch = useAppDispatch();
 
@@ -102,51 +105,52 @@ export const NewsDetails: React.FC<NewsDetailsProps> = () => {
             error: fetchError,
         } = useAPIFetch(
             () => {
-                dispatch(fetchNewsDetails({newsContentId}));
+                dispatch(fetchNewsDetails({ newsContentId }));
             },
             [newsContentId],
             {
-                data: selectCurrentNewsDetails,
+                data: selectNewsDetails,
                 isPending: selectNewsDetailsIsPending,
                 error: selectNewsDetailsFetchError,
             }
         );
 
-        newsDetailsContent = <>
-            <StyledNewsMainImageWrapper>
-                <StyledNewsMainImage
-                    height={'35vh'}
-                    src={newsDetails.main_asset_url || MockImage}
-                />
-            </StyledNewsMainImageWrapper>
+        newsDetailsContent = (
+            <>
+                <StyledNewsMainImageWrapper>
+                    <StyledNewsMainImage
+                        height={'35vh'}
+                        src={newsDetails?.main_asset_url || MockImage}
+                    />
+                </StyledNewsMainImageWrapper>
 
-            <StyledNewsHeader>{newsDetails.title}</StyledNewsHeader>
-            <StyledNewsText>{newsDetails.text}</StyledNewsText>
-            <StyledNewsCreatedDate>
-                {parseDate(newsDetails.created_date)}
-            </StyledNewsCreatedDate>
+                <StyledNewsHeader>{newsDetails?.title}</StyledNewsHeader>
+                <StyledNewsText>{newsDetails?.text}</StyledNewsText>
+                <StyledNewsCreatedDate>
+                    {parseDate(newsDetails?.created_date)}
+                </StyledNewsCreatedDate>
 
-            {newsDetails.assets_url.map((url) => (
-                <StyledNewsAssetImage
-                    height={'100%'}
-                    key={url}
-                    src={url}
-                />
-            ))}
-        </>;
+                {newsDetails?.assets_url.map((url) => (
+                    <StyledNewsAssetImage
+                        height={'100%'}
+                        key={url}
+                        src={url}
+                    />
+                ))}
+            </>
+        );
 
         /* In case that data has not been fetched yet: */
         if (isPending) {
-            newsDetailsContent = <Preloader/>;
+            newsDetailsContent = <Preloader />;
         }
 
         /* In case that error happened while fetching: */
         if (fetchError) {
-            newsDetailsContent = <APIError error={fetchError}/>;
+            newsDetailsContent = <APIError error={fetchError} />;
         }
-
     } else {
-        newsDetailsContent = <APIError error='Информация недоступна.'/>;
+        newsDetailsContent = <APIError error="Информация недоступна." />;
     }
 
     return (
@@ -159,7 +163,7 @@ export const NewsDetails: React.FC<NewsDetailsProps> = () => {
                     transition: 'display 500ms',
                 }}
                 onClick={returnBackToNewsListOnClick}
-                icon={<CloseOutlined/>}
+                icon={<CloseOutlined />}
             />
             {newsDetailsContent}
         </StyledNewsItemDetailsWrapper>

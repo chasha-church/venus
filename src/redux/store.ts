@@ -1,15 +1,15 @@
 import { scheduleReducer } from './features/scheduleSlice';
-import { newsReducer } from './features/newsSlice';
+import { homeNewsReducer } from './features/homeNewsSlice';
 import { configureStore } from '@reduxjs/toolkit';
 import { sidebarReducer } from './features/sidebarSlice';
-import {newsDetailsReducer} from './features/newsDetailsSlice';
+import { newsReducer } from './features/newsSlice';
 
 export const store = configureStore({
     reducer: {
         sidebar: sidebarReducer,
+        homeNews: homeNewsReducer,
         news: newsReducer,
-        newsDetails: newsDetailsReducer,
-        schedule: scheduleReducer
+        schedule: scheduleReducer,
     },
 });
 
