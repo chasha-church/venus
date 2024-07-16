@@ -6,15 +6,16 @@ import { store } from './redux/store';
 import App from './App';
 
 import './index.css';
-import { ErrorBoundary } from 'react-error-boundary';
 import { AppErrorFallback } from './components/service/AppErrorFallback/AppErrorFallback';
-import type { Router as RemixRouter } from '@remix-run/router/dist/router';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { Home } from './components/Content/Home/Home';
-import { RouteError } from './components/service/RouteError';
-import { News } from './components/Content/News/News';
-import { defaultTheme } from './styles/Theme';
-import { ThemeProvider } from 'styled-components';
+import type {Router as RemixRouter} from '@remix-run/router/dist/router';
+import {createBrowserRouter, RouterProvider} from 'react-router-dom';
+import {Home} from './components/Content/Home/Home';
+import {RouteError} from './components/service/RouteError';
+import {News} from './components/Content/News/News';
+import {defaultTheme} from './styles/Theme';
+import {ThemeProvider} from 'styled-components';
+import {ErrorBoundary} from 'react-error-boundary';
+import {NewsDetails} from './components/Content/News/NewsDetails/NewsDetails';
 import { Signin } from './components/Content/Auth/Signin';
 
 const router: RemixRouter = createBrowserRouter([
@@ -40,7 +41,7 @@ const router: RemixRouter = createBrowserRouter([
                     },
                     {
                         path: ':newsContentId',
-                        element: <News />,
+                        element: <NewsDetails/>,
                     },
                 ],
             },

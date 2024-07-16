@@ -110,49 +110,6 @@ const initialState: SidebarState = {
             submenuExpanded: false,
             submenu: null,
         },
-
-        {
-            id: SideBarIds.Contacts,
-            name: 'Контакты',
-            url: '#',
-            submenuExpanded: false,
-            submenu: null,
-        },
-        {
-            id: SideBarIds.Donate,
-            name: 'Пожертвовать',
-            url: '#',
-            submenuExpanded: false,
-            submenu: null,
-        },
-        {
-            id: SideBarIds.Contacts,
-            name: 'Контакты',
-            url: '#',
-            submenuExpanded: false,
-            submenu: null,
-        },
-        {
-            id: SideBarIds.Donate,
-            name: 'Пожертвовать',
-            url: '#',
-            submenuExpanded: false,
-            submenu: null,
-        },
-        {
-            id: SideBarIds.Contacts,
-            name: 'Контакты',
-            url: '#',
-            submenuExpanded: false,
-            submenu: null,
-        },
-        {
-            id: SideBarIds.Donate,
-            name: 'Пожертвовать',
-            url: '#',
-            submenuExpanded: false,
-            submenu: null,
-        },
     ],
 };
 

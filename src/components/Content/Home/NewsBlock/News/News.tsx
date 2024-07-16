@@ -11,7 +11,7 @@ import {
     selectNewsIsPending,
     selectNewsPageSize,
     selectNextNewsPage,
-} from '../../../../../redux/features/newsSlice';
+} from '../../../../../redux/features/homeNewsSlice';
 import { NewsCard } from './NewsCard/NewsCard';
 import { Preloader } from '../../../../common/Preloader/Preloader';
 import { APIError } from '../../../../service/APIError/APIError';

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import styled from 'styled-components';
-import { NewsListItemType } from '../../../../../../redux/features/newsSlice';
+import { NewsListItemType } from '../../../../../../redux/features/homeNewsSlice';
 import MockImage from '../../../../../../assets/images/Church.png';
 import { PRIMARY_COLOR } from '../../../../../../constants/colors';
 import { Link } from 'react-router-dom';

@@ -1,41 +1,30 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { CloseOutlined } from '@ant-design/icons';
 import { Image, FloatButton } from 'antd';
-import MockImage from '../../../../assets/images/Church.png';
-import {
-    selectSidebarNewsExpanded,
-    setSidebarNewsExpanded,
-} from '../../../../redux/features/sidebarNewsSlice';
-import { useAppDispatch, useAppSelector } from '../../../../redux/hooks/hooks';
 
-const Data = {
-    news_content_id: 320,
-    title: 'Масленичное гуляние в приходе',
-    text: '    Обряд величания молодоженов, масленичные песни и народные танцы, веселые конкурсы и, конечно, блинное изобилие с чаем из горячего самовара ожидали всех прихожан и гостей на Масленичном гулянии. Особыми гостями праздника стали воспитанники социально-педагогического центра с приютом Ленинского района г.Минска. Ребята с удовольствием приняли участие во всех конкурсах на силу, быстроту и меткость, а также тепло пообщались за чаем с учащимися воскресной школы прихода. Фоторепортаж',
-    view_data: null,
-    main_asset_url:
-        'https://chashaby.s3.eu-central-1.amazonaws.com/photo_2023-03-26_21-23-44.jpg',
-    assets_url: [
-        'https://chashaby.s3.eu-central-1.amazonaws.com/photo_2023-03-26_21-23-44.jpg',
-        'https://chashaby.s3.eu-central-1.amazonaws.com/photo_2023-03-26_21-34-54.jpg',
-    ],
-    created_date: '2023-03-26T18:32:51',
-    created_by_id: 1,
-    updated_date: '2023-11-29T15:42:20',
-    updated_by_id: 1,
-};
+import { useAppDispatch } from '../../../../redux/hooks/hooks';
+import { useAPIFetch } from '../../../../redux/hooks/useAPIFetch';
+import { Preloader } from '../../../common/Preloader/Preloader';
+import { APIError } from '../../../service/APIError/APIError';
+import {
+    fetchNewsDetails,
+    selectNewsDetails,
+    selectNewsDetailsIsPending,
+    selectNewsDetailsFetchError,
+} from '../../../../redux/features/newsSlice';
+import MockImage from '../../../../assets/images/Church.png';
+import { useParams } from 'react-router-dom';
 
 const StyledNewsItemDetailsWrapper = styled.div`
-    flex: 25rem;
-
-    overflow-y: scroll;
-    height: 100vh;
+    max-width: 950px;
+    margin: 2.5em auto;
+    padding: 0 3em;
 
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-auto-rows: min-content;
-    gap: 0.5rem;
+    gap: 0.5em;
 
     grid-template-areas:
         'mainAsset mainAsset'
@@ -43,33 +32,34 @@ const StyledNewsItemDetailsWrapper = styled.div`
         'text text'
         'date date'
         'assets assets';
-
-    padding: 1em 1em;
-
-    @media (max-width: 909px) {
-        height: 100%;
-        overflow-y: hidden;
-    }
 `;
 
 const StyledNewsMainImageWrapper = styled.div`
-    width: 40vw;
-    margin: auto;
+    text-align: center;
 
     grid-area: mainAsset;
 `;
 
-const StyledNewsHeader = styled.p`
-    font-size: 2em;
+const StyledNewsMainImage = styled(Image)`
+    object-fit: cover;
+
+    margin: auto;
+`;
+
+const StyledNewsHeader = styled.h1`
+    font-size: 2rem;
+    line-height: 1.2em;
     text-align: center;
-    margin: 1.5rem auto;
+    margin: 1.5em auto;
 
     grid-area: header;
 `;
 
 const StyledNewsText = styled.p`
-    font-size: 1.2em;
-    line-height: 1.5rem;
+    font-size: 1.2rem;
+    line-height: 1.5em;
+    text-align: justify;
+    margin-bottom: 1.5em;
 
     grid-area: text;
 `;
@@ -82,95 +72,100 @@ const StyledNewsCreatedDate = styled.div`
 
 const StyledNewsAssetImage = styled(Image)`
     object-fit: cover;
+
+    grid-area: assets;
 `;
 
-type NewsItemDetailsProps = {};
+type NewsDetailsProps = {};
 
-export const NewsItemDetails: React.FC<NewsItemDetailsProps> = ({}) => {
-    const parseDate = (date: string): string =>
-        date.slice(0, 10).split('-').reverse().join('.');
-    const dispatch = useAppDispatch();
+export const NewsDetails: React.FC<NewsDetailsProps> = () => {
+    const { newsContentId } = useParams();
+
     const returnBackToNewsListOnClick = () => {
-        dispatch(setSidebarNewsExpanded(false));
+        history.back();
     };
 
-    const sidebarNewsExpanded = useAppSelector(selectSidebarNewsExpanded);
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
+    const parseDate = (date: string | undefined): string => {
+        if (date == undefined) return '';
+        return date?.slice(0, 10).split('-').reverse().join('.');
+    };
+
+    const dispatch = useAppDispatch();
+
+    let newsDetailsContent;
+
+    if (newsContentId) {
+        const {
+            data: newsDetails,
+            isPending: isPending,
+            error: fetchError,
+        } = useAPIFetch(
+            () => {
+                dispatch(fetchNewsDetails({ newsContentId }));
+            },
+            [newsContentId],
+            {
+                data: selectNewsDetails,
+                isPending: selectNewsDetailsIsPending,
+                error: selectNewsDetailsFetchError,
+            }
+        );
+
+        newsDetailsContent = (
+            <>
+                <StyledNewsMainImageWrapper>
+                    <StyledNewsMainImage
+                        height={'35vh'}
+                        src={newsDetails?.main_asset_url || MockImage}
+                    />
+                </StyledNewsMainImageWrapper>
+
+                <StyledNewsHeader>{newsDetails?.title}</StyledNewsHeader>
+                <StyledNewsText>{newsDetails?.text}</StyledNewsText>
+                <StyledNewsCreatedDate>
+                    {parseDate(newsDetails?.created_date)}
+                </StyledNewsCreatedDate>
+
+                {newsDetails?.assets_url.map((url) => (
+                    <StyledNewsAssetImage
+                        height={'100%'}
+                        key={url}
+                        src={url}
+                    />
+                ))}
+            </>
+        );
+
+        /* In case that data has not been fetched yet: */
+        if (isPending) {
+            newsDetailsContent = <Preloader />;
+        }
+
+        /* In case that error happened while fetching: */
+        if (fetchError) {
+            newsDetailsContent = <APIError error={fetchError} />;
+        }
+    } else {
+        newsDetailsContent = <APIError error="Информация недоступна." />;
+    }
+
     return (
         <StyledNewsItemDetailsWrapper>
             <FloatButton
                 style={{
                     top: '1rem',
                     right: '1.5rem',
-                    display: `${sidebarNewsExpanded ? 'inherit' : 'none'}`,
+                    display: 'inherit',
                     transition: 'display 500ms',
                 }}
                 onClick={returnBackToNewsListOnClick}
                 icon={<CloseOutlined />}
             />
-            <StyledNewsMainImageWrapper>
-                <Image
-                    width={'100%'}
-                    src={Data.main_asset_url}
-                />
-            </StyledNewsMainImageWrapper>
-            <StyledNewsHeader>{Data.title}</StyledNewsHeader>
-            <StyledNewsText>{Data.text}</StyledNewsText>
-            <StyledNewsCreatedDate>
-                {parseDate(Data.created_date)}
-            </StyledNewsCreatedDate>
-            <StyledNewsAssetImage
-                height={'100%'}
-                src={Data.assets_url[0]}
-            />
-            <StyledNewsAssetImage
-                height={'100%'}
-                src={MockImage}
-            />
-            <StyledNewsAssetImage
-                height={'100%'}
-                src={Data.assets_url[1]}
-            />
-            <StyledNewsAssetImage
-                height={'100%'}
-                src={MockImage}
-            />
-
-            <StyledNewsAssetImage
-                height={'100%'}
-                src={MockImage}
-            />
-            <StyledNewsAssetImage
-                height={'100%'}
-                src={MockImage}
-            />
-            <StyledNewsAssetImage
-                height={'100%'}
-                src={MockImage}
-            />
-            <StyledNewsAssetImage
-                height={'100%'}
-                src={MockImage}
-            />
-            <StyledNewsAssetImage
-                height={'100%'}
-                src={MockImage}
-            />
-            <StyledNewsAssetImage
-                height={'100%'}
-                src={MockImage}
-            />
-            <StyledNewsAssetImage
-                height={'100%'}
-                src={MockImage}
-            />
-            <StyledNewsAssetImage
-                height={'100%'}
-                src={MockImage}
-            />
-            <StyledNewsAssetImage
-                height={'100%'}
-                src={MockImage}
-            />
+            {newsDetailsContent}
         </StyledNewsItemDetailsWrapper>
     );
 };
