@@ -35,7 +35,7 @@ const StyledMenuItem = styled.li<{
         display: grid;
         grid-template-rows: ${(props) =>
             props.$sidebarExpanded ? '1fr' : '0fr'};
-        transition: all 1000ms;
+        transition: all 300ms;
         overflow: hidden;
 
         // CSS-selector that gets first child of this component
