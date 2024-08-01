@@ -7,6 +7,7 @@ import { SidebarContext } from '../../../Sidebar';
 import { IconMatcher } from '../../../../../utils/IconMatcher';
 import { StyledSidebarGrid } from '../../../StyledSidebarGrid/StyledSidebarGrid';
 import { HashLink } from 'react-router-hash-link';
+import { device } from '../../../../../styles/BreakPoints';
 
 const StyledHeader = styled.div`
     position: relative;
@@ -47,6 +48,10 @@ const StyledName = styled.div<{ $sidebarExpanded: boolean }>`
         overflow: hidden;
         white-space: nowrap;
         font-weight: 600;
+    }
+
+    @media only screen and (${device.sm}) {
+        grid-template-columns: 1fr;
     }
 `;
 

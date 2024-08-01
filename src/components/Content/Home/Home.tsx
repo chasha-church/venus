@@ -10,8 +10,8 @@ export const Home: React.FC<HomeProps> = () => {
     return (
         <>
             <PreviewBlock />
-            <NewsBlock />
-            <ScheduleBlock />
+            {/* <NewsBlock /> */}
+            {/* <ScheduleBlock /> */}
         </>
     );
 };

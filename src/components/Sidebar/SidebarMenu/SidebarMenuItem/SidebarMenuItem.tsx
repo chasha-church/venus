@@ -34,8 +34,6 @@ export const SidebarMenuItem: React.FC<SidebarMenuItemProps> = ({
     const activeItemId = useAppSelector(selectActiveItemId);
     const isActive = menuItem.id === activeItemId;
 
-    const { sidebarExpanded } = useContext(SidebarContext);
-
     /* TODO: Fix unwanted renders */
     return (
         <StyledMenuItem $isActive={isActive}>

@@ -8,6 +8,7 @@ import {
 import { useAppDispatch } from '../../../../../../redux/hooks/hooks';
 import { SidebarContext } from '../../../../Sidebar';
 import { Link } from 'react-router-dom';
+import { device } from '../../../../../../styles/BreakPoints';
 
 const StyledSubmenuItem = styled.li<{
     $submenuExpanded: SubmenuExpandedType;
@@ -30,6 +31,10 @@ const StyledSubmenuItem = styled.li<{
     span {
         white-space: nowrap;
         overflow: hidden;
+    }
+
+    @media only screen and (${device.sm}) {
+        grid-template-columns: 1fr;
     }
 `;
 
