@@ -51,15 +51,23 @@ export const SubmenuItem: React.FC<SubmenuItemProps> = ({
     name,
     submenuExpanded,
 }) => {
-    const { sidebarExpanded } = useContext(SidebarContext);
+    const { sidebarExpanded, toggleSidebarExpanded } =
+        useContext(SidebarContext);
 
     const dispatch = useAppDispatch();
     const setActiveMenuItem = () => {
         dispatch(setActiveItem(id));
     };
 
+    const handleClick = () => {
+        toggleSidebarExpanded();
+    };
+
     return (
-        <Link to={url}>
+        <Link
+            to={url}
+            onClick={handleClick}
+        >
             <StyledSubmenuItem
                 onClick={setActiveMenuItem}
                 $submenuExpanded={submenuExpanded}

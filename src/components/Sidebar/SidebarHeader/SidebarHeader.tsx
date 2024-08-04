@@ -51,11 +51,19 @@ const StyledTitle = styled.div<{ $sidebarExpanded: boolean }>`
 type SidebarHeaderProps = {};
 
 export const SidebarHeader: React.FC<SidebarHeaderProps> = ({}) => {
-    const { sidebarExpanded } = useContext(SidebarContext);
+    const { sidebarExpanded, toggleSidebarExpanded } =
+        useContext(SidebarContext);
+
+    const handleClick = () => {
+        toggleSidebarExpanded();
+    };
 
     return (
         <StyledHeaderContent>
-            <Link to="/">
+            <Link
+                to="/"
+                onClick={handleClick}
+            >
                 <StyledHeaderGrid>
                     <ChashaIcon width={'3em'} />
                     <StyledTitle $sidebarExpanded={sidebarExpanded}>

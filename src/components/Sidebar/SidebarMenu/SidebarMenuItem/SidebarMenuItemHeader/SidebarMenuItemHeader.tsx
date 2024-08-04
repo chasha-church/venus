@@ -68,7 +68,8 @@ export const SidebarMenuItemHeader: React.FC<SidebarMenuItemHeaderProps> = ({
     url,
     name,
 }) => {
-    const { sidebarExpanded } = useContext(SidebarContext);
+    const { sidebarExpanded, toggleSidebarExpanded } =
+        useContext(SidebarContext);
 
     const dispatch = useAppDispatch();
     const handleSetActiveItem = () => {
@@ -77,11 +78,18 @@ export const SidebarMenuItemHeader: React.FC<SidebarMenuItemHeaderProps> = ({
 
     const Icon = IconMatcher.getIcon(id);
 
+    const handleClick = () => {
+        toggleSidebarExpanded();
+    };
+
     return (
         <StyledHeader onClick={handleSetActiveItem}>
             <StyledActiveStripe $isActive={isActive} />
 
-            <HashLink to={url}>
+            <HashLink
+                to={url}
+                onClick={handleClick}
+            >
                 <StyledHeaderGrid>
                     <StyledIcon>{Icon}</StyledIcon>
                     <StyledName $sidebarExpanded={sidebarExpanded}>
