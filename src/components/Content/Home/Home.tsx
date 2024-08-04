@@ -6,12 +6,12 @@ import { ScheduleBlock } from './ScheduleBlock/ScheduleBlock';
 
 type HomeProps = {};
 
-export const Home: React.FC<HomeProps> = () => {
+export const Home: React.FC = () => {
     return (
         <>
             <PreviewBlock />
-            {/* <NewsBlock /> */}
-            {/* <ScheduleBlock /> */}
+            <NewsBlock />
+            <ScheduleBlock />
         </>
     );
 };

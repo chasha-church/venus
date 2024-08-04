@@ -11,6 +11,7 @@ const StyledContent = styled.div`
 
     @media only screen and (${device.sm}) {
         margin-left: 0;
+        margin-top: var(--content-margin);
     }
 `;
 

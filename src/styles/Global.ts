@@ -1,5 +1,6 @@
 import { createGlobalStyle, css } from 'styled-components';
 import fontsCss from './fonts.module.css';
+import { device } from './BreakPoints';
 
 export const GlobalStyles = createGlobalStyle`
  ${fontsCss} // this works as a normal styled css
@@ -11,10 +12,15 @@ export const GlobalStyles = createGlobalStyle`
   --sidebar-grid-gap: 0.5em;
   --sidebar-grid-padding: 1em;
   --sidebar-scroll-width: 8px;
+  --sidebar-height: 6em;
 
   /* Content */
   --content-margin: 
     calc(var(--sidebar-grid-left-col) + var(--sidebar-grid-gap) + var(--sidebar-grid-padding) * 2);
+  
+    @media only screen and (${device.sm}) {
+      --content-margin: var(--sidebar-height);
+    }
 }
 
 /* Box sizing rules */

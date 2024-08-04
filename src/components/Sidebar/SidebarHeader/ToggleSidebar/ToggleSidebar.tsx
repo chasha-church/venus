@@ -47,7 +47,10 @@ export const ToggleSidebar: React.FC<ToggleSidebarProps> = ({}) => {
                     })`,
                 }}
             />
-            <BurgerMenuIcon width={"2rem"} height={"2rem"}/>
+            <BurgerMenuIcon
+                width={'2rem'}
+                height={'2rem'}
+            />
         </StyledBtn>
     );
 };

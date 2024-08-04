@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 import { device } from '../../../styles/BreakPoints';
 
 const StyledHeaderContent = styled.div`
+    height: var(--sidebar-height);
     position: relative;
     border-bottom: 1px solid ${({ theme }) => theme.colors.lightGrayBorder};
 `;
