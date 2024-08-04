@@ -7,9 +7,12 @@ import { SidebarContext } from '../Sidebar';
 
 import { ChashaIcon } from '../../common/Icons/ChashaIcon';
 import { Link } from 'react-router-dom';
+import { device } from '../../../styles/BreakPoints';
 
 const StyledHeaderContent = styled.div`
+    height: var(--sidebar-height);
     position: relative;
+    border-bottom: 1px solid ${({ theme }) => theme.colors.lightGrayBorder};
 `;
 
 const StyledHeaderGrid = styled(StyledSidebarGrid)<{
@@ -39,16 +42,28 @@ const StyledTitle = styled.div<{ $sidebarExpanded: boolean }>`
         transition: margin 500ms;
         margin-right: ${(props) => (props.$sidebarExpanded ? '0.5em' : '0')};
     }
+
+    @media only screen and (${device.sm}) {
+        grid-template-columns: 1fr;
+    }
 `;
 
 type SidebarHeaderProps = {};
 
 export const SidebarHeader: React.FC<SidebarHeaderProps> = ({}) => {
-    const { sidebarExpanded } = useContext(SidebarContext);
+    const { sidebarExpanded, toggleSidebarExpanded } =
+        useContext(SidebarContext);
+
+    const handleClick = () => {
+        toggleSidebarExpanded();
+    };
 
     return (
         <StyledHeaderContent>
-            <Link to="/">
+            <Link
+                to="/"
+                onClick={handleClick}
+            >
                 <StyledHeaderGrid>
                     <ChashaIcon width={'3em'} />
                     <StyledTitle $sidebarExpanded={sidebarExpanded}>

@@ -8,6 +8,7 @@ import {
 import { useAppDispatch } from '../../../../../../redux/hooks/hooks';
 import { SidebarContext } from '../../../../Sidebar';
 import { Link } from 'react-router-dom';
+import { device } from '../../../../../../styles/BreakPoints';
 
 const StyledSubmenuItem = styled.li<{
     $submenuExpanded: SubmenuExpandedType;
@@ -31,6 +32,10 @@ const StyledSubmenuItem = styled.li<{
         white-space: nowrap;
         overflow: hidden;
     }
+
+    @media only screen and (${device.sm}) {
+        grid-template-columns: 1fr;
+    }
 `;
 
 type SubmenuItemProps = {
@@ -46,15 +51,23 @@ export const SubmenuItem: React.FC<SubmenuItemProps> = ({
     name,
     submenuExpanded,
 }) => {
-    const { sidebarExpanded } = useContext(SidebarContext);
+    const { sidebarExpanded, toggleSidebarExpanded } =
+        useContext(SidebarContext);
 
     const dispatch = useAppDispatch();
     const setActiveMenuItem = () => {
         dispatch(setActiveItem(id));
     };
 
+    const handleClick = () => {
+        toggleSidebarExpanded();
+    };
+
     return (
-        <Link to={url}>
+        <Link
+            to={url}
+            onClick={handleClick}
+        >
             <StyledSubmenuItem
                 onClick={setActiveMenuItem}
                 $submenuExpanded={submenuExpanded}

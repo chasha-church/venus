@@ -7,6 +7,7 @@ import { SidebarContext } from '../../../Sidebar';
 import { IconMatcher } from '../../../../../utils/IconMatcher';
 import { StyledSidebarGrid } from '../../../StyledSidebarGrid/StyledSidebarGrid';
 import { HashLink } from 'react-router-hash-link';
+import { device } from '../../../../../styles/BreakPoints';
 
 const StyledHeader = styled.div`
     position: relative;
@@ -48,6 +49,10 @@ const StyledName = styled.div<{ $sidebarExpanded: boolean }>`
         white-space: nowrap;
         font-weight: 600;
     }
+
+    @media only screen and (${device.sm}) {
+        grid-template-columns: 1fr;
+    }
 `;
 
 type SidebarMenuItemHeaderProps = {
@@ -63,7 +68,8 @@ export const SidebarMenuItemHeader: React.FC<SidebarMenuItemHeaderProps> = ({
     url,
     name,
 }) => {
-    const { sidebarExpanded } = useContext(SidebarContext);
+    const { sidebarExpanded, toggleSidebarExpanded } =
+        useContext(SidebarContext);
 
     const dispatch = useAppDispatch();
     const handleSetActiveItem = () => {
@@ -72,11 +78,18 @@ export const SidebarMenuItemHeader: React.FC<SidebarMenuItemHeaderProps> = ({
 
     const Icon = IconMatcher.getIcon(id);
 
+    const handleClick = () => {
+        toggleSidebarExpanded();
+    };
+
     return (
         <StyledHeader onClick={handleSetActiveItem}>
             <StyledActiveStripe $isActive={isActive} />
 
-            <HashLink to={url}>
+            <HashLink
+                to={url}
+                onClick={handleClick}
+            >
                 <StyledHeaderGrid>
                     <StyledIcon>{Icon}</StyledIcon>
                     <StyledName $sidebarExpanded={sidebarExpanded}>

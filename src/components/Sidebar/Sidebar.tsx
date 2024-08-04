@@ -5,12 +5,16 @@ import { SidebarHeader } from './SidebarHeader/SidebarHeader';
 import { SidebarMenu } from './SidebarMenu/SidebarMenu';
 
 import styled from 'styled-components';
+import { size, device } from '../../styles/BreakPoints';
+import { useScreenSize } from '../../redux/hooks/useScreenSize';
+import { useDisableScroll } from '../../redux/hooks/useDisableScroll';
 
 const StyledSidebar = styled.aside<{ $sidebarExpanded: boolean }>`
     position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
+
     z-index: 10;
 
     background-color: ${({ theme }) => theme.colors.background};
@@ -20,6 +24,11 @@ const StyledSidebar = styled.aside<{ $sidebarExpanded: boolean }>`
 
     display: flex;
     flex-direction: column;
+
+    @media only screen and (${device.sm}) {
+        right: 0;
+        bottom: ${(props) => (props.$sidebarExpanded ? '0' : 'unset')};
+    }
 `;
 
 export const SidebarContext = createContext({
@@ -32,14 +41,23 @@ type SidebarProps = {};
 export const Sidebar: React.FC<SidebarProps> = ({}) => {
     const [expanded, setExpanded] = useState<boolean>(false);
 
+    // Detect the size of device to prevent hover events (Mobile only)
+    const screenSize = useScreenSize();
+    const isMobileVersion = screenSize.width <= size.sm;
+
+    // Disable scroll when sidebar is expanded (Mobile only)
+    useDisableScroll(expanded, isMobileVersion);
+
     const toggleSidebarExpanded = () => {
         setExpanded(!expanded);
     };
 
     const openSidebar = () => {
+        if (isMobileVersion) return;
         setExpanded(true);
     };
     const closeSidebar = () => {
+        if (isMobileVersion) return;
         setExpanded(false);
     };
 

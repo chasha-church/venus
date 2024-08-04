@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { SidebarContext } from '../../Sidebar';
 
 import { SidebarShowIcon } from '../../../common/Icons/SidebarShowIcon';
+import { BurgerMenuIcon } from '../../../common/Icons/BurgerMenuIcon';
+import { device } from '../../../../styles/BreakPoints';
 
 const StyledBtn = styled.button`
     position: absolute;
@@ -12,6 +14,20 @@ const StyledBtn = styled.button`
     cursor: pointer;
 
     padding: 5px;
+
+    & > :last-child {
+        display: none;
+    }
+
+    @media only screen and (${device.sm}) {
+        transform: translateX(0%) translateY(-50%);
+        & > :last-child {
+            display: block;
+        }
+        & > :first-child {
+            display: none;
+        }
+    }
 `;
 
 type ToggleSidebarProps = {};
@@ -30,6 +46,10 @@ export const ToggleSidebar: React.FC<ToggleSidebarProps> = ({}) => {
                         sidebarExpanded ? '-180deg' : '0deg'
                     })`,
                 }}
+            />
+            <BurgerMenuIcon
+                width={'2rem'}
+                height={'2rem'}
             />
         </StyledBtn>
     );

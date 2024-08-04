@@ -30,7 +30,7 @@ export const SidebarMenuItemSubmenu: React.FC<MenuItemSubmenuProps> = ({
 
     return (
         <StyledSubmenuGrid $sidebarExpanded={sidebarExpanded}>
-            {/* Mock element for grid: */}
+            {/* Mock div-element for grid: */}
             <div></div>
             <StyledSubmenu>
                 {menuItem.submenu?.map((submenuItem) => (

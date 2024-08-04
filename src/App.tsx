@@ -13,7 +13,7 @@ const App: React.FC = () => {
             <GlobalStyles />
             <div className="App">
                 <Sidebar />
-                <Content/>
+                <Content />
             </div>
         </ThemeProvider>
     );

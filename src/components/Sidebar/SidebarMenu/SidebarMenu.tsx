@@ -7,10 +7,9 @@ import { SidebarMenuItem } from './SidebarMenuItem/SidebarMenuItem';
 import { SidebarContext } from '../Sidebar';
 
 const StyledNav = styled.nav<{ $sidebarExpanded: boolean }>`
-    overflow: auto;
+    overflow: ${(props) => (props.$sidebarExpanded ? 'auto' : 'hidden')};
     visibility: ${(props) => (props.$sidebarExpanded ? 'visible' : 'hidden')};
 
-    margin-right: ${(props) => (props.$sidebarExpanded ? '0.25em' : '0')};
     &::-webkit-scrollbar {
         width: ${(props) =>
             props.$sidebarExpanded ? 'var(--sidebar-scroll-width)' : '0'};

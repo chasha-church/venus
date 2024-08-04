@@ -11,8 +11,12 @@ import { SidebarMenuItemSubmenu } from './SidebarMenuItemSubmenu/SidebarMenuItem
 import { SubmenuToggleButton } from './SubmenuToggleButton/SubmenuToggleButton';
 import { SidebarMenuItemHeader } from './SidebarMenuItemHeader/SidebarMenuItemHeader';
 import { SidebarContext } from '../../Sidebar';
+import { device } from '../../../../styles/BreakPoints';
 
-const StyledMenuItem = styled.li<{ $isActive: boolean }>`
+const StyledMenuItem = styled.li<{
+    $isActive: boolean;
+    $sidebarExpanded: boolean;
+}>`
     position: relative;
     cursor: pointer;
 
@@ -24,6 +28,21 @@ const StyledMenuItem = styled.li<{ $isActive: boolean }>`
         props.$isActive
             ? props.theme.colors.lightPrimary
             : props.theme.colors.background};
+
+    @media only screen and (${device.sm}) {
+        display: grid;
+        grid-template-columns: 1fr;
+        display: grid;
+        grid-template-rows: ${(props) =>
+            props.$sidebarExpanded ? '1fr' : '0fr'};
+        transition: all 300ms;
+        overflow: hidden;
+
+        // CSS-selector that gets first child of this component
+        & > * {
+            overflow: hidden;
+        }
+    }
 `;
 
 type SidebarMenuItemProps = {} & MenuItemType;
@@ -38,7 +57,10 @@ export const SidebarMenuItem: React.FC<SidebarMenuItemProps> = ({
 
     /* TODO: Fix unwanted renders */
     return (
-        <StyledMenuItem $isActive={isActive}>
+        <StyledMenuItem
+            $isActive={isActive}
+            $sidebarExpanded={sidebarExpanded}
+        >
             <SidebarMenuItemHeader
                 isActive={isActive}
                 id={menuItem.id}
